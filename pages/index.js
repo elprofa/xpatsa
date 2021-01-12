@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { Form, Container, Row, Col } from "reactstrap";
 
 import { initializeApollo } from "../apollo/client";
-import Titre from "../components/Titre/Titre";
+import Titre from "../components/shared/Titre/Titre";
 import ButtonText from "../components/buttonText";
 import InputGroup from "../components/inputGroup";
 
@@ -28,7 +28,8 @@ const Index = () => {
       <Container>
         <Row>
           <Col>
-            You're signed in as {viewer.name} and you're yes {viewer.status}{" "}
+            <Titre texte="Bonjour à tous" color="red" underline=""/>
+            You're signed in as {viewer.name} and you're wedo {viewer.status}{" "}
             goto{" "}
             <Link href="/about">
               <a>static</a>
@@ -37,9 +38,10 @@ const Index = () => {
           </Col>
           <Col>
             <Form>
-              <Titre text="Bonjour à tous" />
+              <Titre texte="Bonjour à tous" color="blue" underline="2"/>
               <InputGroup />
               <ButtonText text="HelloWord" />
+              <Titre texte="Bonjour à tous" color="green" underline="2"/>
             </Form>
           </Col>
         </Row>
