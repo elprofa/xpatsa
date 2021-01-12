@@ -1,7 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-import Didact from "../fonts/FiraSans-Bold.ttf";
-
 export const GlobalCSS = createGlobalStyle`
      * {
         -webkit-box-sizing: border-box;
@@ -10,11 +8,8 @@ export const GlobalCSS = createGlobalStyle`
     }
     
     body {
-        @font-face {
-            font-family: 'Didact Gothic';
-            src: url(${Didact}) format('ttf');
-            font-weight: 300;
-            font-style: normal;
-        }
+        font-family: acumin-pro,sans-serif;
+        font-weight: 400;
+        font-style: normal;
     }
 `;
