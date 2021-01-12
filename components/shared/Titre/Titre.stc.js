@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import theme from "../../../theme/index";
+
 export const TitreStc = styled.h1`
     font-size: 42px;
     font-weight: 700;
     padding-bottom: 15px;
-    position: relative;
+    position: relative; 
     color: ${props => props.color || "#000"};
     
     &:before

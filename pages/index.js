@@ -5,6 +5,8 @@ import { Form, Container, Row, Col } from "reactstrap";
 
 import { initializeApollo } from "../apollo/client";
 import Titre from "../components/shared/Titre/Titre";
+import Bouton from "../components/shared/Bouton/Bouton";
+
 import ButtonText from "../components/buttonText";
 import InputGroup from "../components/inputGroup";
 
@@ -28,7 +30,7 @@ const Index = () => {
       <Container>
         <Row>
           <Col>
-            <Titre texte="Bonjour à tous" color="red" underline=""/>
+            <Bouton texte="Bonjour à tous" backgroundColor="green" color="#fff" icon="true"/>
             You're signed in as {viewer.name} and you're wedo {viewer.status}{" "}
             goto{" "}
             <Link href="/about">
@@ -38,10 +40,10 @@ const Index = () => {
           </Col>
           <Col>
             <Form>
-              <Titre texte="Bonjour à tous" color="blue" underline="2"/>
+              <Titre texte="Bonjour à tous" color="#ff0000" underline="2"/>
               <InputGroup />
               <ButtonText text="HelloWord" />
-              <Titre texte="Bonjour à tous" color="green" underline="2"/>
+              <Titre texte="Bonjour à tous" color="blue" underline="2"/>
             </Form>
           </Col>
         </Row>
