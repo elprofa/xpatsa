@@ -15,6 +15,7 @@ export const SelectGroup = styled(FormGroup)`
         margin: 10px;
         font-size: inherit;
         top: 2px;
+        left:0px;
     }
     select
     {

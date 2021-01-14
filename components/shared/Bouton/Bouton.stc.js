@@ -10,6 +10,7 @@ const BoutonStc = styled(Button)`
     min-height: 33px;
     position:relative;
     overflow:hidden;
+    font-size: 12px;
 
     &:before
     {

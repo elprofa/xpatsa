@@ -9,7 +9,7 @@ import Bouton from "../components/shared/Bouton/Bouton";
 
 import ButtonText from "../components/buttonText";
 import InputGroup from "../components/shared/inputGroup";
-
+import FormLogin from "../components/shared/formLogin/formLogin";
 import DropoDownInput from "../components/shared/dropDownInput/dropDownInput";
 
 const ViewerQuery = gql`
@@ -41,14 +41,7 @@ const Index = () => {
             page.
           </Col>
           <Col>
-            <Form>
-              <Titre texte="Bonjour à tous" color="#ff0000" underline="2"/>
-              <InputGroup textLabel="Date de naissance" typeInput="date" nameInput="date_naiss" idInput="date_naiss" valueInput="RAS"/>
-              <ButtonText text="HelloWord" />
-              
-              <DropoDownInput textLabel="Bonjour à vous" OptionList ={[{item: "eldi",value: "logo"},{item: "ray",value: "logo"}]}/>
-              <Titre texte="Bonjour à tous" color="blue" underline="2"/>
-            </Form>
+            <FormLogin />
           </Col>
         </Row>
       </Container>
