@@ -8,7 +8,9 @@ import Titre from "../components/shared/Titre/Titre";
 import Bouton from "../components/shared/Bouton/Bouton";
 
 import ButtonText from "../components/buttonText";
-import InputGroup from "../components/inputGroup";
+import InputGroup from "../components/shared/inputGroup";
+
+import DropoDownInput from "../components/shared/dropDownInput/dropDownInput";
 
 const ViewerQuery = gql`
   query ViewerQuery {
@@ -41,8 +43,10 @@ const Index = () => {
           <Col>
             <Form>
               <Titre texte="Bonjour à tous" color="#ff0000" underline="2"/>
-              <InputGroup />
+              <InputGroup textLabel="Date de naissance" typeInput="date" nameInput="date_naiss" idInput="date_naiss" valueInput="RAS"/>
               <ButtonText text="HelloWord" />
+              
+              <DropoDownInput textLabel="Bonjour à vous" OptionList ={[{item: "eldi",value: "logo"},{item: "ray",value: "logo"}]}/>
               <Titre texte="Bonjour à tous" color="blue" underline="2"/>
             </Form>
           </Col>
