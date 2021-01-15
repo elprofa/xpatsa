@@ -4,12 +4,12 @@ import { FormGroup } from "reactstrap";
 
 export const FormWarp = styled(FormGroup)`
 
-  input
+  input, textarea
   {
     border-radius:0px;
     margin-top:-18px;
   }
-  input:focus {
+  input:focus, textarea:focus {
     box-shadow: 0px 0px 0px #000;
   }
   label

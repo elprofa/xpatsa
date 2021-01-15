@@ -24,7 +24,6 @@ const Layout = ({ children, ...props }) => {
           <Col sm={4}>
           </Col>
           <Col sm={7} className='w-100'>
-            <TopMenu />
           </Col>
         </Row>
       </Container>

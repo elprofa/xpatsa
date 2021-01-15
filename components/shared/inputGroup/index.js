@@ -13,6 +13,7 @@ const InputGroup = (props) => {
         name={nameInput}
         id={idInput}
         value={valueInput}
+        
       />
     </FormWarp>
   );
