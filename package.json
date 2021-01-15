@@ -17,6 +17,9 @@
     "next": "latest",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
+
+    "react-bootstrap": "^1.4.3",
+
     "react-devtools": "^4.10.1",
     "react-dom": "^16.7.0",
     "react-gsap": "^2.2.1",
