@@ -24,7 +24,7 @@ const Header = (props) => {
   return (
     <div color='black' className='d-flex justify-content-end'>
       <Navbar color="blue" light expand="md">
-      <NavbarBrand href="/">Button Langue ici</NavbarBrand>
+      <NavbarBrand href="/">Button Langue-ici</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
