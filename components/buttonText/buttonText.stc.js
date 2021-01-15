@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export const ButtonText = styled.h1`
+export const ButtonText = styled.h6`
+  color:#007bff !important;
+  font-size: 15px;
   width: 100%;
-  background-color: #4191ff;
-  :hover {
-    cursor: pointer;
+  
+  &:hover {
+    cursor: wait;
   }
 `;
