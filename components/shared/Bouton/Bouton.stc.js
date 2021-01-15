@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from 'reactstrap';
 const BoutonStc = styled(Button)`
     background: ${props => props.backgroundColor || "#ccc"};
-    border: 0px;
+    border: 1px solid ${props => props.borderColor || "transparent"};
     border-radius: 0px;
     color:${props => props.color || "#fff"};
     min-width: 80px;

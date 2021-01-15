@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import Container from 'react-bootstrap/Container';
 
-export const RangerFooter = styled(Container)`
+export const RangerFooter = styled.div`
   width: 100%;
-  height: 120px;
   color:white;
   background: #37517E !important;
 

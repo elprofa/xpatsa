@@ -8,7 +8,7 @@ export const GlobalCSS = createGlobalStyle`
     }
     
     body {
-        font-family: azo-sans, sans-serif;
+        font-family: source-sans-pro, sans-serif;
         font-weight: 400;
         font-style: normal;
     }

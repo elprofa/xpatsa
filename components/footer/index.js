@@ -6,14 +6,14 @@ import { BiMobileAlt } from 'react-icons/bi';
 
 const PiedDePage = (props) => {
 
-  return <RangerFooter fluid>
-      <Container className='h-100'>
+  return <RangerFooter>
+      <Container>
 
             <Row className='d-flex p-1'>
                 <Col sm={1} className="pl-0">
                     <Button className="d-inline"> langue</Button>
                 </Col>
-                <Col sm={7}>
+                <Col sm={7} >
                     <ListGroup horizontal>
                         <ListGroupItem tag="a" href="#">Transfert d'argent</ListGroupItem>
                         <ListGroupItem tag="a" href="#">A propos</ListGroupItem>

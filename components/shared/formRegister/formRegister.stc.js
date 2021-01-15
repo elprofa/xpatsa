@@ -8,6 +8,14 @@ import { Container } from "reactstrap";
         margin-bottom:30px;
         border-bottom: 1px solid #ecedee;
     }
+    .row
+    {
+        margin:0px;
+    }
+    .col
+    {
+        padding:0px;
+    }
     a
     {
         font-size:12px;
