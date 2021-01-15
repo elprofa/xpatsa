@@ -7,11 +7,16 @@ import Nav from 'react-bootstrap/Nav'
 import { FaFacebookSquare, FaTwitterSquare, FaLinkedin } from 'react-icons/fa';
 
 import { initializeApollo } from "../apollo/client";
-import Titre from "../components/Titre/Titre";
+import Titre from "../components/shared/Titre/Titre";
+import Bouton from "../components/shared/Bouton/Bouton";
+
 import ButtonText from "../components/buttonText";
 import InputGroup from "../components/inputGroup";
 import SocialMediaIcons from '../components/socialMedia';
 import PiedDePage from '../components/footer';
+import FormLogin from "../components/shared/formLogin/formLogin";
+import DropoDownInput from "../components/shared/dropDownInput/dropDownInput";
+
 
 const ViewerQuery = gql`
   query ViewerQuery {
@@ -33,7 +38,8 @@ const Index = () => {
       <Container>
         <Row>
           <Col>
-            You're signed in as {viewer.name} and you're yes {viewer.status}{" "}
+            <Bouton texte="Bonjour à tous" backgroundColor="green" color="#fff" icon="true"/>
+            You're signed in as {viewer.name} and you're wedo {viewer.status}{" "}
             goto{" "}
             <Link href="/about">
               <a>static</a>
@@ -56,6 +62,9 @@ const Index = () => {
                 
               </Row>
             </Form>
+
+            <FormLogin />
+
           </Col>
         </Row>
       </Container>
