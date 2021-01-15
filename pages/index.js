@@ -35,10 +35,10 @@ const Index = () => {
             <Bouton texte="Bonjour à tous" backgroundColor="green" color="#fff" icon="true"/>
             You're signed in as {viewer.name} and you're wedo {viewer.status}{" "}
             goto{" "}
-            <Link href="/about">
+            <Link href="/connexion">
               <a>static</a>
             </Link>{" "}
-            page.
+            page. 
           </Col>
           <Col>
             <FormLogin />
