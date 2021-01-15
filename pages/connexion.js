@@ -1,13 +1,14 @@
 import Link from 'next/link'
-
+import { Row,Col,Card} from "reactstrap";
+import FormLogin from "../components/shared/formLogin/formLogin";
 export default function Connexion() {
   return (
-    <div>
-      This is a static page goto{' '}
-      <Link href="/">
-        <a>Accueil</a>
-      </Link>{' '}
-      page.
-    </div>
+      <Row style={{ background: '#fbfbfb',margin:'0px' }}>
+        <Col>
+          <Card style={{ width: '30rem',margin:'70px auto',padding:'20px',borderColor:'#ecedee;' }}>
+            <FormLogin />
+          </Card>
+        </Col>
+      </Row>
   )
 }
