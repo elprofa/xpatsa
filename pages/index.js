@@ -2,11 +2,16 @@ import gql from "graphql-tag";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 import { Form, Container, Row, Col } from "reactstrap";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav'
+import { FaFacebookSquare, FaTwitterSquare, FaLinkedin } from 'react-icons/fa';
 
 import { initializeApollo } from "../apollo/client";
 import Titre from "../components/Titre/Titre";
 import ButtonText from "../components/buttonText";
 import InputGroup from "../components/inputGroup";
+import SocialMediaIcons from '../components/socialMedia';
+import PiedDePage from '../components/footer';
 
 const ViewerQuery = gql`
   query ViewerQuery {
@@ -39,7 +44,17 @@ const Index = () => {
             <Form>
               <Titre text="Bonjour à tous" />
               <InputGroup />
-              <ButtonText text="HelloWord" />
+              <Row>
+                <Col sm={5}>
+                  <ButtonText text="Mot de Passe oublié ?" />
+                </Col>
+                <Col sm={4}>
+                </Col>
+                <Col sm={1}></Col> 
+                <Col sm={1}></Col>
+                <Col sm={1}></Col>
+                
+              </Row>
             </Form>
           </Col>
         </Row>

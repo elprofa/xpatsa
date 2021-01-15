@@ -1,5 +1,5 @@
 import React from "react";
-import { RowIcons } from "./socialMedia.stc";
+import { Ranger } from "./socialMedia.stc";
 
 const SocialMediaIcons = (props) => {
   const { icone } = props;
