@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { FormGroup } from "reactstrap";
 
 export const FormWarp = styled(FormGroup)`
-  font-family: source-sans-pro, sans-serif;
-  font-weight: 400;
-  font-style: normal;
   input, textarea
   {
     border-radius:0px;

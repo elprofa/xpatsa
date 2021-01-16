@@ -18,7 +18,6 @@ const Layout = ({ children, ...props }) => {
         <link rel="stylesheet" href="https://use.typekit.net/pgv8psy.css" />
       </Head>
       <GlobalCSS />
-      
       <Navbar />
       {children}
       <Footer />
