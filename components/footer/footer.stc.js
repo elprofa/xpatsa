@@ -12,9 +12,24 @@ export const RangerFooter = styled.div`
     color: white!important;
 }
 
+select
+{
+    
+    background: transparent;
+    border: 1px solid #fff !important;
+    border-radius: 0px;
+    color: #fff;
+  }
+
+
+  select:focus
+  {
+    background-color:transparent;
+    color:#fff;
+  }
+
 .col-icon {
-  padding-top: 10px;
-  padding-right: 25px;
+
 }
 
 .col-copyright {
@@ -23,10 +38,7 @@ export const RangerFooter = styled.div`
 }
 
 .lastRow {
-  font-weight:normal!important;
   border-top: 1px solid grey;
-  width:100%;
-  height: 3rem;
 }
 
 .contact-tel {

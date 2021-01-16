@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Bouton from "../Bouton/Bouton";
 import DropDownInput from "../dropDownInput/dropDownInput";
-import Image from 'next/image'
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   Collapse,
   Navbar,
@@ -15,6 +16,7 @@ import {
   DropdownMenu,
   DropdownItem,
   NavbarText,
+  Container
 } from "reactstrap";
 
 const Header = (props) => {
@@ -24,37 +26,52 @@ const Header = (props) => {
 
   return (
       <Navbar color="blue" light expand="md">
+      <Container className="px-0">
+        
       <NavbarBrand href="/"><Image src='/img/Logo_Xpatsa.png' width={80} height={80} /></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mx-auto" navbar>
             <NavItem>
-              <DropDownInput OptionList={[{item:"yes",value:"cool"}]}/>
+              <DropDownInput OptionList={[{item:"FR",value:"fr"},{item:"EN",value:"en"}]}/>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                Transfert d'Argent
-              </NavLink>
+              <Link href="/transfert">
+                <NavLink active={true} href="transfert">
+                  Transfert d'Argent
+                </NavLink>
+              
+              </Link>
+              
             </NavItem>
             <NavItem>
-              <NavLink href="/components/">A propos</NavLink>
+            <Link href="/apropos"> 
+              <NavLink href="/apropos">A propos</NavLink>
+            </Link>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
+            <Link href='/contact'>
+              <NavLink href="/contact">
                 Contact
               </NavLink>
+            </Link>
             </NavItem>
             <NavItem>
+              <Link href="/inscription">
               <NavLink href="/wedo">
                 S'inscrire
               </NavLink>
+              </Link>
             </NavItem>
       
           </Nav>
+            <Link href="/connexion">
           <NavbarText>
-            <Bouton color="#000" borderColor="#000" backgroundColor="#FFF" texte="SE CONNECTER" />
+              <Bouton color="#000" borderColor="#000" backgroundColor="#FFF" texte="SE CONNECTER" />
            </NavbarText>
+            </Link>
         </Collapse>
+      </Container>
       </Navbar>
   );
 };

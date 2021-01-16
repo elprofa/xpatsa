@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   margin:0px;
   height: 80vh;
 
+
   .card{
     margin:70px auto;
     padding:20px;
@@ -34,7 +35,7 @@ export default function Inscription() {
                           />
                     
                 </Col>
-                <Col lg={6} className="h-100">
+                <Col lg={6} className="h-100 pr-0">
                     <Card className="h-75">
                         <FormRegister />
                     </Card>
