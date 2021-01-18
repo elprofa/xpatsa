@@ -1,20 +1,12 @@
 import styled from "styled-components";
 import { Container } from "reactstrap";
 
- const FormRegisterStc = styled(Container)`
+ const FormContactStc = styled(Container)`
 
-    h1
+h1
     {
         margin-bottom:30px;
         border-bottom: 1px solid #ecedee;
-    }
-    .row
-    {
-        margin:0px;
-    }
-    .col
-    {
-        padding:0px;
     }
     a
     {
@@ -30,4 +22,4 @@ import { Container } from "reactstrap";
     }
 `;
 
-export default FormRegisterStc;
+export default FormContactStc;

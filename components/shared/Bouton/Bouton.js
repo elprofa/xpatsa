@@ -5,9 +5,9 @@ import BoutonStc from './Bouton.stc';
 import { BsChevronRight } from "react-icons/bs";
 
 const Bouton = (props) => {
-  const { texte, backgroundColor,color, icon } = props;
+  const { texte, backgroundColor,borderColor,color, icon } = props;
   return (
-    <BoutonStc variant="primary" color={color} backgroundColor={backgroundColor}>{texte} { icon?<Badge variant=""> <BsChevronRight /></Badge>:''} </BoutonStc>
+    <BoutonStc variant="primary" borderColor={borderColor} color={color} backgroundColor={backgroundColor}>{texte} { icon?<Badge variant=""> <BsChevronRight /></Badge>:''} </BoutonStc>
   )
 };
 

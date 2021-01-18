@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import Bouton from "../Bouton/Bouton";
+import DropDownInput from "../dropDownInput/dropDownInput";
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   Collapse,
   Navbar,
@@ -12,6 +16,7 @@ import {
   DropdownMenu,
   DropdownItem,
   NavbarText,
+  Container
 } from "reactstrap";
 
 const Header = (props) => {
@@ -20,36 +25,54 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+      <Navbar color="blue" light expand="md">
+      <Container className="px-0">
+        
+      <NavbarBrand href="/"><Image src='/img/Logo_Xpatsa.png' width={80} height={80} /></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="mx-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <DropDownInput OptionList={[{item:"FR",value:"fr"},{item:"EN",value:"en"}]}/>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
+              <Link href="/transfert">
+                <NavLink active={true} href="transfert">
+                  Transfert d'Argent
+                </NavLink>
+              
+              </Link>
+              
+            </NavItem>
+            <NavItem>
+            <Link href="/apropos"> 
+              <NavLink href="/apropos">A propos</NavLink>
+            </Link>
+            </NavItem>
+            <NavItem>
+            <Link href='/contact'>
+              <NavLink href="/contact">
+                Contact
               </NavLink>
+            </Link>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <NavItem>
+              <Link href="/inscription">
+              <NavLink href="/inscription">
+                S'inscrire
+              </NavLink>
+              </Link>
+            </NavItem>
+      
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+            <Link href="/connexion">
+          <NavbarText>
+              <Bouton color="#000" borderColor="#000" backgroundColor="#FFF" texte="SE CONNECTER" />
+           </NavbarText>
+            </Link>
         </Collapse>
+      </Container>
       </Navbar>
-    </div>
   );
 };
 

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { FormGroup } from "reactstrap";
 
 export const SelectGroup = styled(FormGroup)`
+    margin-bottom: 0;
+
     .col-sm-1,.col-sm-11
     {
         padding:0px;
@@ -14,8 +16,7 @@ export const SelectGroup = styled(FormGroup)`
         position: absolute;
         margin: 10px;
         font-size: inherit;
-        top: 2px;
-        left:0px;
+        
     }
     select
     {

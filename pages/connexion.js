@@ -1,31 +1,33 @@
-import Link from 'next/link'
-import { Row,Col,Card} from "reactstrap";
+import Link from "next/link";
+import { Container, Row, Col, Card } from "reactstrap";
 import styled from "styled-components";
 import FormLogin from "../components/shared/formLogin/formLogin";
 
-const Wrapper = styled(Row)`
-
+const Wrapper = styled(Container)`
   background: #fbfbfb;
-  margin:0px;
+  height: 80vh;
 
-  .card{
-    width: 30rem;
-    margin:70px auto;
-    padding:20px;
-    border-color:#ecedee;
-    border-radius:0px;
+  .card {
+    border-color: #ecedee;
+    border-radius: 0px;
+    padding: 20px;
+    @media (min-width: 900px) {
+      width: 50%;
+      height: 50%;
+    }
   }
- 
 `;
 
 export default function Connexion() {
   return (
-      <Wrapper>
-        <Col>
-          <Card>
+    <Wrapper fluid>
+      <Row className="h-100">
+        <Col className="h-100 d-flex align-items-center justify-content-center">
+          <Card className="">
             <FormLogin />
           </Card>
         </Col>
-      </Wrapper>
-  )
+      </Row>
+    </Wrapper>
+  );
 }
