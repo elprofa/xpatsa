@@ -58,7 +58,7 @@ const Header = (props) => {
             </NavItem>
             <NavItem>
               <Link href="/inscription">
-              <NavLink href="/wedo">
+              <NavLink href="/inscription">
                 S'inscrire
               </NavLink>
               </Link>

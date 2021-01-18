@@ -22,11 +22,9 @@ export default function Contact() {
       <Wrapper>
         <Container>
            <Row>
-                
-                    <Card>
-                        <FormContact />
-                    </Card>
-                
+              <Card>
+                  <FormContact />
+              </Card>
             </Row>
         </Container>
       </Wrapper>
