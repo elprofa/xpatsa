@@ -22,6 +22,7 @@
     "react-dom": "^16.7.0",
     "react-gsap": "^2.2.1",
     "react-icons": "^4.1.0",
+    "react-loki": "^1.2.0",
     "reactstrap": "^8.8.1",
     "styled-components": "^5.2.1"
   },

@@ -7,7 +7,7 @@ export const FormWarp = styled(FormGroup)`
   input
   {
     border-radius:0px;
-    position:relative;
+    position:absolute;
     margin-left:0px;
 
   }
@@ -21,6 +21,6 @@ export const FormWarp = styled(FormGroup)`
     padding: 0px 5px;
     font-size: 12px;
     color: #6c757d;
-    margin-left:0px;
+    margin-left:15px;
   }
 `;

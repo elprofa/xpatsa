@@ -9,15 +9,18 @@ const Wrapper = styled.div`
 
   background: #fbfbfb;
   margin:0px;
-  height: 80vh;
 
+  #divImage div,#divImage img
+  {
+    width:100%; 
+  }
 
   .card{
     margin:70px auto;
     padding:20px;
     border-color:#ecedee;
     border-radius:0px;
-    min-height:350px;
+    min-height:351px;
   }
 `;
 
@@ -26,12 +29,13 @@ export default function Inscription() {
       <Wrapper>
         <Container className="h-100">
             <Row className="h-100">
-                <Col lg={6} className="h-100 d-none d-lg-block">
+                <Col lg={6} className="h-100 d-none d-lg-block" id="divImage">
                     
                     <Image 
                           src='/img/computer.svg'
                           alt="Picture of computer"
-                          layout="fill"
+                          width="100"
+                          height="100"
                           />
                     
                 </Col>
