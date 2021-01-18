@@ -5,16 +5,16 @@ const FormLoginStc = styled(Container)`
   h1 {
     margin-bottom: 30px;
     border-bottom: 1px solid #ecedee;
-    font-size: 15px;
+    font-size: 12px;
     @media (min-width: 900px) {
       font-size: 34px;
     }
   }
   label,
   button,
-  #left,
+  #left a,
   input {
-    font-size: 9px;
+    font-size: 8px;
     @media (min-width: 900px) {
       font-size: 12px;
     }

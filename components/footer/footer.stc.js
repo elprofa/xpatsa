@@ -4,6 +4,10 @@ export const RangerFooter = styled.div`
   /* width: 100%; */
   color: white;
   background: #37517e !important;
+  font-size: 10px;
+  @media (min-width: 900px) {
+    font-size: 16px;
+  }
 
   .list-group-item {
     background-color: transparent;

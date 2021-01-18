@@ -27,7 +27,7 @@ const PiedDePage = (props) => {
               ]}
             />
           </Col>
-          <Col sm={6}>
+          <Col sm={6} className="d-none d-md-block">
             <ListGroup horizontal>
               <Link href="/transfert">
                 <ListGroupItem tag="a" href="/transfert">
