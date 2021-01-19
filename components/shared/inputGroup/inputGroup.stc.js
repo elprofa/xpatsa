@@ -9,6 +9,7 @@ export const FormWarp = styled(FormGroup)`
     margin-top: -18px;
     height: 50px;
   }
+  
   input:focus, textarea:focus {
     box-shadow: 0px 0px 0px #000;
   }

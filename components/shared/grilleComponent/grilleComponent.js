@@ -15,8 +15,8 @@ const GrilleComponent = (props) => {
                     <Col lg={6} className="divTexte">
                         <Titre texte={texteTitre} color={colorTitre} />
                         <p>{paragraphe}</p>
-
                     </Col>
+                    
                     <Col lg={6}  className="h-100 d-none d-lg-block divPictureRight">
                         <Image 
                             src={picture}
