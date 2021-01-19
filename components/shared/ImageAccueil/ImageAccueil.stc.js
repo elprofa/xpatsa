@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
  const ImageAccueilStc = styled.section`
-    height:250px;
+    height:${(props) => props.heightMobile || "250px"};
     @media (min-width: 534px) {
-        height:360px;
+        height:${(props) => props.heightTablette || "430px"};
     }
     @media (min-width: 960px) {
-        height:430px;
+        height:${(props) => props.heightDesktop || "430px"};
     }
     svg
     {
@@ -20,6 +20,19 @@ import styled from "styled-components";
             top:60%
         }
     }
+    .colAccueilLeft
+    {
+      padding: 32px;
+      background: rgb(0,0,0,0.5);
+      color: #fff;
+    }
+    .containerHome
+    {
+      width: 100%;
+      top: 55%;
+      position: relative;
+    }
+
     h1
     {
         text-align: center;

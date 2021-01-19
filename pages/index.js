@@ -1,14 +1,20 @@
 import gql from "graphql-tag";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
+import styled from "styled-components";
 import { Form, Container, Row, Col } from "reactstrap";
 
 import { initializeApollo } from "../apollo/client";
 
 import PiedDePage from "../components/footer";
 import FormLogin from "../components/shared/formLogin/formLogin";
+import ComponentBlockDevise from "../components/shared/ComponentBlockDevise/ComponentBlockDevise";
 
-const ViewerQuery = gql`
+import CommentCaFonctionne from "../components/shared/CommentCaFonctionne/CommentCaFonctionne";
+
+import ImageAccueil from "../components/shared/ImageAccueil/ImageAccueil";
+
+const ViewerQuery = gql `
   query ViewerQuery {
     viewer {
       id
@@ -23,8 +29,37 @@ const Index = () => {
     data: { viewer },
   } = useQuery(ViewerQuery);
 
+  const Wrapper = styled.section`
+    background:#fff;
+    
+    .row
+    {
+        margin:0px;
+        @media (min-width: 960px) {
+          margin-top:-200px
+        }
+    }
+    
+    h1
+    {
+      top:0;
+      text-align:left;
+    }
+`;
+
   return (
     <div>
+      <Wrapper >
+        <Row>
+            <Col sm={12} id="colAccueilLeft">
+                <ImageAccueil picture='/img/accueil-pic1.jpg' page="home" heightMobile="25vh" heightTablette="55vh" heightDesktop="122vh"/>
+            </Col>
+        </Row>
+      </Wrapper>
+     
+    <ComponentBlockDevise />
+    <CommentCaFonctionne />
+     
       <Container>
         <Row>
           <Col>

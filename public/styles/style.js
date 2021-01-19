@@ -12,4 +12,10 @@ export const GlobalCSS = createGlobalStyle`
         font-weight: 400;
         font-style: normal;
     }
+
+    nav.navbar
+    {
+        position:relative;
+        z-index:99;
+    }
 `;

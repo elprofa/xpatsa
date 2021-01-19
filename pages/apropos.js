@@ -54,7 +54,7 @@ export default function Apropos() {
         <Wrapper>
             <Row>
                 <Col sm={12}>
-                    <ImageAccueil />
+                    <ImageAccueil picture="/img/student.jpg"/>
                 </Col>
             </Row>
             <Container>
