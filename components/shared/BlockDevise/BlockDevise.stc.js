@@ -16,5 +16,12 @@ import {Card } from "reactstrap";
         color: #405984;
     
     }
+    svg
+    {
+        position:relative;
+        bottom:7px;
+        margin-right:10px;
+        font-size:40px;
+    }
 `;
 export default BlockDeviseStc;

@@ -6,7 +6,7 @@ const BoutonStc = styled(Button)`
   border: 1px solid ${(props) => props.borderColor || "transparent"};
   border-radius: 0px;
   color: ${(props) => props.color || "#fff"};
-  min-width: 40px;
+  min-width:${(props) => props.minWidth || "40px"} !important;
   min-height: 23px;
   position: relative;
   overflow: hidden;

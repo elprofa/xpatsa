@@ -2,17 +2,11 @@ import gql from "graphql-tag";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 import styled from "styled-components";
-import { Form, Container, Row, Col } from "reactstrap";
+import Caroussel from "../components/shared/caroussel/caroussel";
 
 import { initializeApollo } from "../apollo/client";
-
-import PiedDePage from "../components/footer";
-import FormLogin from "../components/shared/formLogin/formLogin";
 import ComponentBlockDevise from "../components/shared/ComponentBlockDevise/ComponentBlockDevise";
-
 import CommentCaFonctionne from "../components/shared/CommentCaFonctionne/CommentCaFonctionne";
-
-import ImageAccueil from "../components/shared/ImageAccueil/ImageAccueil";
 
 const ViewerQuery = gql `
   query ViewerQuery {
@@ -30,49 +24,45 @@ const Index = () => {
   } = useQuery(ViewerQuery);
 
   const Wrapper = styled.section`
-    background:#fff;
-    
-    .row
+    img
     {
-        margin:0px;
-        @media (min-width: 960px) {
-          margin-top:-200px
-        }
+      width:100%;
     }
-    
-    h1
+    .slide
     {
-      top:0;
-      text-align:left;
+      margin-top:0px;
+      @media (min-width: 991px) {
+        margin-top:-150px;
+      }
+    }
+
+    .containerHome
+    {
+      position: absolute;
+      top: 45%;
+      left: 0;
+      right: 0;
+    }
+    .colAccueilLeft.col-sm-6 {
+        background: rgb(0,0,0,.5);
+        padding: 30px;
+        color: #fff;
+    }
+
+    .carousel-control-next, .carousel-control-prev
+    {
+      width:2% !important;
     }
 `;
 
   return (
     <div>
       <Wrapper >
-        <Row>
-            <Col sm={12} id="colAccueilLeft">
-                <ImageAccueil picture='/img/accueil-pic1.jpg' page="home" heightMobile="25vh" heightTablette="55vh" heightDesktop="122vh"/>
-            </Col>
-        </Row>
+        <Caroussel />
       </Wrapper>
-     
-    <ComponentBlockDevise />
-    <CommentCaFonctionne />
-     
-      <Container>
-        <Row>
-          <Col>
-            You're signed in as {viewer.name} anxd you're wedo {viewer.status}{" "}
-            goto{" "}
-            <Link href="/connexion">
-              <a>static</a>
-            </Link>{" "}
-            page.
-          </Col>
-          <Col></Col>
-        </Row>
-      </Container>
+
+      <ComponentBlockDevise />
+      <CommentCaFonctionne />
     </div>
   );
 };

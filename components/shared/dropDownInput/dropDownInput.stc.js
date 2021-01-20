@@ -22,6 +22,8 @@ export const SelectGroup = styled(FormGroup)`
     {
         border: 0px;
         padding-left:30px;
+        background:${props => props.backgroundColor || "transparent"};
+        color:${props => props.color || "#000"}
     }
 
     label

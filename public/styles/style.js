@@ -17,5 +17,26 @@ export const GlobalCSS = createGlobalStyle`
     {
         position:relative;
         z-index:99;
+        border-bottom:1px solid #ececec;
+        @media (min-width: 768px) 
+        {
+            height:80px;
+        }
+    }
+
+    li.nav-item
+    {
+        @media (min-width: 768px) 
+        {
+            margin:auto;
+        }
+    }
+    
+    ul.mx-auto.navbar-nav {
+        
+        @media (min-width: 996px) {
+            width: 100%;
+            padding-left: 30%;
+        }
     }
 `;

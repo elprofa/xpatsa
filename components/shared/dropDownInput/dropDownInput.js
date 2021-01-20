@@ -7,11 +7,11 @@ import { BiGlobe } from 'react-icons/bi';
 
 
 const DropoDownInput = (props) => {
-  const {OptionList,textLabel,nameInput,idInput} = props;
+  const {OptionList,textLabel,nameInput,idInput,backgroundColor,color} = props;
   return (
-    <SelectGroup>
+    <SelectGroup backgroundColor={backgroundColor} color={color}>
       <BiGlobe />
-      <select className="form-control">
+      <select className="form-control" >
         {OptionList.map(list => <option key={list.value.length}>{list.item} </option>)}
       </select>
     </SelectGroup>

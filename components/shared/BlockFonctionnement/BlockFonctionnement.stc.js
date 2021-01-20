@@ -7,12 +7,14 @@ import {Card } from "reactstrap";
     background: #fff;
     padding: 30px;
     text-align:center;
+    height:100%;
 
     h1
     {
         color: #405984;
         font-size: 20px;
         font-weight: 600;
+        margin-top:20px;
     }
     p
     {

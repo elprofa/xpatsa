@@ -26,52 +26,52 @@ const Header = (props) => {
 
   return (
       <Navbar color="blue" light expand="md">
-      <Container className="px-0">
-        
-      <NavbarBrand href="/"><Image src='/img/Logo_Xpatsa.png' width={80} height={80} /></NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mx-auto" navbar>
-            <NavItem>
-              <DropDownInput OptionList={[{item:"FR",value:"fr"},{item:"EN",value:"en"}]}/>
-            </NavItem>
-            <NavItem>
-              <Link href="/transfert">
-                <NavLink active={true} href="transfert">
-                  Transfert d'Argent
+        <Container className="px-0">
+          
+          <NavbarBrand href="/"><Image src='/img/Logo_Xpatsa.png' width={80} height={80} /></NavbarBrand>
+            <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar>
+            <Nav className="mx-auto" navbar>
+              <NavItem>
+                <DropDownInput OptionList={[{item:"FR",value:"fr"},{item:"EN",value:"en"}]} backgroundColor="transparent"/>
+              </NavItem>
+              <NavItem>
+                <Link href="/transfert">
+                  <NavLink active={true} href="transfert">
+                    Transfert d'Argent
+                  </NavLink>
+                
+                </Link>
+                
+              </NavItem>
+              <NavItem>
+              <Link href="/apropos"> 
+                <NavLink href="/apropos">A propos</NavLink>
+              </Link>
+              </NavItem>
+              <NavItem>
+              <Link href='/contact'>
+                <NavLink href="/contact">
+                  Contact
                 </NavLink>
-              
               </Link>
-              
-            </NavItem>
-            <NavItem>
-            <Link href="/apropos"> 
-              <NavLink href="/apropos">A propos</NavLink>
-            </Link>
-            </NavItem>
-            <NavItem>
-            <Link href='/contact'>
-              <NavLink href="/contact">
-                Contact
-              </NavLink>
-            </Link>
-            </NavItem>
-            <NavItem>
-              <Link href="/inscription">
-              <NavLink href="/inscription">
-                S'inscrire
-              </NavLink>
+              </NavItem>
+              <NavItem>
+                <Link href="/inscription">
+                <NavLink href="/inscription">
+                  S'inscrire
+                </NavLink>
+                </Link>
+              </NavItem>
+        
+            </Nav>
+              <Link href="/connexion">
+            <NavbarText>
+                <Bouton color="#000" borderColor="#000" minWidth="150px" backgroundColor="transparent" texte="SE CONNECTER" />
+            </NavbarText>
               </Link>
-            </NavItem>
-      
-          </Nav>
-            <Link href="/connexion">
-          <NavbarText>
-              <Bouton color="#000" borderColor="#000" backgroundColor="#FFF" texte="SE CONNECTER" />
-           </NavbarText>
-            </Link>
-        </Collapse>
-      </Container>
+          </Collapse>
+        </Container>
       </Navbar>
   );
 };
