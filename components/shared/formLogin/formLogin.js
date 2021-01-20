@@ -15,10 +15,10 @@ const FormLogin = (props) => {
         <InputGroup textLabel="ADRESSE E-MAIL OU NUMERO DE TELEPHONE" />
         <InputGroup textLabel="MOT DE PASSE" />
         <Row>
-          <Col id="left">
+          <Col id="left" lg={6}>
             <a href="#elprofa.com">Mot de passe oublié ?</a>
           </Col>
-          <Col id="right">
+          <Col id="right" lg={6}>
             <Bouton texte="SE CONNECTER" backgroundColor="#007bff" />
           </Col>
         </Row>

@@ -33,7 +33,7 @@ const CommentCaFonctionne = (props) => {
   return(
     <CommentCaFonctionneStc>
         <Container>
-            <Titre texte="Comment ca fonctionne uhn?" color="#007bff"/>
+            <Titre texte="Comment ca fonctionne ?" color="#007bff"/>
             <Row>
             {Listeblock.map(block => <Col lg={4}><BlockFonctionnement 
                 key={block.key.length} 

@@ -5,7 +5,8 @@ import FormLogin from "../components/shared/formLogin/formLogin";
 
 const Wrapper = styled(Container)`
   background: #fbfbfb;
-  height: 80vh;
+  min-height: 65vh;
+  margin-top: 90px;
 
   .card {
     border-color: #ecedee;
@@ -13,7 +14,6 @@ const Wrapper = styled(Container)`
     padding: 20px;
     @media (min-width: 900px) {
       width: 50%;
-      height: 50%;
     }
   }
 `;
