@@ -4,7 +4,7 @@ import { Label, Input } from "reactstrap";
 import { FormWarp } from "./inputGroup.stc";
 
 const InputGroup = (props) => {
-  const { textLabel, typeInput,nameInput,idInput, valueInput } = props;
+  const { textLabel, typeInput, nameInput, idInput, valueInput } = props;
   return (
     <FormWarp>
       

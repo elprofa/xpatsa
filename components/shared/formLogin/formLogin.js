@@ -10,7 +10,7 @@ const FormLogin = (props) => {
   const { texte, backgroundColor, color, icon } = props;
   return (
     <FormLoginStc>
-      <Titre texte="Se connecter " color="#007bff" />
+      <Titre texte="Se c onnecter " color="#007bff" />
       <Form>
         <InputGroup textLabel="ADRESSE E-MAIL OU NUMERO DE TELEPHONE" />
         <InputGroup textLabel="MOT DE PASSE" />
