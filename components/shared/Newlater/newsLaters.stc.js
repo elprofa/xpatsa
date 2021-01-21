@@ -1,9 +1,29 @@
 import styled from "styled-components";
 
- const NewslaterStc = styled.section`
+ const NewslaterStc = styled.div`
+
+h3 
+    {
+        font-size: 30px;
+        font-weight: 700;
+        position: relative;
+        color: #007bff;
+    }
+
+    .cols 
+    {
+        height: auto;
+    }
+
+    .col-lg-6 div
+    {
+        position:relative !important;
+    }
 
     .divTexte
     {
+        width: 100% !important;
+
         @media (min-width: 991px) {
             padding-top:5%;
         }
