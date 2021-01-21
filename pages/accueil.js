@@ -24,15 +24,6 @@ const Wrapper = styled(Container)`
   }
 `;
 
-
-    const NewsRow = [
-        {
-            position: "left",
-            texteTitre: "Newsletter",
-            colorTitre:"#007bff",
-            paragraphe:"Recevez votre newsletters en vous inscrivant ici."
-        },
-       ]
     
     export default function Accueil() {
       return (
@@ -43,36 +34,18 @@ const Wrapper = styled(Container)`
                     <Col>
                         <GrilleComponentPays/>
                     </Col>
-                    
                 </Row>
-            </Container>
-            
-
-            <Container fluid>
-                <FormContact/>
-            </Container>
-            <Container className='d-flex justify-content-center'>
-                        <Row className='w-100'>
-                            <Col className='h-100 d-flex align-items-center justify-content-center'>
-
-                                <NewsLater 
-                                    position="right" 
-                                    texteTitre="Newsletter"
-                                    colorTitre="#007bff"
-                                    paragraphe="Recevez votre newsletters en vous inscrivant ici." 
-                                />
-                            </Col>
-
-                            <Col className='h-100 d-flex align-items-center justify-content-center'>
-                                <Button 
-                                    texte="S'inscrire "
-                                    backgroundColor="#007bff"
-                                    borderColor="007bff"
-                                    color="#fff" />
-                            </Col>
-                        </Row>                  
-                
-            </Container>
-        </Wrapper>
+                <Row>
+                    <Col>
+                    <FormContact/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                    <NewsLater />
+                    </Col>
+                </Row>
+            </Container>             
+    </Wrapper>
       )
     }

@@ -11,6 +11,16 @@ import styled from "styled-components";
         max-height:none !important;
         position:relative !important;
     }
+
+    h3 
+    {
+        font-size: 30px;
+        font-weight: 700;
+        padding-bottom: 15px;
+        position: relative;
+        color: #007bff;
+    }
+
     .col-lg-6 div
     {
         position:relative !important;
