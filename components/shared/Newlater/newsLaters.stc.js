@@ -2,6 +2,39 @@ import styled from "styled-components";
 
  const NewslaterStc = styled.div`
 
+ width:100%;
+ padding:20px 0px;
+ .row 
+ {
+     margin:0px;
+ }
+
+ input,button
+ {
+     border-radius:0px;
+     height:50px;
+     min-width:100px;
+ }
+.colFormNewsLetter
+{
+    margin-top:10px;
+}
+ label
+ {
+    position: absolute;
+    z-index: 9;
+    top: -18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #fff;
+    padding: 0px 5px;
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 10px;
+ }
+
+ 
+
 h3 
     {
         font-size: 30px;

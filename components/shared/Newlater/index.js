@@ -10,18 +10,17 @@ const NewsLater = (props) => {
     const { textLabel } = props;
 
         return (
-
-            <div>
             <NewslaterStc >
                 <Row className='divTexte'>
-                    <Col sm={5} className='cols'>
+                    <Col lg={5} className='cols'>
                         <h3>Newsletter </h3>  
                         <p>Recevez votre newsletters en vous inscrivant ici.</p>
                     </Col >
 
-                    <Col sm={7} className='cols h-100 d-flex align-items-center justify-content-center'>
+                    <Col lg={7} className='cols h-100 d-flex align-items-center justify-content-center colFormNewsLetter'>
                         <InputGroup textLabel={'VOTRE MAIL'}>
-                            <Input
+                        <label>VOTRE MAIL</label>
+                        <Input
                             textLabel={'VOTRE MAIL'}/>
                         <InputGroupAddon addonType="append">
                         <Button color="primary" >S'inscrire</Button>
@@ -31,8 +30,6 @@ const NewsLater = (props) => {
                     </Col>
                 </Row>
             </NewslaterStc>
-           
-            </div>
         )
     };
 

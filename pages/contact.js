@@ -8,11 +8,8 @@ const Wrapper = styled.div`
   background: #fbfbfb;
   margin:0px;
 
-  .card{
-    margin:70px auto;
-    padding:20px;
-    border-color:#ecedee;
-    border-radius:0px;
+  .container{
+    margin:40px auto;
   }
  
 `;
@@ -22,9 +19,9 @@ export default function Contact() {
       <Wrapper>
         <Container>
            <Row>
-              <Card>
+              <Col>
                   <FormContact />
-              </Card>
+              </Col>
             </Row>
         </Container>
       </Wrapper>

@@ -15,19 +15,33 @@ const GrilleComponentPays = (props) => {
         
         <GrilleComponentPaysStc fluid>
             <Container className='d-flex justify-content-center'>
-                    <Col md={8} className="divTexte">
+                    <Col lg={8} className="divTexte">
                         <h3>Disponible dans 3 pays du monde </h3>  
                         <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à 
                             titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer 
                             le faux-texte dès qu'il est prêt ou que la mise en page est achevée.<br></br></p>
-
-                        <p>         
-                            <FiPhoneCall className='bg-primary' color='white' size={40}></FiPhoneCall > Maroc 077.44.42.39
-                            <FiPhoneCall className='m-2 bg-primary' color='white' size={40}></FiPhoneCall>Afrique du Sud  077.44.42.39
-                        </p>    
-                    </Col>
+                            
+                            <table className="table">
+                                <tr>
+                                    <td className="tdIcon">
+                                        <FiPhoneCall className='bg-primary' color='white' size={45}></FiPhoneCall>
+                                    </td>
+                                    <td className="tdInfo">
+                                        <span className="spanBold">Maroc</span><br/>
+                                        <span>077.44.42.39</span>
+                                    </td>
+                                    <td className="tdIcon">
+                                        <FiPhoneCall className='bg-primary' color='white' size={45}></FiPhoneCall>
+                                    </td>
+                                    <td className="tdInfo">
+                                        <span className="spanBold">Afrique du sud</span><br/>
+                                        <span>077.44.42.39</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </Col>
                     
-                    <Col md={4}  className="h-80 d-none d-lg-block">
+                    <Col lg={4}  className="h-80 d-none d-lg-block">
                         <Image 
                             src={'/img/apropos-pic2.jpg'}
                             alt="Picture of computer"

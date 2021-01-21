@@ -10,13 +10,9 @@ const FormLoginStc = styled(Container)`
       font-size: 34px;
     }
   }
-  label,
-  button,
-  #left a,
-  input {
-    font-size: 15px;
-    @media (min-width: 900px) {
-      font-size: 18px;
+ button {
+    @media (max-width: 991px) {
+      margin-top:20px;
     }
   }
 

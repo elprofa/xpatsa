@@ -2,6 +2,38 @@ import styled from "styled-components";
 
  const GrilleComponentPaysStc = styled.section`
 
+    .spanBold
+    {
+        font-weight:600;
+    }
+    td
+    {
+        @media (max-width: 476px) {
+           display:block;
+        }
+    }
+    svg
+    {
+        width: 100%;
+        padding: 8px;
+
+        @media (max-width: 767px) {
+            min-width:40px;
+        }
+        
+    }
+
+
+    .tdIcon 
+    {
+        width:10%;
+        border:0px;
+    }
+    .tdInfo 
+    {
+        border:0px;
+        width:40%;
+    }
     img
     {
         width:100%;

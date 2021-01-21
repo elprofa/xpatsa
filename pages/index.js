@@ -59,6 +59,17 @@ const Index = (props) => {
     {
       width:2% !important;
     }
+    .coontainerContact .card 
+    {
+      padding:40px;
+    }
+
+    .coontainerContact .colContact
+    {
+      @media (max-width: 476px) {
+        padding:0px !important;
+      }
+    }
 `;
 
   return (
@@ -77,35 +88,21 @@ const Index = (props) => {
           </Row>
       </Container>
       <Wrapper >
-        <Container>
+        <Container className="coontainerContact">
             <Row>
-                <Col>
+                <Col lg={12} className="colContact">
                   <FormContact/>
                 </Col>
             </Row>
         </Container>
       </Wrapper>
-      <Container className='d-flex justify-content-center'>
-        <Row className='w-100'>
-            <Col className='h-100 d-flex align-items-center justify-content-center'>
-
-                <NewsLater 
-                    position="right" 
-                    texteTitre="Newsletter"
-                    colorTitre="#007bff"
-                    paragraphe="Recevez votre newsletters en vous inscrivant ici." 
-                />
-            </Col>
-
-            <Col className='h-100 d-flex align-items-center justify-content-center'>
-                <Button 
-                    texte="S'inscrire "
-                    backgroundColor="#007bff"
-                    borderColor="007bff"
-                    color="#fff" />
-            </Col>
-        </Row>                  
-
+      <Container>
+          <NewsLater 
+              position="right" 
+              texteTitre="Newsletter"
+              colorTitre="#007bff"
+              paragraphe="Recevez votre newsletters en vous inscrivant ici." 
+          />
       </Container>
       
 

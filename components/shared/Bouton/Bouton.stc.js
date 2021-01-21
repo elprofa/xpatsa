@@ -7,13 +7,13 @@ const BoutonStc = styled(Button)`
   border-radius: 0px;
   color: ${(props) => props.color || "#fff"};
   min-width:${(props) => props.minWidth || "40px"} !important;
-  min-height: 23px;
+  min-height: 40px;
   position: relative;
   overflow: hidden;
   font-size: 12px;
   @media (min-width: 900px) {
     min-width: 80px;
-    min-height: 33px;
+    min-height: 40px;
   }
 
   &:before {
