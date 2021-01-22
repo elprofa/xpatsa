@@ -6,9 +6,9 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FormLogin from '../formLogin/formLogin';
-import FormRegister from '../FormRegister/formRegister';
-import FormContact from '../formContact';
+import FormDestinataire from '../formDestinataire/formDestinataire';
+import FormTransaction from '../formTransaction/formTransaction';
+import BlockConfirmation from '../blockConfirmation/blockConfirmation';
 import Image from 'next/image';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,11 +31,11 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <FormLogin/>;
+      return <FormTransaction/>;
     case 1:
-      return <FormRegister/>;
+      return <FormDestinataire/>;
     case 2:
-      return <FormContact/>;
+      return <BlockConfirmation/>;
     default:
       return 'Aucun composant trouvé';
   }
@@ -93,7 +93,7 @@ export default function HorizontalLinearStepper() {
     
         <div className={classes.root}>
             <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-6 colGaucheWizard">
                 <h1 className="titreWizard">Transférez de l'argent</h1>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label, index) => {
@@ -140,7 +140,15 @@ export default function HorizontalLinearStepper() {
                 {activeStep === steps.length ? (
                 <div>
                     <div className={classes.instructions}>
-                    All steps completed - you&apos;re finished
+                        <div className="derniereTape">
+                        <Image 
+                            src="/img/stepIcon1.svg"
+                            alt="Picture of computer"
+                            width="150"
+                            height="150"
+                        />
+                        <p>Félicitations, vous avez envoyé <span>345 CFA</span> à <span>+241 077484326</span></p>
+                        </div>
                     </div>
                     <Button onClick={handleReset} className={classes.button}>
                     Reset
@@ -152,7 +160,7 @@ export default function HorizontalLinearStepper() {
                     <div className={classes.instructions}>{getStepContent(activeStep)}</div>
                     <div>
                     <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                        Back
+                        PRECEDENT
                     </Button>
                     {isStepOptional(activeStep) && (
                         <Button
@@ -164,14 +172,13 @@ export default function HorizontalLinearStepper() {
                         Skip
                         </Button>
                     )}
-
                     <Button
                         variant="contained"
                         color="primary"
                         onClick={handleNext}
                         className={classes.button}
                     >
-                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                        {activeStep === steps.length - 1 ? 'ENVOYER' : 'SUIVANT'}
                     </Button>
                     </div>
                 </div>

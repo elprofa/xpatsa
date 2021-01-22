@@ -21,5 +21,6 @@ export const FormWarp = styled(FormGroup)`
     padding: 0px 5px;
     font-size: 12px;
     color: #6c757d;
+    position: relative;
   }
 `;

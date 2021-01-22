@@ -44,20 +44,89 @@ export const GlobalCSS = createGlobalStyle`
         padding-right: 25px;
     }
 
+    button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+        background: #2261bd;
+        border-radius: 0px;
+        min-width: 130px;
+        box-shadow: 0px 0px 0px;
+        border: 1px solid #2261bd;
+    }
+
+    button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary:focus
+    {
+        border: 2px solid #2261bd;
+        border-radius:0px;
+
+    }
+
+    button.MuiButtonBase-root.MuiButton-root.MuiButton-text.Mui-disabled.Mui-disabled
+    {
+        display:none;
+    }
+
+    button.MuiButtonBase-root.MuiButton-root.MuiButton-text {
+        background: transparent;
+        border: 1px solid #2261bd;
+        color: #2261bd;
+        border-radius: 0px;
+        min-width: 130px;
+    }
+
+    button.MuiButtonBase-root.MuiButton-root.MuiButton-text.makeStyles-button-14:focus {
+    /* background: red; */
+        border: 2px solid #2261bd;
+        border-radius: 0px;
+    }
+
     .titreWizard
     {
-        font-size: 33px;
-        color: #9f9f9f;
+        font-size: 28px;
+        color: #686767;
         font-weight: 500;
+        margin-top:40px;
+        margin-bottom:20px;
+    }
+
+    .derniereTape
+    {
+        text-align:center;
+        margin-bottom:40px;
+    }
+
+    .derniereTape p span
+    {
+        font-weight:600;
+        color:#2261bd;
+    }
+    .derniereTape p
+    {
+        text-align:center;
+        font-size:18px;
+        font-weight:500px;
+        color:#686767;
+    }
+    .colGaucheWizard
+    {
+        @media (max-width: 476px) {
+            display:none;
+        }
     }
     .MuiStepper-root {
         display: inline-block !important;
-        padding: 24px;
+        padding: 0px!important;
+        @media (max-width: 991px) {
+            width: 100% !important;
+        }
     }
     .MuiStep-horizontal {
+        
         height: 100px;
         padding: 20px;
         margin-top: 0px;
+
+        @media (max-width: 991px) {
+            width: 100% !important;
+        }
     }
 
     span.MuiStepLabel-root.MuiStepLabel-horizontal.Mui-disabled
