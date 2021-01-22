@@ -1,7 +1,6 @@
-import Link from 'next/link'
 import { Container, Row, Col, Card } from "reactstrap";
 import styled from "styled-components";
-import Wizard from '../components/shared/Wizard/Wizard';
+import MaterialWizard from '../components/shared/MaterialWizard/MaterialWizard';
 
 const Wrapper = styled.div` 
 
@@ -18,11 +17,7 @@ export default function Contact() {
   return (
       <Wrapper>
         <Container>
-           <Row>
-              <Col>
-                 <Wizard />
-              </Col>
-            </Row>
+          <MaterialWizard />
         </Container>
       </Wrapper>
   )
