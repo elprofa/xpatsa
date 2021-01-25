@@ -37,7 +37,7 @@ const Wrapper = styled(Container)`
                 </Row>
                 <Row>
                     <Col>
-                    <FormContact/>
+                    <FormContact />
                     </Col>
                 </Row>
                 <Row>

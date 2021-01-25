@@ -19,6 +19,7 @@ import styled from "styled-components";
 {
     margin-top:10px;
 }
+
  label
  {
     position: absolute;

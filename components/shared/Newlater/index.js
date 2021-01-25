@@ -18,6 +18,7 @@ const NewsLater = (props) => {
                     </Col >
 
                     <Col lg={7} className='cols h-100 d-flex align-items-center justify-content-center colFormNewsLetter'>
+
                         <InputGroup textLabel={'VOTRE MAIL'}>
                         <label>VOTRE MAIL</label>
                         <Input

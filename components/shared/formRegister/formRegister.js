@@ -21,7 +21,7 @@ const FormRegister = (props) => {
                   <CheckBox textLabel=" J'accepte les termes et conditions" idInput="conditionTerme"/>
                 </Col>
                 <Col id="right">
-                    <Bouton texte="S'INSCRIRE'" backgroundColor="#007bff" />
+                    <Bouton texte="S'INSCRIRE" backgroundColor="#007bff" />
                 </Col>
             </Row>
         </Form>

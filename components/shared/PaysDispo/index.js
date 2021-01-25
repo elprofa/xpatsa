@@ -5,7 +5,6 @@ import { Col, Container, Row } from 'reactstrap';
 import GrilleComponentPaysStc from './PaysDispo.stc';
 import Image from 'next/image';
 import { FiPhoneCall } from 'react-icons/fi';
-import BiPhoneCall from 'react-icons/bi';
 
 const GrilleComponentPays = (props) => {
     

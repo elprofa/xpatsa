@@ -34,6 +34,7 @@ const FormContact = (props) => {
           <Row>
             <Col sm={12}>
               <InputGroup typeInput="textarea" className="textareaContact" textLabel="VOTRE MESSAGE" />
+
             </Col>
           </Row>
 
@@ -41,7 +42,7 @@ const FormContact = (props) => {
             <Col lg={12}>
               <Bouton texte=" ENVOYER" icon="true" backgroundColor="#007bff" />
             </Col>
-          </Row>
+            </Row>
         </Form>
       </Card>
     </FormContactStc>
