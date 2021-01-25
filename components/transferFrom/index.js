@@ -1,6 +1,9 @@
 import React from "react";
 import Loki from "react-loki";
 import clsx from "clsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Image from 'next/image';
 import {
   Container,
   Row,
@@ -41,14 +44,49 @@ const transfert = (props) => {
   const _customRenderer = ({ currentStep }) => {
     const steps = customSteps.map((step, index) => {
       const isActive = currentStep === index + 1;
+      let lienIcon="";
+
+      switch (index) {
+        case 0:
+          lienIcon="/img/stepIcon1.svg"
+          break;
+
+        case 1:
+          lienIcon="/img/stepIcon2.svg"
+          break;
+        case 2:
+          lienIcon="/img/stepIcon3.svg"
+          break;
+      
+        default:
+          lienIcon="/img/stepIcon3.svg"
+          break;
+      }
       return (
         <ListGroupItem
           key={index}
           className={clsx("card-box", { current: isActive })}
         >
           <a href="#/" onClick={(e) => e.preventDefault()}>
-            <div className="step-indicator">{step.number}</div>
-            <div className="label ml-2">{step.label}</div>
+            <table className="table">
+              <tr>
+                <td className="tdLeft"> 
+                    <div className="step-indicator">{step.number}</div>
+                </td>
+                <td className="tdCenter">
+                  
+                <Image 
+                    src={lienIcon}
+                    alt="Picture of computer"
+                    width="80" 
+                    height="80"
+                />
+                </td>
+                <td className="tdRight">
+                  <div className="label ml-2">{step.label}</div>
+                </td>
+              </tr>
+            </table>
           </a>
         </ListGroupItem>
       );
@@ -77,10 +115,10 @@ const transfert = (props) => {
           disabled={cantBack || isComplete}
           className={clsx("mr-4", { dnone: cantBack })}
         >
-          Previous
+          PRECEDENT
         </Button>
         <Button color="primary" onClick={nextHandler} disabled={isComplete}>
-          {isInFinalStep ? "Finish" : "Next"}
+          {isInFinalStep ? "TERMINER" : "SUIVANT"}
         </Button>
       </div>
     );
@@ -96,8 +134,8 @@ const transfert = (props) => {
     <TransferFromWrap>
       <Container>
         <Card className="my-5">
-          <CardHeader>header</CardHeader>
           <CardBody>
+            <h1 className="titreWizard">Transferez de l'argent</h1>
             <Loki
               steps={customSteps}
               renderSteps={_customRenderer}
