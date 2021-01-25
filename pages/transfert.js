@@ -1,6 +1,6 @@
 import React from "react";
 import TransferForm from "../components/transferFrom";
-import FormStepOne from '../components/shared/EtapeOneForm';
+import FormStepOne from '../components/shared/FormStepOne';
 
 const TransfertPage = () => {
   return (

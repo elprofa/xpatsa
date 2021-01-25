@@ -14,10 +14,10 @@ import {
 } from "reactstrap";
 import { toast, Zoom } from "react-toastify";
 
-import Step3 from "../../stepThree";
-import Step2 from "../../stepTwo";
+import Step3 from "../stepThree";
+import Step2 from "../stepTwo";
 import Step1 from "../FormStepOne";
-import TransferFromWrap from "../../transferFrom/transferFrom.stc";
+import FormEtapeOneStc from "./FormEtapeOne.stc";
 
 const customSteps = [
   {
@@ -37,7 +37,7 @@ const customSteps = [
   },
 ];
 
-const transfert = (props) => {
+const FormEtapeOne = (props) => {
   const _customRenderer = ({ currentStep }) => {
     const steps = customSteps.map((step, index) => {
       const isActive = currentStep === index + 1;
@@ -93,7 +93,7 @@ const transfert = (props) => {
     });
   };
   return (
-    <TransferFromWrap>
+    <FormEtapeOneStc>
       <Container>
         <Card className="my-5">
           <CardHeader>header</CardHeader>
@@ -108,8 +108,8 @@ const transfert = (props) => {
           </CardBody>
         </Card>
       </Container>
-    </TransferFromWrap>
+    </FormEtapeOneStc>
   );
 };
 
-export default transfert;
+export default FormEtapeOne;
