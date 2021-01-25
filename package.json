@@ -27,7 +27,6 @@
     "react-loki": "^1.2.0",
     "react-router-dom": "^5.2.0",
     "react-step-wizard": "^5.3.5",
-    "react-toastify": "^6.2.0",
     "reactstrap": "^8.8.1",
     "styled-components": "^5.2.1"
   },

@@ -1,12 +1,24 @@
-import React from "react";
-import TransferForm from "../components/transferFrom";
+import { Container, Row, Col, Card } from "reactstrap";
+import styled from "styled-components";
+import MaterialWizard from '../components/shared/MaterialWizard/MaterialWizard';
 
-const TransfertPage = () => {
+const Wrapper = styled.div` 
+
+  background: #fbfbfb;
+  margin:0px;
+
+  .container{
+    margin:40px auto;
+  }
+ 
+`;
+
+export default function Contact() {
   return (
-    <div>
-      <TransferForm />
-    </div>
-  );
-};
-
-export default TransfertPage;
+      <Wrapper>
+        <Container>
+          <MaterialWizard />
+        </Container>
+      </Wrapper>
+  )
+}
