@@ -5,9 +5,8 @@ import Head from "next/head";
 import Navbar from "../../components/shared/navbar";
 import { theme } from "../../theme";
 import { GlobalCSS } from "../../public/styles/style";
-import Footer from '../../components/footer';
+import Footer from "../../components/footer";
 import { Form, Container, Row, Col } from "reactstrap";
-
 
 const Layout = ({ children, ...props }) => {
   return (
