@@ -5,7 +5,6 @@ const TransfertPage = (props) => {
   return (
     <div>
       <TransferForm />
-      {console.log(props)}
     </div>
   );
 };

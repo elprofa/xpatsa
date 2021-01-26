@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }) {
     <ApolloProvider client={apolloClient}>
       <Layout>
         <Component {...pageProps} />
-        {console.log(pageProps)}
       </Layout>
     </ApolloProvider>
   );
