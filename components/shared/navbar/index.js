@@ -3,6 +3,7 @@ import Bouton from "../Bouton/Bouton";
 import DropDownInput from "../dropDownInput/dropDownInput";
 import Image from 'next/image';
 import Link from 'next/link';
+import clsx from "clsx";
 import {
   Collapse,
   Navbar,
@@ -24,8 +25,22 @@ const Header = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
+  let pathname="";
+  let lien="";
+  var active="";
+
+  if (typeof window !== "undefined") {
+    pathname=window.location.pathname;
+    lien=window.location.href;
+  }
+
+  if(pathname==""|| pathname=="/")
+  {
+    active="navbarActive";
+  }
+
   return (
-      <Navbar color="blue" light expand="md">
+      <Navbar color="blue" className={active}  light expand="md">
         <Container className="px-0">
           
           <NavbarBrand href="/"><Image src='/img/Logo_Xpatsa.png' width={80} height={80} /></NavbarBrand>
@@ -38,7 +53,7 @@ const Header = (props) => {
               <NavItem>
                 <Link href="/transfert">
                   <NavLink active={true} href="transfert">
-                    Transfert d'Argent
+                    Transfert d'argent
                   </NavLink>
                 
                 </Link>

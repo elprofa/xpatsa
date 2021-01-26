@@ -15,7 +15,7 @@ const TransferWrap = styled.div`
     border-radius: none;
     @media (min-width: 900px) {
       float: left;
-      width: 30%;
+      width: 40%;
       display: block;
       flex-direction: column;
       font-size: 1rem;
@@ -55,19 +55,117 @@ const TransferWrap = styled.div`
     }
   }
 
+//---------------CSS de wedo elprofa-------------------------
+  .list-group-item
+  {
+    padding:0px;
+    margin-bottom:30px;
+
+    
+  }
+
+  .list-group-item td
+  {
+    @media (max-width: 250px) {
+      display:block;
+    }
+
+    & .label
+    {
+      @media (max-width: 250px) {
+        margin:0px;
+      }
+    }
+  }
+
+  tr
+  {
+    float:left;
+  }
+  .list-group-item .label
+  {
+    font-weight: 600;
+    color: #868686;
+  }
+
+  .tdLeft,.tdRight
+  {
+    padding-top:20px;
+    @media (max-width: 476px) {
+      padding-top:10px;
+    }
+
+    @media (max-width: 760px){
+      padding-top:5px;
+    }
+  }
+
+  .titreWizard
+    {
+        font-size: 28px;
+        color: #686767;
+        font-weight: 500;
+        margin-top:40px;
+        margin-bottom:20px;
+    }
+
+  ul.steps-indicator.list-group {
+    @media (max-width: 476px) {
+      padding:0px;
+    }
+  }
+
+  .card-body {
+    @media (max-width: 476px) {
+      padding:0px;
+    }
+  }
+
+  .my-5.card {
+    border: 0px;
+  }
+
+
+  table
+  {
+    margin:0px;
+  }
+  td
+  {
+    border:0px;
+    @media (max-width: 476px) {
+      padding:5px;
+    }
+  }
+  .tdCenter 
+  {
+    padding:0px;
+    @media (max-width: 476px) {
+      display:none;
+    }
+    @media (max-width: 250px) {
+      display:none !important;
+    }
+  }
+
+  //---------------------------------------------------------------
+
   .current {
-    border: 1px solid #1392c0 !important;
+    border: 1px solid ${(props) => props.theme.colors.secondary} !important;
     color: ${(props) => props.theme.colors.secondary}!important;
 
     & .step-indicator {
-      border: 1px solid #1392c0 !important;
+      border: 1px solid ${(props) => props.theme.colors.secondary} !important;
       color: ${(props) => props.theme.colors.secondary}!important;
+     
+
       @media (min-width: 900px) {
       }
     }
 
     & .label {
       color: ${(props) => props.theme.colors.secondary}!important;
+      font-weight:600;
     }
   }
 
@@ -86,6 +184,9 @@ const TransferWrap = styled.div`
 
     .btn {
       font-size: 0.6rem;
+      border-radius: 0px;
+      min-width: 90px;
+
       @media (min-width: 900px) {
         font-size: 1rem;
       }
