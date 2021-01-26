@@ -9,7 +9,7 @@ import {
   ListGroupItem,
   Container,
 } from "reactstrap";
-import DropDownInput from "../shared/dropDownInput/dropDownInput";
+import DropDownInput from "../shared/dropDownInput";
 import Link from "next/link";
 
 import { BiMobileAlt } from "react-icons/bi";
@@ -53,14 +53,13 @@ const PiedDePage = (props) => {
           </Col>
           <Col lg={4} className="smRight">
             <ListGroup>
-                <ListGroupItem className="socialMediaUl">
+              <ListGroupItem className="socialMediaUl">
                 <span>Suiver-nous sur:</span>
                 <FaFacebookSquare size={25} className="mx-2" />
                 <FaTwitterSquare size={25} className="mr-2" />
                 <FaLinkedin size={25} />
-                </ListGroupItem>
+              </ListGroupItem>
             </ListGroup>
-           
           </Col>
         </Row>
         <Row className="lastLine">

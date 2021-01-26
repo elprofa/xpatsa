@@ -4,7 +4,7 @@ export const theme = {
     secondary: "#1392c0",
     bodyColor: "#000000",
     headingColor: "#333333",
-    borderColor: "#cccccc",
+    bordercolor: "#cccccc",
     transparent: "transparent",
     white: "#fff",
     black: "#000",

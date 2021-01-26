@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Bouton from "../Bouton/Bouton";
-import DropDownInput from "../dropDownInput/dropDownInput";
+import DropDownInput from "../dropDownInput";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,32 +20,27 @@ import {
   Container,
 } from "reactstrap";
 
-import Menu from '../Menu'
+import Menu from "../Menu";
 
 import { NavbarWrap } from "./navBar.stc";
 
 const ListeMenu = [
   {
-      texte: "Transfert d'argent",
-      lien:"/transfert",
-      index:0
+    texte: "Transfert d'argent",
+    lien: "/transfert",
   },
   {
-      texte: "A propos",
-      lien:"/apropos",
-      index:1
+    texte: "A propos",
+    lien: "/apropos",
   },
   {
     texte: "Contact",
-    lien:"/contact",
-    index:2
-  }
-  ,
+    lien: "/contact",
+  },
   {
     texte: "S'inscrire",
-    lien:"/inscription",
-    index:3
-  }
+    lien: "/inscription",
+  },
 ];
 
 const Header = (props) => {
@@ -71,29 +66,27 @@ const Header = (props) => {
                   { item: "FR", value: "fr" },
                   { item: "EN", value: "en" },
                 ]}
-                backgroundColor="transparent"
+                backgroundcolor="transparent"
               />
             </NavItem>
-            {ListeMenu.map(liste =><Menu 
-                key={liste.index} 
-                texte={liste.texte} 
+            {ListeMenu.map((liste, index) => (
+              <Menu
+                key={index}
+                texte={liste.texte}
                 lien={liste.lien}
-                mypath={liste.mypath} 
-                />
-            )}
-            
-          </Nav>
-         
-          <Link href="/connexion">
-            <NavbarText>
-              <Bouton
-                color="#000"
-                borderColor="#000"
-                minWidth="150px"
-                backgroundColor="transparent"
-                texte="SE CONNECTER"
+                mypath={liste.mypath}
               />
-            </NavbarText>
+            ))}
+          </Nav>
+
+          <Link href="/connexion" passHref>
+            <Bouton
+              color="#000"
+              bordercolor="#000"
+              minwidth="150px"
+              backgroundcolor="transparent"
+              texte="SE CONNECTER"
+            />
           </Link>
         </Collapse>
       </Container>

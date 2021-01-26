@@ -7,7 +7,7 @@ import InputGroup from "../inputGroup";
 import Bouton from "../Bouton/Bouton";
 
 const FormLogin = (props) => {
-  const { texte, backgroundColor, color, icon } = props;
+  const { texte, backgroundcolor, color, icon } = props;
   return (
     <FormLoginStc>
       <Titre texte="Se c onnecter " color="#007bff" />
@@ -19,7 +19,7 @@ const FormLogin = (props) => {
             <a href="#elprofa.com">Mot de passe oublié ?</a>
           </Col>
           <Col id="right" lg={6}>
-            <Bouton texte="SE CONNECTER" backgroundColor="#007bff" />
+            <Bouton texte="SE CONNECTER" backgroundcolor="#007bff" />
           </Col>
         </Row>
       </Form>

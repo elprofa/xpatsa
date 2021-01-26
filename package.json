@@ -31,5 +31,8 @@
     "reactstrap": "^8.8.1",
     "styled-components": "^5.2.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0"
+  }
 }

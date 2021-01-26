@@ -4,7 +4,7 @@ import { Button, Badge } from "reactstrap";
 import BoutonStc from "./Bouton.stc";
 import { BsChevronRight } from "react-icons/bs";
 
-const Bouton = (props) => {
+const Bouton = React.forwardRef((props, ref) => {
   const { texte, backgroundcolor, bordercolor, color, minwidth, icon } = props;
   return (
     <BoutonStc
@@ -25,6 +25,6 @@ const Bouton = (props) => {
       )}{" "}
     </BoutonStc>
   );
-};
+});
 
 export default Bouton;
