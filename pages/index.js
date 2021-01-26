@@ -5,15 +5,14 @@ import styled from "styled-components";
 import Caroussel from "../components/shared/caroussel/caroussel";
 
 import { initializeApollo } from "../apollo/client";
-import ComponentBlockDevise from "../components/shared/ComponentBlockDevise/ComponentBlockDevise";
-import CommentCaFonctionne from "../components/shared/CommentCaFonctionne/CommentCaFonctionne";
-import GrilleComponentPays from '../components/shared/PaysDispo';
-import { Container, Button, Row, Col } from 'reactstrap';
-import FormContact from '../components/shared/formContact';
-import NewsLater from '../components/shared/Newlater';
+import ComponentBlockDevise from "../components/shared/componentBlockDevise";
+import CommentCaFonctionne from "../components/shared/CommentCaFonctionne";
+import GrilleComponentPays from "../components/shared/PaysDispo";
+import { Container, Button, Row, Col } from "reactstrap";
+import FormContact from "../components/shared/formContact";
+import NewsLater from "../components/shared/Newlater";
 
-
-const ViewerQuery = gql `
+const ViewerQuery = gql`
   query ViewerQuery {
     viewer {
       id
@@ -29,83 +28,76 @@ const Index = (props) => {
   } = useQuery(ViewerQuery);
 
   const Wrapper = styled.section`
-    background:#ececec;
-    img
-    {
-      width:100%;
+    background: #ececec;
+    img {
+      width: 100%;
     }
-    .slide
-    {
-      margin-top:0px;
+    .slide {
+      margin-top: 0px;
       @media (min-width: 991px) {
-        margin-top:-150px;
+        margin-top: -150px;
       }
     }
 
-    .containerHome
-    {
+    .containerHome {
       position: absolute;
       top: 45%;
       left: 0;
       right: 0;
     }
     .colAccueilLeft.col-sm-6 {
-        background: rgb(0,0,0,.5);
-        padding: 30px;
-        color: #fff;
+      background: rgb(0, 0, 0, 0.5);
+      padding: 30px;
+      color: #fff;
     }
 
-    .carousel-control-next, .carousel-control-prev
-    {
-      width:2% !important;
+    .carousel-control-next,
+    .carousel-control-prev {
+      width: 2% !important;
     }
-    .coontainerContact .card 
-    {
-      padding:40px;
+    .coontainerContact .card {
+      padding: 40px;
     }
 
-    .coontainerContact .colContact
-    {
+    .coontainerContact .colContact {
       @media (max-width: 476px) {
-        padding:0px !important;
+        padding: 0px !important;
       }
     }
-`;
+  `;
 
   return (
     <div>
-      <Wrapper >
+      <Wrapper>
         <Caroussel />
       </Wrapper>
 
       <ComponentBlockDevise />
       <CommentCaFonctionne />
       <Container>
-          <Row>
-              <Col>
-                  <GrilleComponentPays/>
-              </Col>
-          </Row>
+        <Row>
+          <Col>
+            <GrilleComponentPays />
+          </Col>
+        </Row>
       </Container>
-      <Wrapper >
+      <Wrapper>
         <Container className="coontainerContact">
-            <Row>
-                <Col lg={12} className="colContact">
-                  <FormContact/>
-                </Col>
-            </Row>
+          <Row>
+            <Col lg={12} className="colContact">
+              <FormContact />
+            </Col>
+          </Row>
         </Container>
       </Wrapper>
       <Container>
-          <NewsLater 
-              position="right" 
-              texteTitre="Newsletter"
-              colorTitre="#007bff"
-              paragraphe="Recevez votre newsletters en vous inscrivant ici." 
-          />
+        <NewsLater
+          position="right"
+          texteTitre="Newsletter"
+          colorTitre="#007bff"
+          paragraphe="Recevez votre newsletters en vous inscrivant ici."
+        />
       </Container>
-      
-
     </div>
   );
 };
