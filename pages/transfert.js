@@ -1,11 +1,11 @@
 import React from "react";
-import EtapeChoixPays from '../components/FormStepPays';
+import TransferForm from "../components/transferFrom";
 
-
-const TransfertPage = () => {
+const TransfertPage = (props) => {
   return (
     <div>
-      <EtapeChoixPays />
+      <TransferForm />
+      {console.log(props)}
     </div>
   );
 };

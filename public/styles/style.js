@@ -188,7 +188,7 @@ export const GlobalCSS = createGlobalStyle`
         border:1px solid #fff !important;
     }
 
-    nav.navbarActive.navbar.navbar-expand-md.navbar-light.bg-blue a,
+    /* nav.navbarActive.navbar.navbar-expand-md.navbar-light.bg-blue a,
     nav.navbarActive.navbar.navbar-expand-md.navbar-light.bg-blue select,
     nav.navbarActive.navbar.navbar-expand-md.navbar-light.bg-blue svg,
     nav.navbarActive.navbar.navbar-expand-md.navbar-light.bg-blue button
@@ -198,5 +198,5 @@ export const GlobalCSS = createGlobalStyle`
 
     nav.navbarActive.navbar.navbar-expand-md.navbar-light.bg-blue {
         background: linear-gradient(#0a0a0a, transparent);
-    }
+    } */
 `;
