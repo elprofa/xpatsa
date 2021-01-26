@@ -17,9 +17,9 @@ import {
 } from "reactstrap";
 import { toast, Zoom } from "react-toastify";
 
-import Step3 from "../stepThree";
-import Step2 from "../stepTwo";
-import Step1 from "../StepOne";
+import Step3 from "../MontantTransfert";
+import Step2 from "../ModeEnvoie";
+import Step1 from "../PersonalInfo";
 import TransferFromWrap from "./transferFrom.stc";
 
 const customSteps = [
@@ -106,6 +106,7 @@ const transfert = (props) => {
     backHandler,
     nextHandler,
   }) => {
+    
     return (
       <div className="actions">
         <Button
