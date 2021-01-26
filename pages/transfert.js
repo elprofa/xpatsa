@@ -1,10 +1,11 @@
 import React from "react";
 import TransferForm from "../components/transferFrom";
 
-const TransfertPage = () => {
+const TransfertPage = (props) => {
   return (
     <div>
       <TransferForm />
+      {console.log(props)}
     </div>
   );
 };
