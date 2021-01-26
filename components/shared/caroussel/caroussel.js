@@ -62,7 +62,7 @@ const Example = (props) => {
         <Container className="containerHome d-none d-lg-block ">
               <Row >
                 <Col sm={6} className="colAccueilLeft">
-                  <Titre texte="Aide pour étudiant" underline="2" color="#fff" underline="true" />
+                  <Titre texte="Aide pour étudiant" underline="2" color="#fff" />
                   <p >
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                   Facilis enim adipisci aliquam ut quam incidunt veniam rem,

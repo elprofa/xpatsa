@@ -16,7 +16,7 @@ const GrilleComponentPays = (props) => {
         <GrilleComponentPaysStc fluid>
             <Container className='d-flex justify-content-center'>
                     <Col lg={8} className="divTexte">
-                        <h3>Disponible dans 3 pays du monde </h3>  
+                        <Titre texte="Disponible dans 3 pays du monde" underline="2" color="#007bff"/>
                         <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à 
                             titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer 
                             le faux-texte dès qu'il est prêt ou que la mise en page est achevée.<br></br></p>

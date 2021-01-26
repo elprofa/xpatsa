@@ -29,6 +29,8 @@ export const GlobalCSS = createGlobalStyle`
         @media (min-width: 768px) 
         {
             margin:auto;
+            height: 80px;
+            padding-top: 20px;
         }
     }
 

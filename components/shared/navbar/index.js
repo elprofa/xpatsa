@@ -4,7 +4,7 @@ import Bouton from "../Bouton/Bouton";
 import DropDownInput from "../dropDownInput/dropDownInput";
 import Image from "next/image";
 import Link from "next/link";
-import clsx from "clsx";
+
 import {
   Collapse,
   NavbarToggler,
@@ -20,7 +20,33 @@ import {
   Container,
 } from "reactstrap";
 
+import Menu from '../Menu'
+
 import { NavbarWrap } from "./navBar.stc";
+
+const ListeMenu = [
+  {
+      texte: "Transfert d'argent",
+      lien:"/transfert",
+      index:0
+  },
+  {
+      texte: "A propos",
+      lien:"/apropos",
+      index:1
+  },
+  {
+    texte: "Contact",
+    lien:"/contact",
+    index:2
+  }
+  ,
+  {
+    texte: "S'inscrire",
+    lien:"/inscription",
+    index:3
+  }
+];
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,29 +74,16 @@ const Header = (props) => {
                 backgroundColor="transparent"
               />
             </NavItem>
-            <NavItem>
-              <Link href="/transfert">
-                <NavLink active={true} href="transfert">
-                  Transfert d'argent
-                </NavLink>
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link href="/apropos">
-                <NavLink href="/apropos">A propos</NavLink>
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link href="/contact">
-                <NavLink href="/contact">Contact</NavLink>
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link href="/inscription">
-                <NavLink href="/inscription">S'inscrire</NavLink>
-              </Link>
-            </NavItem>
+            {ListeMenu.map(liste =><Menu 
+                key={liste.index} 
+                texte={liste.texte} 
+                lien={liste.lien}
+                mypath={liste.mypath} 
+                />
+            )}
+            
           </Nav>
+         
           <Link href="/connexion">
             <NavbarText>
               <Bouton
