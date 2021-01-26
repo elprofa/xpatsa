@@ -15,9 +15,9 @@ import {
 import { toast, Zoom } from "react-toastify";
 
 import Step3 from "../stepThree";
-import Step2 from "../stepTwo";
-import Step1 from "../FormStepOne";
-import FormEtapeOneStc from "./FormEtapeOne.stc";
+import Step2 from "../ModeEnvoie";
+import Step1 from "../PersonalInfo";
+import FormModeEnvoi from "./FormModeEnvoie.stc";
 
 const customSteps = [
   {
@@ -37,7 +37,7 @@ const customSteps = [
   },
 ];
 
-const FormEtapeOne = (props) => {
+const EtapeModeEnvoie = (props) => {
   const _customRenderer = ({ currentStep }) => {
     const steps = customSteps.map((step, index) => {
       const isActive = currentStep === index + 1;
@@ -93,7 +93,7 @@ const FormEtapeOne = (props) => {
     });
   };
   return (
-    <FormEtapeOneStc>
+    <FormModeEnvoi>
       <Container>
         <Card className="my-5">
           <CardHeader>header</CardHeader>
@@ -108,8 +108,8 @@ const FormEtapeOne = (props) => {
           </CardBody>
         </Card>
       </Container>
-    </FormEtapeOneStc>
+    </FormModeEnvoi>
   );
 };
 
-export default FormEtapeOne;
+export default EtapeModeEnvoie;

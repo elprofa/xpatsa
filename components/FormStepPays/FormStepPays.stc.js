@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-const FormEtapeOneStc = styled.div`
+const FormChoixPays = styled.div`
   .list-group-item {
     border: none;
     border-radius: none;
   }
+
   ul.steps-indicator {
     display: flex;
     flex-direction: row;
@@ -19,6 +20,7 @@ const FormEtapeOneStc = styled.div`
       flex-direction: column;
       font-size: 1rem;
     }
+
     & li a {
       justify-content: flex-start;
       align-items: center;
@@ -26,9 +28,11 @@ const FormEtapeOneStc = styled.div`
       cursor: pointer;
       position: relative;
       color: #868686;
+
       &:hover {
         text-decoration: none;
       }
+
       & .step-indicator {
         width: 18px;
         height: 18px;
@@ -50,29 +54,36 @@ const FormEtapeOneStc = styled.div`
       }
     }
   }
+
   .current {
     border: 1px solid #1392c0 !important;
     color: ${(props) => props.theme.colors.secondary}!important;
+
     & .step-indicator {
       border: 1px solid #1392c0 !important;
       color: ${(props) => props.theme.colors.secondary}!important;
       @media (min-width: 900px) {
       }
     }
+
     & .label {
       color: ${(props) => props.theme.colors.secondary}!important;
     }
   }
+
   .wizard-steps {
     border-left: 1px solid rgba(122, 123, 151, 0.3);
     background: #fff;
+
     @media (min-width: 900px) {
       float: right;
       width: 70%;
     }
   }
+
   .actions {
     display: flex;
+
     .btn {
       font-size: 0.6rem;
       @media (min-width: 900px) {
@@ -85,9 +96,10 @@ const FormEtapeOneStc = styled.div`
       width: 70%;
     }
   }
+
   .dnone {
     display: none;
   }
 `;
 
-export default FormEtapeOneStc;
+export default FormChoixPays;
