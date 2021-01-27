@@ -3,18 +3,15 @@ import styled from "styled-components";
 
 export const NavbarWrap = styled(Navbar)`
 
-  background: ${(props) => (props.pathname === "/" ? "linear-gradient(#0a0a0a, transparent)" : "#fff")} ;
-
-  
-  .active.nav-item {
-        border-bottom:4px solid #007bff !important;
-  }
-
+@media (min-width: 991px) 
+{
   a,select,button,svg 
   {
     color: ${(props) => (props.pathname === "/" ? "#fff !important" : "inherit")} ;
   }
 
+
+  background: ${(props) => (props.pathname === "/" ? "linear-gradient(#0a0a0a, transparent)" : "#fff")} ;
   select.form-control option {
       color: ${(props) => (props.pathname === "/" ? "#000 !important" : "inherit")}  !important;
   }
@@ -27,5 +24,12 @@ export const NavbarWrap = styled(Navbar)`
   button 
   {
     border-color: ${(props) => (props.pathname === "/" ? "#fff !important" : "inherit")} ;
+  }
+}
+  
+
+  
+  .active.nav-item {
+        border-bottom:4px solid #007bff !important;
   }
 `;
