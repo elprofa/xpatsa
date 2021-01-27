@@ -12,7 +12,8 @@ const Example = (props) => {
   return (
     <Form>
       <Row form >
-        <Col lg={12} className='d-flex flex-wrap justify-content-center mt-3 w-100'>
+        <h5>Informations Personnel</h5>
+        <Col lg={12} className='d-flex flex-wrap justify-content-center mt-2 w-100'>
         <Form className='w-100 mt-4'>
       <Input type="select" name="select" id="exampleSelect" bsSize="lg" placeholder='Select Country'>
           <option>Select Country</option>
