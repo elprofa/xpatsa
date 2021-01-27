@@ -6,6 +6,13 @@ const TransferWrap = styled.div`
     border-radius: none;
   }
 
+  .form-row
+  {
+    @media(min-width: 900px) and (max-width: 991px){
+        padding:0px 20px;
+    }
+  }
+
   ul.steps-indicator {
     display: flex;
     flex-direction: row;
@@ -13,6 +20,9 @@ const TransferWrap = styled.div`
     border-bottom: 0;
     padding: 1.5rem;
     border-radius: none;
+    @media(min-width: 477px) and (max-width: 990px){
+        padding:0px;
+    }
     @media (min-width: 900px) {
       float: left;
       width: 40%;
@@ -41,12 +51,30 @@ const TransferWrap = styled.div`
         display: flex;
         border: 0.5px solid #a2a2a2;
         align-items: center;
-        font-weight: 700;
+        font-weight: 500;
         justify-content: center;
         flex-shrink: 0;
         border-radius: 100%;
         transition: all 0.2s ease-in-out;
         position: relative;
+
+
+        @media (max-width: 476px) {
+          width: 30px;
+          height: 30px;
+          font-size:16px;
+        }
+        @media(min-width: 477px) and (max-width: 767px){
+          width: 30px;
+          height: 30px;
+          font-size:16px;
+          margin-top:10px;
+        }
+        @media(min-width: 768px) and (max-width: 900px){
+          width: 30px;
+          height: 30px;
+          font-size:16px;
+        }
         @media (min-width: 900px) {
           width: 38px;
           height: 38px;
@@ -61,7 +89,14 @@ const TransferWrap = styled.div`
     padding:0px;
     margin-bottom:30px;
 
-    
+    @media (max-width: 476px) {
+     margin:auto;
+    }
+  }
+
+  .table .label
+  {
+
   }
 
   .list-group-item td
@@ -72,6 +107,7 @@ const TransferWrap = styled.div`
 
     & .label
     {
+
       @media (max-width: 250px) {
         margin:0px;
       }
@@ -84,8 +120,19 @@ const TransferWrap = styled.div`
   }
   .list-group-item .label
   {
-    font-weight: 600;
+    font-weight: 500;
     color: #868686;
+    font-size:16px;
+    @media (max-width: 476px) {
+      display:none;
+    }
+  }
+
+  .tdRight
+  {
+    @media (max-width: 767px) {
+      display:none;
+    }
   }
 
   .tdLeft,.tdRight
@@ -103,10 +150,10 @@ const TransferWrap = styled.div`
   .titreWizard
     {
         font-size: 28px;
-        color: #686767;
-        font-weight: 500;
+        color: #007bff;
+        font-weight: 600;
         margin-top:40px;
-        margin-bottom:20px;
+        margin-bottom:40px;
     }
 
   ul.steps-indicator.list-group {
@@ -140,7 +187,7 @@ const TransferWrap = styled.div`
   .tdCenter 
   {
     padding:0px;
-    @media (max-width: 476px) {
+    @media (max-width: 900px) {
       display:none;
     }
     @media (max-width: 250px) {
@@ -181,15 +228,13 @@ const TransferWrap = styled.div`
 
   .actions {
     display: flex;
+    margin-top:20px;
 
     .btn {
-      font-size: 0.6rem;
+      font-size: 16px;
       border-radius: 0px;
       min-width: 90px;
-
-      @media (min-width: 900px) {
-        font-size: 1rem;
-      }
+      min-height:45px;
     }
     @media (min-width: 900px) {
       clear: both;
