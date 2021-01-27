@@ -130,7 +130,7 @@ const TransferWrap = styled.div`
 
   .tdRight
   {
-    @media (max-width: 767px) {
+    @media (max-width: 900px) {
       display:none;
     }
   }
