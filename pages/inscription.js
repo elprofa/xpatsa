@@ -5,7 +5,6 @@ import FormRegister from "../components/shared/formRegister/formRegister";
 import Image from "next/image";
 
 const Wrapper = styled.div`
-  height: 75vh;
   margin-top: 90px;
   background: #fbfbfb;
   margin: 0px;
@@ -22,6 +21,14 @@ const Wrapper = styled.div`
     border-radius: 0px;
     min-height: 351px;
   }
+
+  .colForm
+  {
+    @media (max-width: 990px) 
+    {
+        padding:15px !important;
+    }
+  }
 `;
 
 export default function Inscription() {
@@ -37,7 +44,7 @@ export default function Inscription() {
               height="100"
             />
           </Col>
-          <Col lg={6} className="h-100 pr-0">
+          <Col lg={6} className="h-100 pr-0 colForm">
             <Card className="h-75">
               <FormRegister />
             </Card>
