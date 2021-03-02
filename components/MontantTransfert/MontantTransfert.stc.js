@@ -12,13 +12,16 @@ const MontantStc=Styled.div`
     {
         background:#eee;
     }
-    
+
     .input 
     {
         border:0px;
         background:transparent;
-        font-weight:600;
         color:#333;
+    }
+    .divInputValider .input
+    {
+        font-weight:600;
     }
     select
     {
