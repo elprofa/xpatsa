@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import Loki from "react-loki";
 import clsx from "clsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import Image from 'next/image';
 import {
@@ -16,6 +17,7 @@ import {
   ListGroupItem,
 } from "reactstrap";
 import { toast, Zoom } from "react-toastify";
+
 
 import Step3 from "../MontantTransfert";
 import Step2 from "../ModeEnvoie";
