@@ -26,6 +26,38 @@ const Example = (props) => {
     transaction.TrUpdatePaysDestinataire(event.currentTarget.value);
   }
   
+  let data1="";
+  let data2="";
+  let data3="";
+  if(transaction.TrPaysOrigine=="GABON")
+  {
+    data1="selected";
+  }
+  if(transaction.TrPaysOrigine=="MAROC")
+  {
+    data2="selected";
+  }
+  if(transaction.TrPaysOrigine=="AFRIQUE DU SUD")
+  {
+    data3="selected";
+  }
+
+  let data4="";
+  let data5="";
+  let data6="";
+  if(transaction.TrPaysDestinataire=="GABON")
+  {
+    data4="selected";
+  }
+  if(transaction.TrPaysDestinataire=="MAROC")
+  {
+    data5="selected";
+  }
+  if(transaction.TrPaysDestinataire=="AFRIQUE DU SUD")
+  {
+    data6="selected";
+  }
+
   return (
     <PersonalInfoStc>
       <Form>
@@ -33,21 +65,21 @@ const Example = (props) => {
           <Col lg={12} className='d-flex flex-wrap justify-content-center mt-3 w-100'>
             <div className="divInput">
               <label>Pays expéditeur</label>
-              <select type="select" name="select" onChange={countryOrigineChoosed} >
-                  <option value=''>Aucun</option>
-                  <option value='GABON'>Gabon F.Cfa</option>
-                  <option value='MAROC'>Maroc Dirhams</option>
-                  <option value='AFRIQUE DU SUD'>Sud Afrique Rand</option>
+              <select className="form-control" name="select" onChange={countryOrigineChoosed} >
+                  <option value='' >Aucun</option>
+                  <option selected={data1} value='GABON'>Gabon F.Cfa</option>
+                  <option selected={data2} value='MAROC'>Maroc Dirhams</option>
+                  <option selected={data3} value='AFRIQUE DU SUD'>Sud Afrique Rand</option>
               </select>
             </div>
         
           <div className="divInput">
             <label>Pays destinataire</label>
-            <select name="select1" id="exampleSelect1" onChange={countryDestinataireChoosed}>
-                  <option value=''>Aucun</option>
-                  <option value='GABON'>Gabon F.Cfa</option>
-                  <option value='MAROC'>Maroc Dirhams</option>
-                  <option value='AFRIQUE DU SUD'>Sud Afrique Rand</option>
+            <select className="form-control" id="exampleSelect1" onChange={countryDestinataireChoosed}>
+                  <option value='' selected={data1}>Aucun</option>
+                  <option value='GABON' selected={data4}>Gabon F.Cfa</option>
+                  <option value='MAROC' selected={data5}>Maroc Dirhams</option>
+                  <option value='AFRIQUE DU SUD' selected={data6}>Sud Afrique Rand</option>
             </select>
           </div>
           </Col>

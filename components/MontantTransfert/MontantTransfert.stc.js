@@ -13,6 +13,15 @@ const MontantStc=Styled.div`
         background:#eee;
     }
 
+    .right
+    {
+        padding-right:0px
+    }
+    .left
+    {
+        padding-left:0px
+    }
+
     .input 
     {
         border:0px;

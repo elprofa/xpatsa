@@ -18,6 +18,17 @@ const Example = (props) => {
     transaction.TrUpdateBillingInformation(event.currentTarget.value);
   }
 
+  let data1="";
+  let data2="";
+  if(transaction.TrBillingInformation=="ESPECE")
+  {
+    data1="selected";
+  }
+  if(transaction.TrBillingInformation=="AIRTEL MONEY")
+  {
+    data2="selected";
+  }
+
   return (
     <ModeEnvoiStc>
     <Form>
@@ -25,7 +36,6 @@ const Example = (props) => {
         <Col lg={12} className='d-flex flex-wrap justify-content-center mt-3 w-100'>
           <div className="divInput divInputValider">
             <label>Pays expéditeur</label>
-            <label>Pays destinataire</label>
               <input type="texte" value={transaction.TrPaysOrigine} disabled className="input form-control paysOrigine" />
           </div>
       
@@ -39,10 +49,10 @@ const Example = (props) => {
           <Col lg={12} className='d-flex flex-wrap justify-content-center w-50' >
           <div className="divInput">
             <label>Billing information</label>
-            <select type="select" name="select" onChange={billingInformationChoosed} >
-                <option value=''>Aucun</option>
-                <option value='ESPECE'>En espèce</option>
-                <option value='AIRTEL MONEY'>Par airtel money</option>
+            <select className="form-control" name="select" onChange={billingInformationChoosed} >
+                <option value='' >Aucun</option>
+                <option value='ESPECE' selected={data1}>En espèce</option>
+                <option value='AIRTEL MONEY' selected={data2}>Par airtel money</option>
             </select>
           </div>
           </Col>
