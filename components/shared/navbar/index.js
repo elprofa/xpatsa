@@ -80,6 +80,7 @@ const Header = (props) => {
           </Nav>
 
           <Link href="/connexion" passHref>
+            <a>
             <Bouton
               color="#000"
               bordercolor="#000"
@@ -87,6 +88,7 @@ const Header = (props) => {
               backgroundcolor="transparent"
               texte="SE CONNECTER"
             />
+            </a>
           </Link>
         </Collapse>
       </Container>

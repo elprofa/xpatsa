@@ -14,29 +14,32 @@ import {
 
 const items = [
   {
+    src: "/img/slide11.jpg",
+    titre:"La solution pour envoyer l'argent à l'etranger",
+    altText: "Slide 10",
+    caption: "Et si l’argent n’avait plus de frontière? Avec XPATSA Transférez de l'argent à l'international avec "+
+    " une rapidité,sécurité et efficacité impressionnante.Jamais il n'a été aussi simple "+"d'envoyer de l'argent. "+
+    "Alors Pensez à votre famille, vos amis et vos proches en leur faisant un geste avec nos services de transfert.",
+    lien:"transfert",
+    bouton:"SIMULER VOTRE TRANSFERT ICI"
+  },
+  {
     src: "/img/slide6.jpg",
-    titre:"Aide aux etudiants",
-    altText: "Slide 1",
-    caption: "XPATSA vous offre la possiblité d'effectuer vos transactions finacières "+
-    "en toute sécurité et accésible à toutes les bourses."+
-    "Nous simplifions au maximum votre transaction. Seul les éléments rélatifs "+
-    "à l'aspect sécurité de la transaction vous seront demandés pour une "+
-    "experience utilisateur optimale.",
-  },
-  {
-    src: "/img/slide7.jpg",
     altText: "Slide 2",
-    titre:"Aides médicales",
-    caption: "Quand on parle de santé, il ne faut négliger aucun aspect. XPATSA met "+
-    "à votre disposition un service rapide tout au long de votre séjour "+
-    "médicale ou celui de l'un de vos proches.",
+    titre:"Nous aidons et accompagnons les étudiants",
+    caption: "XPATSA, aide et accompagne les étudiants dans les démarches administratives pour les études a l’etranger "+
+    "(Maroc).Confiez-nous votre dossier et vous aurez les résultats ahurissants. Avec une équipe experte professionnelle "+
+    "dans ce qu’elle fait, étudier à l’etranger n’est plus un casse-tête.",
+    lien:"contact",
+    bouton:"Contactez-nous"
   },
   {
-    src: "/img/slide8.jpg",
+    src: "/img/slide10.jpg",
     altText: "Slide 3",
-    titre:"Aide pour VISA et Carte de séjours",
-    caption: "XPATSA vous facilite les démarches dans l'obtention de votre VISA et votre titre de séjours."+
-    "Il ne vous reste qu'à nous contacter pour vivre une merveilleuse expérience",
+    titre:"Vous pouvez nous faire confiance",
+    caption: "Notre service est toujours disponible, n'hésitez pas à nous contacter, une équipe dynamique est en place pour répondre à toutes vos préoccupations.",
+    lien:"contact",
+    bouton:"Contactez-nous"
   },
 ];
 
@@ -77,10 +80,10 @@ const Example = (props) => {
               <p>
                {item.caption}
               </p>
-              <Link href="contact">
+              <Link href={item.lien}>
                 <a>
                     <Bouton
-                      texte="COMMENCEZ"
+                      texte={item.bouton}
                       icon="true"
                       color="#fff"
                       backgroundcolor="#007bff"
