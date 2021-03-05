@@ -14,7 +14,7 @@ const BlockDevise = (props) => {
             <BsFillStopwatchFill/>RAPIDE
           </h1>
           <p>
-            Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.
+          3 étapes pour le premier transfert. 1 seul clic pour les transferts récurrents.
           </p>
         </BlockDeviseStc>
       </Col>
@@ -24,7 +24,7 @@ const BlockDevise = (props) => {
             <BsFillLockFill/>SECURISE
           </h1>
           <p>
-            Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.
+          Xpatsa vous garantit le même niveau de sécurité qu'Airtel Money,votre porte money electronique.
           </p>
         </BlockDeviseStc>
       </Col>
@@ -34,7 +34,9 @@ const BlockDevise = (props) => {
             <BsPersonCheckFill/>EFFICACITE
           </h1>
           <p>
-            Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.
+            Avec Xpatsa, nous vous offrons un service local à une échelle
+            international, aux tarifs exceptionnel.
+            N'atendez plus, faites des économies avec Xpatsa
           </p>
         </BlockDeviseStc>
       </Col>

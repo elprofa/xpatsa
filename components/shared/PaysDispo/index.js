@@ -17,9 +17,16 @@ const GrilleComponentPays = (props) => {
             <Container className='d-flex justify-content-center'>
                     <Col lg={8} className="divTexte">
                         <Titre texte="Disponible dans 3 pays du monde" underline="2" color="#007bff"/>
-                        <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à 
-                            titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer 
-                            le faux-texte dès qu'il est prêt ou que la mise en page est achevée.<br></br></p>
+                        <p>Envoyez et recevez de l’argent partout que vous soyez en Afrique du Sud,
+                            au Gabon, ou au Maroc grâce à Xpatsa et nos partenaires locaux.
+                            
+                            Xpatsa vous offre un service de transfert d’argent rapide et près 
+                            de chez vous, qui joint des prix accessibles à une qualité de 
+                            service de proximité.
+
+                            Xpatsa vous assure un transfert d’argent en Afrique du Sud, au Gabon, 
+                            au Maroc rapide, sécurisé, et efficace bientot disponible dans 
+                            d'autres destinations sur le continent.<br></br></p>
                             
                             <table className="table">
                                 <tr>

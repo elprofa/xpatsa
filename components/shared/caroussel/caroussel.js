@@ -3,6 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import Titre from "../Titre/Titre";
 import Bouton from "../Bouton/Bouton";
 import Image from "next/image";
+import Link from 'next/link';
 import {
   Carousel,
   CarouselItem,
@@ -13,19 +14,29 @@ import {
 
 const items = [
   {
-    src: "/img/slide3.jpg",
+    src: "/img/slide6.jpg",
+    titre:"Aide aux etudiants",
     altText: "Slide 1",
-    caption: "Slide 1",
+    caption: "XPATSA vous offre la possiblité d'effectuer vos transactions finacières "+
+    "en toute sécurité et accésible à toutes les bourses."+
+    "Nous simplifions au maximum votre transaction. Seul les éléments rélatifs "+
+    "à l'aspect sécurité de la transaction vous seront demandés pour une "+
+    "experience utilisateur optimale.",
   },
   {
-    src: "/img/slide2.jpg",
+    src: "/img/slide7.jpg",
     altText: "Slide 2",
-    caption: "Slide 2",
+    titre:"Aides médicales",
+    caption: "Quand on parle de santé, il ne faut négliger aucun aspect. XPATSA met "+
+    "à votre disposition un service rapide tout au long de votre séjour "+
+    "médicale ou celui de l'un de vos proches.",
   },
   {
-    src: "/img/slide1.jpg",
+    src: "/img/slide8.jpg",
     altText: "Slide 3",
-    caption: "Slide 3",
+    titre:"Aide pour VISA et Carte de séjours",
+    caption: "XPATSA vous facilite les démarches dans l'obtention de votre VISA et votre titre de séjours."+
+    "Il ne vous reste qu'à nous contacter pour vivre une merveilleuse expérience",
   },
 ];
 
@@ -62,19 +73,20 @@ const Example = (props) => {
         <Container className="containerHome d-none d-lg-block ">
           <Row>
             <Col sm={6} className="colAccueilLeft">
-              <Titre texte="Aide pour étudiant" underline="2" color="#fff" />
+              <Titre texte={item.titre} underline="2" color="#fff" />
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Facilis enim adipisci aliquam ut quam incidunt veniam rem,
-                recusandae repellat blanditiis corporis vitae, mollitia illum
-                eligendi officiis quisquam nesciunt, sequi esse!
+               {item.caption}
               </p>
-              <Bouton
-                texte="COMMENCEZ"
-                icon="true"
-                color="#fff"
-                backgroundcolor="#007bff"
-              />
+              <Link href="contact">
+                <a>
+                    <Bouton
+                      texte="COMMENCEZ"
+                      icon="true"
+                      color="#fff"
+                      backgroundcolor="#007bff"
+                    />
+                </a>
+              </Link>
             </Col>
           </Row>
         </Container>
