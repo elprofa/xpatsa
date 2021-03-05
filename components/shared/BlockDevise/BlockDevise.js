@@ -14,7 +14,7 @@ const BlockDevise = (props) => {
             <BsFillStopwatchFill/>RAPIDE
           </h1>
           <p>
-          3 étapes pour le premier transfert. 1 seul clic pour les transferts récurrents.
+            90% de nos transactions sont livrées en quelques minutes <br/>.
           </p>
         </BlockDeviseStc>
       </Col>
