@@ -50,7 +50,9 @@ const Header = (props) => {
   const { pathname } = router;
 
   const toggle = () => setIsOpen(!isOpen);
-
+  
+  if(router.pathname !="/dashboard")
+  {
   return (
     <NavbarWrap color="blue" pathname={pathname} light expand="md">
       <Container className="px-0">
@@ -94,6 +96,13 @@ const Header = (props) => {
       </Container>
     </NavbarWrap>
   );
+  }
+  else
+  {
+      return(
+        <></>
+      )
+  }
 };
 
 export default Header;
