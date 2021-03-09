@@ -60,8 +60,14 @@ export const GlobalCSS = createGlobalStyle`
     } */
 
 
-    /* pour le dashboard */
 
+/* pour le dashboard */
+
+
+.adminBody
+{
+    padding:15px;
+}
     
 .hidden
 {

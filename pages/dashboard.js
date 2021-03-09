@@ -7,10 +7,6 @@ import HeadBar from '../components/HeadBar';
 
 const Wrapper = styled.div`
 
-.adminBody
-{
-    padding:15px;
-}
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
