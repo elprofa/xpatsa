@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HeadBarStc from './HeadBar.stc';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BiMenu } from "react-icons/bi";
 
 const HeadBar =(props)=>{
     return (
@@ -17,6 +18,7 @@ const HeadBar =(props)=>{
                 <div className="navbar-header">
                     <Row>
                         <Col lg={5} md={6} className="divSearch">
+                            <span className="MenuHamburgerAdmin" onClick={props.hideNavBar}><BiMenu /></span>
                             <span className="iconSearch">
                                 <FaSearch/>
                             </span>

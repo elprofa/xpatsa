@@ -11,6 +11,8 @@ const AsideBarStc=styled.nav`
     /* border: 2px solid #000; */
     z-index: 9999;
     padding:15px;
+
+
     
     @media (min-width: 768px)
     {
@@ -32,6 +34,7 @@ const AsideBarStc=styled.nav`
         width:50%;
         border-radius: 10px 130px 0px 0px;
         overflow-y:scroll;
+        
     }
 
     @media (min-width: 477px) and (max-width: 767px)
@@ -56,6 +59,7 @@ const AsideBarStc=styled.nav`
     {
         text-decoration:none;
         padding: 10px 50px;
+        color:#2362bf;
 
         @media (max-width: 476px)
         {
@@ -70,60 +74,6 @@ const AsideBarStc=styled.nav`
         
     }
     
-    .iconActive
-    {
-        color:#ccc !important;
-        @media (max-width: 476px)
-        {
-            left: 0px !important;
-            position: fixed !important;
-        }
-
-        @media (min-width: 476px) and (max-width:767px)
-        {
-            left: 0px !important;
-            position: fixed !important;
-        }
-    }
-    #iconCloseAsideBar
-    {
-        float: right;
-        margin-top: 15%;
-        z-index:99999;
-        color: #2362bf;
-        cursor:pointer;
-        @media (min-width: 769px)
-        {
-            position: relative;
-            margin-top: -15%;
-        }
-
-        @media (max-width: 476px)
-        {
-            float:auto;
-            position: fixed;
-            top: 7%;
-            z-index: 99999;
-            color: #2362bf;
-            cursor: pointer;
-            /* margin: auto; */
-            left: 47%;
-            font-size: 30px;
-        }
-        @media (min-width: 476px)and (max-width:767px)
-        {
-            float:auto;
-            position: fixed;
-            top: 0%;
-            z-index: 99999;
-            color: #2362bf;
-            cursor: pointer;
-            /* margin: auto; */
-            left: 28%;
-            font-size: 30px;
-        }
-    }
-
     &.active {
         min-width: 80px;
         max-width: 80px;
@@ -194,7 +144,7 @@ const AsideBarStc=styled.nav`
         display: block;
     }
     & ul li a:hover {
-        color: #fff;
+        color: #fff !important;
         background: #2362bf;
     }
     & ul li a i {
@@ -202,7 +152,7 @@ const AsideBarStc=styled.nav`
     }
 
     & ul li.active > a, a[aria-expanded="true"] {
-        color: #fff;
+        color: #fff !important;
         background: #2362bf;
     }
 

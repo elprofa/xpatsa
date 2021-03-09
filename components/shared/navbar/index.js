@@ -4,7 +4,8 @@ import Bouton from "../Bouton/Bouton";
 import DropDownInput from "../dropDownInput";
 import Image from "next/image";
 import Link from "next/link";
-
+import Styled from 'styled-components';
+import { FaSearch } from "react-icons/fa";
 import {
   Collapse,
   NavbarToggler,
@@ -18,7 +19,10 @@ import {
   DropdownItem,
   NavbarText,
   Container,
+  Row,
+  Col
 } from "reactstrap";
+import { BiMenu } from "react-icons/bi";
 
 import Menu from "../Menu";
 
@@ -31,17 +35,65 @@ const ListeMenu = [
   },
   {
     texte: "A propos",
-    lien: "/apropos",
+    lien: "/",
   },
   {
     texte: "Contact",
-    lien: "/contact",
+    lien: "/dashboard",
   },
   {
     texte: "S'inscrire",
     lien: "/inscription",
   },
 ];
+
+const MenuAdmin=Styled(Row)`
+  margin:20px 0px;
+  @media (min-width: 990px)
+  {
+    display:none !important;
+  }
+  input 
+  {
+      border-radius: 0px;
+      height: 100%;
+      border: 0px;
+      padding-left: 25px;
+  }
+  
+  span 
+  {
+    font-size:30px;
+    color:#000;
+  }
+
+  span.iconSearch {
+    position: absolute;
+    font-size: 20px;
+    top: 10px;
+    left: 0;
+}
+`;
+
+const hideNavBar=()=>{
+  var element=document.getElementById("sidebar");
+
+  element.classList.toggle("hidden");
+
+  var cls=element.className;
+  var search=cls.search('hidden');
+
+  var element1=document.getElementById("iconCloseAsideBar");
+
+  if(search!=-1)
+  {
+      element1.className = "iconActive";
+  }
+  else
+  {
+      element1.className = "";
+  }
+}
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -100,7 +152,17 @@ const Header = (props) => {
   else
   {
       return(
-        <></>
+        <MenuAdmin>
+          <Col sm={2} className="col-2">
+            <span className="MenuHamburgerAdmin" onClick={hideNavBar}><BiMenu /></span>
+          </Col> 
+          <Col sm={10} className="col-10">
+          <span className="iconSearch">
+              <FaSearch/>
+          </span>
+          <input type="texte" className="form-control" placeholder="recherche ici ...." />
+          </Col>
+        </MenuAdmin>
       )
   }
 };

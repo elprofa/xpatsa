@@ -58,4 +58,49 @@ export const GlobalCSS = createGlobalStyle`
     nav.navbarActive.navbar.navbar-expand-md.navbar-light.bg-blue {
         background: linear-gradient(#0a0a0a, transparent);
     } */
+
+
+    /* pour le dashboard */
+
+    
+.hidden
+{
+
+    width:10vw !important;
+    min-width:8vw !important;
+
+    @media (max-width: 767px)
+    {
+        width:0px !important;
+        padding:0px;
+        min-width:0px !important;
+        & .sidebar-header,& ul.list-unstyled.components
+        {
+            display:none;
+        }
+    }
+    @media (min-width: 768px)
+    {
+        ul.list-unstyled.components li a span {
+            display: none;
+        }
+        ul.list-unstyled.components li a {
+            padding: 10px;
+        }
+        ul.list-unstyled.CTAs
+        {
+            display:none;
+        }
+    }
+
+    @media (min-width: 991px)
+    {
+        ul.list-unstyled.components li a i {
+            font-size: 30px;
+        }
+        ul.list-unstyled.components li a {
+            text-align: center;
+        }
+    }
+}
 `;

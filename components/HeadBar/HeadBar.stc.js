@@ -6,10 +6,8 @@ const HeadBarStc=styled.nav`
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-
-    @media (min-width: 768px) and (max-width:991px)
+    border:0px !important;
+    @media (max-width:991px)
     {
         .divSearch {
             display: none; 
@@ -51,6 +49,16 @@ const HeadBarStc=styled.nav`
         }
     }
 
+    span.MenuHamburgerAdmin {
+        position: absolute;
+        top: 0px;
+        font-size: 30px;
+        left: 0;
+        color:#6c757d;
+        color:#212529;
+        cursor:pointer;
+    }
+
 .navbar-header
 {
     width:100%;
@@ -77,7 +85,9 @@ input
     border-radius: 0px;
     height: 100%;
     border: 0px;
-    padding-left: 25px;
+    padding-left: 30px;
+    margin-left:40px;
+    
 }
 
 .divIconNotification {
@@ -105,8 +115,9 @@ button
 }
 span.iconSearch {
     position: absolute;
-    bottom: 15px;
+    top: 12px;
     color: #6c757d;
+    left:60px
 }
 
 

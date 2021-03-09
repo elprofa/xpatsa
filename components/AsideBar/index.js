@@ -9,19 +9,20 @@ import { FaBezierCurve } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa";
 import { FaWrench } from "react-icons/fa";
 import MonBouton from '../shared/Bouton/Bouton';
-import { FaCircle } from "react-icons/fa";
+import { FaSquareFull } from "react-icons/fa";
+import { BiTransfer } from "react-icons/bi";
 
 
 const AsideBar=(props)=>{
     return (
-        <NavStc id="sidebar" className="">
+        <NavStc id="sidebar" className="hidden">
             <div className="sidebar-header">
                 <Link href="/">
                     <Image src="/img/Logo_Xpatsa.png" width={80} height={80} />
                 </Link>
                 
             </div>
-            <span id="iconCloseAsideBar" className="" onClick={props.hideNavBar}><FaCircle /></span>
+            <span id="iconCloseAsideBar" className="iconActive" onClick={props.hideNavBar}><BiTransfer /></span>
             <ul className="list-unstyled components">
                 <li className="active">
                     <a href="#homeSubmenu" >
