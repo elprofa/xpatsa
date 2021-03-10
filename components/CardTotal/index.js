@@ -5,9 +5,7 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle
   } from 'reactstrap';
-import CardStc from './Card.stc';
-//import InputGroup from "../inputGroup";
-import { InputGroupAddon, InputGroup, Button, Input } from 'reactstrap';
+import CardStc from './CardTotal.stc';
 import { FiUsers } from 'react-icons/fi';
 import { BsArrowUp } from 'react-icons/bs';
 
@@ -25,8 +23,8 @@ const CardInfos = (props) => {
                         </Col>
                         <Col className='divTexte my-0 ml-3' lg={10}>
                             <CardBody>
-                                <CardTitle tag="h3">Card title</CardTitle>
-                                <CardText>290,000<br></br>
+                                <CardTitle tag="h3">Total clients </CardTitle>
+                                <CardText><span className='number'>290,000</span><br></br>
                                 <span className='details'>1.3 % <BsArrowUp size={'23px'} color='#3CE99E'/></span><span className='more-details text-muted'>than last month</span>
                                 </CardText>
                             </CardBody>

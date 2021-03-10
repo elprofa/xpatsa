@@ -25,6 +25,11 @@ import styled from "styled-components";
 
  }
 
+ .number {
+     font-size: 25px;
+     font-weight: 600;
+ }
+
  .icons {
      display: block;
      color:'#007bff';
