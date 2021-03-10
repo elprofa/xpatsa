@@ -7,6 +7,12 @@ const HeadBarStc=styled.nav`
     border: none;
     border-radius: 0;
     border:0px !important;
+    height:auto !important;
+    .row 
+    {
+        margin-left:0px;
+        margin-right:0px;
+    }
     @media (max-width:991px)
     {
         .divSearch {

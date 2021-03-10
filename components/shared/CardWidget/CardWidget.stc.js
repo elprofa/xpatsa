@@ -22,7 +22,7 @@ margin:15px 0px;
     h2
     {
         font-weight:600;
-        font-size:25px;
+        font-size:20px;
 
     }
     .action 

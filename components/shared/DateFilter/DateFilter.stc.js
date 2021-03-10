@@ -45,7 +45,9 @@ input
 {
     font-size: 12px;
     height: 20px;
-    border: 0px
+    border: 0px;
+    margin:0px !important;
+    padding:0px !important;
 }
 `;
 export default DateFilterStc;

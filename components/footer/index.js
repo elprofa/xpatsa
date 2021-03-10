@@ -21,7 +21,8 @@ const PiedDePage = (props) => {
 
   const router = useRouter();
 
-  if(router.pathname !="/dashboard")
+  if(router.pathname !="/dashboard" && router.pathname !="/transaction" && router.pathname !="/client" 
+  && router.pathname !="/analyse" && router.pathname !="/setting")
   {
   
   return (

@@ -25,22 +25,28 @@ const AsideBar=(props)=>{
             <span id="iconCloseAsideBar" className="iconActive" onClick={props.hideNavBar}><BiTransfer /></span>
             <ul className="list-unstyled components">
                 <li className="active">
-                    <a href="#homeSubmenu" >
-                        <i ><FaDelicious /></i>
-                        <span>Dashboard</span>
-                    </a>
+                    <Link href="/dashboard">
+                        <a >
+                            <i ><FaDelicious /></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#">
-                        <i><FaUserFriends/></i>
-                        <span>Clients</span>
-                    </a>
+                    <Link href="/client">
+                        <a >
+                            <i><FaUserFriends/></i>
+                            <span>Clients</span>
+                        </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#">
-                        <i><FaRegCreditCard /></i>
-                        <span>Transaction</span>
-                    </a>
+                    <Link href="/transaction">
+                        <a>
+                            <i><FaRegCreditCard /></i>
+                            <span>Transaction</span>
+                        </a>
+                    </Link>
                 </li>
                 <li>
                     <a href="#">

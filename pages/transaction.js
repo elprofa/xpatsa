@@ -4,10 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import AsideBar from '../components/AsideBar';
 import HeadBar from '../components/HeadBar';
-import CardTransactionWidget from '../components/shared/CardTransactionWidget';
-import CardActiviteWidget from '../components/shared/CardActivityWidget';
-import CardCircleWidget from '../components/shared/CardCircleWidget';
-import CardClientWidget from '../components/shared/CardClientWidget';
+import TrCardWidget from '../components/shared/TrCardWidgetLeft';
+import CardTransactionWidgetTable from '../components/shared/CardTransactionWidgetTable';
 const Wrapper = styled.div`
 
 /* ---------------------------------------------------
@@ -23,12 +21,11 @@ const Wrapper = styled.div`
     margin-left:0px;
     margin-right:0px;
 }
-
  
 `;
 
-export default function Dashboard() {
-
+export default function Transaction() {
+    
   return (
       <Wrapper>
         <div className="wrapper">
@@ -38,31 +35,22 @@ export default function Dashboard() {
                 <HeadBar />
                 <div className="adminBody">
                     <Row>
-                        <Col lg="8">
-                            <Row>
-                                <Col lg={12}>
-                                    <CardTransactionWidget />
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col lg={12}>
-                                    <CardActiviteWidget />
-                                </Col>
-                            </Row>
+                        <Col lg="6">
+                            <TrCardWidget />
                         </Col>
-                        <Col lg="4">
-                            <CardCircleWidget />
-                            <CardClientWidget />
+                        <Col lg="6">
+                            <TrCardWidget />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={12}>
+                            <CardTransactionWidgetTable />
                         </Col>
                     </Row>
                     
                 </div>
             </div>
         </div>
-
-
-
-
       </Wrapper>
   )
 }

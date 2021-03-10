@@ -9,8 +9,31 @@ import HeadBarStc from './HeadBar.stc';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiMenu } from "react-icons/bi";
+import CardWidget from '../shared/CardWidget';
+import DateFilter from '../shared/DateFilter';
+
 
 const HeadBar =(props)=>{
+    const hideNavBar=()=>{
+        var element=document.getElementById("sidebar");
+ 
+        element.classList.toggle("hidden");
+
+        var cls=element.className;
+        var search=cls.search('hidden');
+        console.log(search);
+
+        var element1=document.getElementById("iconCloseAsideBar");
+
+        if(search!=-1)
+        {
+            element1.className = "iconActive";
+        }
+        else
+        {
+            element1.className = "";
+        }
+    }
     return (
         <HeadBarStc className="navbar navbar-default">
             <div className="container-fluid">
@@ -18,7 +41,7 @@ const HeadBar =(props)=>{
                 <div className="navbar-header">
                     <Row>
                         <Col lg={5} md={6} className="divSearch">
-                            <span className="MenuHamburgerAdmin" onClick={props.hideNavBar}><BiMenu /></span>
+                            <span className="MenuHamburgerAdmin" onClick={hideNavBar}><BiMenu /></span>
                             <span className="iconSearch">
                                 <FaSearch/>
                             </span>
@@ -54,6 +77,20 @@ const HeadBar =(props)=>{
                                     <Image src="/img/wedo.jpg" width={130} height={130} />
                                 </Link>
                             </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={3}>
+                            <CardWidget />
+                        </Col>
+                        <Col lg={3}>
+                            <CardWidget />
+                        </Col>
+                        <Col lg={3}>
+                            <CardWidget />
+                        </Col>
+                        <Col lg={3}>
+                            <DateFilter />
                         </Col>
                     </Row>
                     
