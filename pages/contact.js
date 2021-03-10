@@ -21,25 +21,6 @@ export default function Contact() {
   return (
       <Wrapper>
         <Container>
-           <Row>
-              <Col>
-                  <Search />
-              </Col>
-              <Col lg={6}>
-                  <NewTransaction />
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={4}>
-                <CardInfos/>
-              </Col>
-              <Col lg={4}>
-                <CardInfos/>
-              </Col>
-              <Col lg={4}>
-                <CardInfos/>
-              </Col>
-            </Row>
             <Row>
               <Col>
                   <FormContact />
