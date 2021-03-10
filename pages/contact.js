@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { Container, Row, Col, Card } from "reactstrap";
 import styled from "styled-components";
 import FormContact from '../components/shared/formContact';
+import Search from '../components/InputButtonSeach';
+import NewTransaction from '../components/ButtonNewTransaction';
+import CardInfos from '../components/Card';
 
 const Wrapper = styled.div`
 
@@ -19,6 +22,25 @@ export default function Contact() {
       <Wrapper>
         <Container>
            <Row>
+              <Col>
+                  <Search />
+              </Col>
+              <Col lg={6}>
+                  <NewTransaction />
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={4}>
+                <CardInfos/>
+              </Col>
+              <Col lg={4}>
+                <CardInfos/>
+              </Col>
+              <Col lg={4}>
+                <CardInfos/>
+              </Col>
+            </Row>
+            <Row>
               <Col>
                   <FormContact />
               </Col>
