@@ -4,7 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import AsideBar from '../components/AsideBar';
 import HeadBar from '../components/HeadBar';
-
+import CardWidget from '../components/shared/CardWidget';
+import CardTransactionWidget from '../components/shared/CardTransactionWidget';
+import CardActiviteWidget from '../components/shared/CardActivityWidget';
+import CardCircleWidget from '../components/shared/CardCircleWidget';
+import CardClientWidget from '../components/shared/CardClientWidget';
+import DateFilter from '../components/shared/DateFilter';
 const Wrapper = styled.div`
 
 /* ---------------------------------------------------
@@ -44,28 +49,43 @@ export default function Dashboard() {
       <Wrapper>
         <div className="wrapper">
             <AsideBar  />
-            <div id="content">
+            <div id="content" className="generalAdminBody">
 
                 <HeadBar hideNavBar={hideNavBar}/>
                 <div className="adminBody">
-                    <h2>Collapsible Sidebar Using Bootstrap 3</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <div className="line"></div>
-
-                    <h2>Lorem Ipsum Dolor</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <div className="line"></div>
-
-                    <h2>Lorem Ipsum Dolor</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <div className="line"></div>
-
-                    <h3>Lorem Ipsum Dolor</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <Row>
+                        <Col lg={3}>
+                            <CardWidget />
+                        </Col>
+                        <Col lg={3}>
+                            <CardWidget />
+                        </Col>
+                        <Col lg={3}>
+                            <CardWidget />
+                        </Col>
+                        <Col lg={3}>
+                            <DateFilter />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg="8">
+                            <Row>
+                                <Col lg={12}>
+                                    <CardTransactionWidget />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col lg={12}>
+                                    <CardActiviteWidget />
+                                </Col>
+                            </Row>
+                        </Col>
+                        <Col lg="4">
+                            <CardCircleWidget />
+                            <CardClientWidget />
+                        </Col>
+                    </Row>
+                    
                 </div>
             </div>
         </div>

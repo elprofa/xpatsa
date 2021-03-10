@@ -17,6 +17,7 @@ const AsideBarStc=styled.nav`
     @media (min-width: 768px)
     {
         min-width:250px;
+        max-width:20vw;
         .divSearch.col-md-6 {
             margin: 20px auto;
         }
@@ -60,6 +61,7 @@ const AsideBarStc=styled.nav`
         text-decoration:none;
         padding: 10px 50px;
         color:#2362bf;
+        font-size:14px;
 
         @media (max-width: 476px)
         {

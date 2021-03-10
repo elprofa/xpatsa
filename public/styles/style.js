@@ -63,6 +63,10 @@ export const GlobalCSS = createGlobalStyle`
 
 /* pour le dashboard */
 
+.generalAdminBody
+{
+    width:100%;
+}
 
 .adminBody
 {
@@ -102,7 +106,7 @@ export const GlobalCSS = createGlobalStyle`
     @media (min-width: 991px)
     {
         ul.list-unstyled.components li a i {
-            font-size: 30px;
+            font-size: 20px;
         }
         ul.list-unstyled.components li a {
             text-align: center;
