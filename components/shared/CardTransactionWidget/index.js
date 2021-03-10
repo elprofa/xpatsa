@@ -52,17 +52,23 @@ const CardTransactionWidget =()=>{
         <CardTransactionWidgetStc>
             <h2 className="cardTitre">Transaction</h2>
             <Row className="cardTransactionHead">
-                <Col md={4} className="cardTransactionColumn active">
-                    <h4>Total transaction</h4>
-                    <h2>$9000 0000 000</h2>
+                <Col md={4} >
+                    <div className="cardTransactionColumn active">
+                      <h4>Total transaction</h4>
+                      <h2>$9000 0000 000</h2>
+                    </div>
                 </Col>
-                <Col md={4} className="cardTransactionColumn">
-                    <h4>Total transaction</h4>
-                    <h2>$9000 0000 000</h2>
+                <Col md={4} >
+                    <div className="cardTransactionColumn">
+                      <h4>Total transaction</h4>
+                      <h2>$9000 0000 000</h2>
+                    </div>
                 </Col>
-                <Col md={4} className="cardTransactionColumn">
-                    <h4>Total transaction</h4>
-                    <h2>$9000 0000 000</h2>
+                <Col md={4} >
+                    <div className="cardTransactionColumn">
+                      <h4>Total transaction</h4>
+                      <h2>$9000 0000 000</h2>
+                    </div>
                 </Col>
                 
             </Row>

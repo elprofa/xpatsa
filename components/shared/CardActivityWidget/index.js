@@ -10,7 +10,6 @@ const CardActivityWidget =()=>{
     return(
         <CardActivityWidgetStc>
             <h2 className="cardTitre">Activités</h2>
-            <Row className="cardActiviteHead">
             <Table>
                 <thead>
                     <tr>
@@ -57,7 +56,6 @@ const CardActivityWidget =()=>{
                     </tr>
                 </tbody>
                 </Table>
-            </Row>
             <a className="btnVoirPlus">
                 Voir plus <span><FaChevronRight/></span>
             </a>

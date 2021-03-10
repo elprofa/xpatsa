@@ -6,17 +6,25 @@ const DateFilter =()=>{
     return(
         <DateFilterStc>
             <Row>
-                <Col sm={2} className=" spanIcon">
+                <Col sm={2} >
+                   <div className=" spanIcon">
                     <span className="">Days</span>
+                   </div>
                 </Col>
-                <Col sm={2} className=" spanIcon">
-                    <span className="">Sem.</span>
+                <Col sm={2} >
+                    <div className=" spanIcon">
+                        <span className="">Sem.</span>
+                    </div>
                 </Col>
-                <Col sm={2} className=" spanIcon active">
-                    <span className="">Mois</span>
+                <Col sm={2} >
+                    <div className=" spanIcon active">
+                        <span className="">Mois</span>
+                    </div>
                 </Col>
-                <Col sm={6} className=" spanIcon dateSpanIcon">
-                    <input type="date" className="form-control" />
+                <Col sm={6} >
+                    <div className=" spanIcon dateSpanIcon">
+                        <input type="date" className="form-control" />
+                    </div>
                 </Col>
             </Row>
         </DateFilterStc>

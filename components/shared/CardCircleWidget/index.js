@@ -52,17 +52,12 @@ const CardCircleWidget =()=>{
 
     return(
         <CardCircleWidgetStc> 
-            <Row className="cardCircleBody">
-            <Col lg={12}>
-                <Chart 
-                    type="donut"
-                    series={options.series}
-                    options={options}
-                    width="100%"
-                    />
-            </Col>
-            </Row>
-            
+            <Chart 
+              type="donut"
+              series={options.series}
+              options={options}
+              width="100%"
+              />
         </CardCircleWidgetStc>
     )
 }

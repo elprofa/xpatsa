@@ -49,6 +49,20 @@ const ListeMenu = [
 
 const MenuAdmin=Styled(Row)`
   margin:20px 0px;
+  @media (max-width: 476px)
+  {
+    padding:5px !important;
+  }
+
+  [class*='col-']
+  {
+      @media (max-width: 476px)
+      {
+        padding:0px !important;
+      }
+  }
+  
+
   @media (min-width: 990px)
   {
     display:none !important;
@@ -58,7 +72,7 @@ const MenuAdmin=Styled(Row)`
       border-radius: 0px;
       height: 100%;
       border: 0px;
-      padding-left: 25px;
+      padding-right: 25px;
   }
   
   span 
@@ -71,7 +85,7 @@ const MenuAdmin=Styled(Row)`
     position: absolute;
     font-size: 20px;
     top: 10px;
-    left: 0;
+    right: 10px;
 }
 `;
 
@@ -148,10 +162,10 @@ const Header = (props) => {
             <span className="MenuHamburgerAdmin" onClick={hideNavBar}><BiMenu /></span>
           </Col> 
           <Col sm={10} className="col-10">
-          <span className="iconSearch">
-              <FaSearch/>
-          </span>
-          <input type="texte" className="form-control" placeholder="recherche ici ...." />
+            <input type="texte" className="form-control" placeholder="recherche iciss ...." />
+            <span className="iconSearch">
+                <FaSearch/>
+            </span>
           </Col>
         </MenuAdmin>
       )

@@ -13,6 +13,11 @@ h2.cardTitre {
 .cardTransactionHead.row {
     background: #2362bf;
     color: #fff;
+
+    .col-md-4
+    {
+        padding:0px;
+    }
 }
 
 .cardTransactionHead h4 {
@@ -40,6 +45,10 @@ h2.cardTitre {
 .courbe.row
 {
     min-height:250px;
+    @media (max-width: 476px)
+    {
+      display:none;
+    }
 }
 `;
 export default CardTransactionWidgetStc;

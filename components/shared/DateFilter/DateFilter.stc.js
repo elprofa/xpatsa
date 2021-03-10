@@ -6,6 +6,16 @@ padding:15px;
 margin:15px 0px;
 border:0px;
 
+@media (max-width: 476px)
+{
+    padding:0px !important;
+}
+
+[class*='col-']
+  {
+    padding:0px !important;
+    
+  }
 .spanIcon {
     border-left: 1px solid #ccc;
     padding: 2px 5px;
@@ -14,6 +24,12 @@ border:0px;
     color:#000;
     font-weight:600;
     cursor:pointer;
+    @media (max-width: 476px)
+    {
+       border:0px !important;
+       padding:15px;
+       font-size:14px;
+    }
 
     &:hover 
     {

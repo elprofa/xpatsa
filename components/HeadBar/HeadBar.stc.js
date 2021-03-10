@@ -8,6 +8,15 @@ const HeadBarStc=styled.nav`
     border-radius: 0;
     border:0px !important;
     height:auto !important;
+
+    @media (max-width:476px)
+    {
+        .container-fluid
+        {
+            padding:0px;
+        }
+    }
+    
     .row 
     {
         margin-left:0px;

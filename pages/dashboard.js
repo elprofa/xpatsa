@@ -24,6 +24,14 @@ const Wrapper = styled.div`
     margin-right:0px;
 }
 
+.row [class*='col-']
+{
+    @media (max-width: 476px)
+    {
+       padding:0px !important;
+    }
+}
+
  
 `;
 

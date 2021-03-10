@@ -70,7 +70,7 @@ export const GlobalCSS = createGlobalStyle`
 
 .adminBody
 {
-    padding:15px;
+    padding:10px;
 }
     
 .hidden
@@ -79,6 +79,7 @@ export const GlobalCSS = createGlobalStyle`
     {
         display:none;
     }
+
 
     width:10vw !important;
     min-width:8vw !important;
