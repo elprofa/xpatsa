@@ -11,51 +11,72 @@ import { FaWrench } from "react-icons/fa";
 import MonBouton from '../shared/Bouton/Bouton';
 import { FaSquareFull } from "react-icons/fa";
 import { BiTransfer } from "react-icons/bi";
-import Chart from "react-apexcharts";
+import dynamic from 'next/dynamic'
 
-// const AsideBar=(props)=>{
-class AsideBar extends Component {
+// import Chart from "react-apexcharts";
 
-    constructor(props) {
-        super(props);
+const Chart = dynamic(
+    () => import('react-apexcharts'),
+    { ssr: false }
+  )
+
+ const AsideBar=(props)=>{
     
-        this.state = {
-          options: {
-            chart: {
-              id: "basic-bar"
+    var  options= {
+        chart: {
+            id: "basic-bar",
+            toolbar: { show: false },
+            zoom: { enabled: false },
+            
+        },
+        dataLabels: {
+        enabled: false
+        },
+        grid: {
+            yaxis: {
+                lines: {
+                    show: false
+                }
+            }
+        },
+        xaxis: {
+            labels: {
+            show: false
             },
-            xaxis: {
-              categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-            }
-          },
-          series: [
-            {
-              name: "series-1",
-              data: [30, 40, 45, 50, 49, 60, 70, 91]
-            }
-          ]
-        };
-      }
-      
-      render() {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+        },
+        yaxis:
+        {
+            show: false
+        }
+    }
+
+    var series= [
+        
+        {
+
+        name: "series-1",
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+        }
+    ]
 
     return (
         <NavStc id="sidebar" className="hidden">
             <div className="sidebar-header">
                 <Link href="/">
-                    <Image src="/img/Logo_Xpatsa.png" width={80} height={80} />
+                    <Image src="/img/Logo_Xpatsa.png" width={100} height={100} />
                 </Link>
                 
             </div>
             <div className="char" id="chart">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="bar"
-              width="500"
-            />
+                <Chart 
+                    type="area"
+                    series={series}
+                    options={options}
+                    width="100%"
+                    />
             </div>
-            <span id="iconCloseAsideBar" className="iconActive" onClick={props.hideNavBar}><BiTransfer /></span>
+            
             <ul className="list-unstyled components">
                 <li className="active">
                     <Link href="/dashboard">
@@ -108,7 +129,7 @@ class AsideBar extends Component {
             </ul>
         </NavStc>
     )
-}
+
 }
 
 export default AsideBar;

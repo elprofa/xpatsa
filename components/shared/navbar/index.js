@@ -83,16 +83,6 @@ const hideNavBar=()=>{
   var cls=element.className;
   var search=cls.search('hidden');
 
-  var element1=document.getElementById("iconCloseAsideBar");
-
-  if(search!=-1)
-  {
-      element1.className = "iconActive";
-  }
-  else
-  {
-      element1.className = "";
-  }
 }
 
 const Header = (props) => {

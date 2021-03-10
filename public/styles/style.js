@@ -75,6 +75,10 @@ export const GlobalCSS = createGlobalStyle`
     
 .hidden
 {
+    #chart 
+    {
+        display:none;
+    }
 
     width:10vw !important;
     min-width:8vw !important;
