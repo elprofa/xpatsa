@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { Container, Row, Col, Card } from "reactstrap";
 import styled from "styled-components";
-import FormContact from '../components/shared/formContact';
+import FormTeam from '../components/shared/formTeam';
+import TableauTeam from '../components/shared/tableauTeam';
 
 const Wrapper = styled.div`
 
@@ -14,14 +15,19 @@ const Wrapper = styled.div`
  
 `;
 
-export default function Contact() {
+export default function Team() {
   return (
       <Wrapper>
         <Container>
             <Row>
               <Col>
-                  <FormContact />
+                  <FormTeam />
               </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <TableauTeam />
+                </Col>
             </Row>
         </Container>
       </Wrapper>
