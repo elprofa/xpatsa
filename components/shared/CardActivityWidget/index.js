@@ -4,6 +4,7 @@ import {Row,Col,Table} from 'reactstrap';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaChevronRight } from "react-icons/fa";
+import Bouton from '../Bouton/Bouton';
 
 
 const CardActivityWidget =()=>{
@@ -27,10 +28,10 @@ const CardActivityWidget =()=>{
                             <Image src="/img/wedo.jpg" width={40} height={40} />
                         </Link>
                     </th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <td>Kito Soyinka</td>
+                    <td>18/05/2018 3:01 AM</td>
                     <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td><Bouton color={'danger'} texte={'Panding'}minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
                     <th scope="row" className="pictureClient">
@@ -38,10 +39,10 @@ const CardActivityWidget =()=>{
                             <Image src="/img/wedo.jpg" width={40} height={40} />
                         </Link>
                     </th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
+                    <td>Michel Marion</td>
+                    <td>18/05/2021 3:01 PM</td>
                     <td>@fat</td>
-                    <td>@mdo</td>
+                    <td><Bouton color={'primary'} texte={'Completed'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
                     <th scope="row" className="pictureClient">
@@ -49,10 +50,10 @@ const CardActivityWidget =()=>{
                             <Image src="/img/wedo.jpg" width={40} height={40} />
                         </Link>
                     </th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
+                    <td>Omari Akunylili</td>
+                    <td>18/05/2021 6:01 PM</td>
                     <td>@twitter</td>
-                    <td>@mdo</td>
+                    <td><Bouton color={'success'} texte={'Completed'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                 </tbody>
                 </Table>
