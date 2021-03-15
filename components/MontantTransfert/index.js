@@ -20,36 +20,83 @@ const Example = (props) => {
   let data5="";
   let data6="";
 
+
+  let OriginCurrency=[];
+  let DestinationCurrency=[];
+
   if(transaction.TrPaysOrigine=="GABON")
   {
     data1="selected";
+    OriginCurrency=[
+      {
+        device:"XAF",
+      }
+    ]
   }
   if(transaction.TrPaysOrigine=="MAROC")
   {
     data2="selected";
+    OriginCurrency=[
+      {
+        device:"MAD",
+      }
+      
+    ]
   }
   if(transaction.TrPaysOrigine=="AFRIQUE DU SUD")
   {
     data3="selected";
+    OriginCurrency=[
+      {
+        device:"USD",
+        
+      },
+      {
+        device:"RAND",
+      }
+    ]
   }
 
   if(transaction.TrPaysDestinataire=="GABON")
   {
     data4="selected";
+    DestinationCurrency=[
+      {
+        device:"XAF",
+      }
+    ]
   }
   if(transaction.TrPaysDestinataire=="MAROC")
   {
     data5="selected";
+    DestinationCurrency=[
+      {
+        device:"MAD",
+      }
+    ]
   }
   if(transaction.TrPaysDestinataire=="AFRIQUE DU SUD")
   {
     data6="selected";
+    DestinationCurrency=[
+      {
+        device:"USD",
+        
+      },
+      {
+        device:"RAND",
+      }
+    ]
   }
 
 
   const saisirMontantRecevoir=(event)=>{
     // let recevoir=event.currentTarget.value;
-    // let envoyer=document.getElementById("envoyer").value;
+   let envoyer=document.getElementById("envoyer").value;
+   let recevoir=document.getElementById("recevoir").value;
+   let currOriginDev=document.getElementById("selectOrigineCurrency").value;
+   let currDestinaDev=document.getElementById("selectDestinataireCurrency").value;
+
     alert("Cette partie est encours de developpement");
   }
 
@@ -81,16 +128,17 @@ const Example = (props) => {
       <Col lg={4} className='d-flex flex-wrap justify-content-center w-50 right'>
             <div className="divInput">
               <label>envoyer</label>
-              <input type="number" id="envoyer" onKeyUp={saisirMontantRecevoir} className="input form-control paysDestinataire" />
+              <input type="number" id="envoyer" onChange={saisirMontantRecevoir} className="input form-control paysDestinataire" />
             </div>
         </Col>
         <Col lg={2} className='d-flex flex-wrap justify-content-center w-50 left' >
             <div className="divInput">
               <label>&nbsp;</label>
-              <select className="form-control" name="select">
-                  <option selected={data1} value="XAF">XAF</option>
-                  <option selected={data2} value="DIRH">DIRHAM</option>
-                  <option selected={data3} value="USD">DOLLAR</option>
+              <select className="form-control" id="selectOrigineCurrency"  name="select">
+                {
+                  OriginCurrency.map((curr,index)=>(<option key={index}>{curr.device}</option>))
+                }
+                  
               </select>
             </div>
         </Col>
@@ -103,10 +151,10 @@ const Example = (props) => {
         <Col lg={2} className='d-flex flex-wrap justify-content-center w-50 left' >
             <div className="divInput">
               <label>&nbsp;</label>
-              <select className="form-control" name="select">
-                  <option selected={data4} value="XAF">XAF</option>
-                  <option selected={data5} value="DIRH">DIRHAM</option>
-                  <option selected={data6} value="USD">DOLLAR</option>
+              <select className="form-control" id="selectDestinataireCurrency" name="select">
+                {
+                  DestinationCurrency.map((curr,index)=>(<option key={index}>{curr.device}</option>))
+                }
               </select>
             </div>
         </Col>

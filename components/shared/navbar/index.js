@@ -35,7 +35,7 @@ const ListeMenu = [
   },
   {
     texte: "A propos",
-    lien: "/",
+    lien: "/apropos",
   },
   {
     texte: "Contact",

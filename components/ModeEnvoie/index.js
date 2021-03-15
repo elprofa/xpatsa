@@ -51,8 +51,8 @@ const Example = (props) => {
             <label>Billing information</label>
             <select className="form-control" name="select" onChange={billingInformationChoosed} >
                 <option value='' >Aucun</option>
-                <option value='ESPECE' selected={data1}>En espèce</option>
-                <option value='AIRTEL MONEY' selected={data2}>Par airtel money</option>
+                <option value='ESPECE' selected={data1}>ESPECE</option>
+                <option value='AIRTEL MONEY' selected={data2}>AIRTEL MONEY</option>
             </select>
           </div>
           </Col>

@@ -67,19 +67,19 @@ const Example = (props) => {
               <label>Pays expéditeur</label>
               <select className="form-control" name="select" onChange={countryOrigineChoosed} >
                   <option value='' >Aucun</option>
-                  <option selected={data1} value='GABON'>Gabon F.Cfa</option>
-                  <option selected={data2} value='MAROC'>Maroc Dirhams</option>
-                  <option selected={data3} value='AFRIQUE DU SUD'>Sud Afrique Rand</option>
+                  <option selected={data1} value='GABON'>GABON</option>
+                  <option selected={data2} value='MAROC'>MAROC</option>
+                  <option selected={data3} value='AFRIQUE DU SUD'>AFRIQUE DU SUD</option>
               </select>
             </div>
         
           <div className="divInput">
             <label>Pays destinataire</label>
             <select className="form-control" id="exampleSelect1" onChange={countryDestinataireChoosed}>
-                  <option value='' selected={data1}>Aucun</option>
-                  <option value='GABON' selected={data4}>Gabon F.Cfa</option>
-                  <option value='MAROC' selected={data5}>Maroc Dirhams</option>
-                  <option value='AFRIQUE DU SUD' selected={data6}>Sud Afrique Rand</option>
+                <option value=''>Aucun</option>
+                <option value='GABON' selected={data4}>GABON</option>
+                <option value='MAROC' selected={data5}>MAROC</option>
+                <option value='AFRIQUE DU SUD' selected={data6}>AFRIQUE DU SUD</option>
             </select>
           </div>
           </Col>
