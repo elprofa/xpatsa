@@ -17,6 +17,7 @@ import {
 } from "reactstrap";
 import { toast, Zoom } from "react-toastify";
 
+import Step4 from "../DetailsTransaction";
 import Step3 from "../MontantTransfert";
 import Step2 from "../ModeEnvoie";
 import Step1 from "../PersonalInfo";
@@ -38,6 +39,11 @@ const customSteps = [
     number: "3",
     component: <Step3 />,
   },
+  {
+    label: "Details transaction",
+    number: "4",
+    component: <Step4 />,
+  },
 ];
 
 const transfert = (props) => {
@@ -57,6 +63,10 @@ const transfert = (props) => {
         case 2:
           lienIcon="/img/stepIcon3.svg"
           break;
+
+        case 3:
+            lienIcon="/img/stepIcon4.png"
+            break;
       
         default:
           lienIcon="/img/stepIcon3.svg"
