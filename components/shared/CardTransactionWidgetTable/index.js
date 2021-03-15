@@ -35,7 +35,13 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 3:01 AM</td>
                     <td>18/05/2021 3:01 AM</td>
                     <td>18/05/2021 3:01 AM</td>
-                    <td>@mdo</td>
+                    <td className='pays'><span>Libreville,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/ga.jpg" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span>
+                    </td>
                     <td><Bouton color={'success'} texte={'Completed'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
@@ -48,7 +54,12 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 3:01 PM</td>
                     <td>18/05/2021 3:01 PM</td>
                     <td>18/05/2021 3:01 PM</td>
-                    <td>@fat</td>
+                    <td className='pays'><span>Casablanca,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/drapeau-maroc.png" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span></td>
                     <td><Bouton color={'success'} texte={'Completed'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
@@ -61,7 +72,13 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 6:01 PM</td>
                     <td>18/05/2021 6:01 PM</td>
                     <td>18/05/2021 6:01 PM</td>
-                    <td>@twitter</td>
+                    <td className='pays'><span>Libreville,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/ga.jpg" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span>
+                    </td>
                     <td><Bouton color={'success'} texte={'Completed'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
@@ -74,7 +91,13 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 6:01 PM</td>
                     <td>18/05/2021 6:01 PM</td>
                     <td>18/05/2021 6:01 PM</td>
-                    <td>@twitter</td>
+                    <td className='pays'><span>Libreville,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/ga.jpg" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span>
+                    </td>
                     <td><Bouton color={'danger'} texte={'Panding'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
@@ -87,7 +110,13 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 6:01 PM</td>
                     <td>18/05/2021 6:01 PM</td>
                     <td>18/05/2021 6:01 PM</td>
-                    <td>@twitter</td>
+                    <td className='pays'><span>Libreville,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/ga.jpg" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span>
+                    </td>
                     <td><Bouton color={'danger'} texte={'Panding'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
@@ -100,7 +129,13 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 9:01 PM</td>
                     <td>18/05/2021 9:01 PM</td>
                     <td>18/05/2021 9:01 PM</td>
-                    <td>@twitter</td>
+                    <td className='pays'><span>Libreville,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/ga.jpg" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span>
+                    </td>
                     <td><Bouton color={'danger'} texte={'Panding'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
@@ -113,7 +148,12 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 11:01 PM</td>
                     <td>18/05/2021 11:01 PM</td>
                     <td>18/05/2021 11:01 PM</td>
-                    <td>@twitter</td>
+                    <td className='pays' ><span>Tanger,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/drapeau-maroc.png" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span></td>
                     <td><Bouton color={'danger'} texte={'Panding'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                     <tr>
@@ -126,7 +166,13 @@ const CardTransactionWidgetTable =()=>{
                     <td>18/05/2021 11:01 PM</td>
                     <td>18/05/2021 11:01 PM</td>
                     <td>18/05/2021 11:01 PM</td>
-                    <td>@twitter</td>
+                    <td className='pays'><span>Rabat,</span>
+                        <span>
+                            <Link href="/">
+                                <Image src="/img/drapeau-maroc.png" width={40} height={30} className='ml-1' />
+                            </Link>
+                        </span>
+                    </td>
                     <td><Bouton color={'danger'} texte={'Panding'} minwidth={'30px'} backgroundcolor={'danger'} /></td>
                     </tr>
                 </tbody>

@@ -10,6 +10,14 @@ margin:15px 0px;
     overflow-x:scroll;
 }
 
+.pays {
+    width: 15%;
+    display: flex-inline;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
 h2.cardTitre {
     font-size: 25px;
     font-weight: 600;
