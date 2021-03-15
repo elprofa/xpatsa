@@ -5,7 +5,9 @@ import { Col, Row, Form, Input, CustomInput, FormGroup, Label } from "reactstrap
 import { useState } from 'react';
 
 import TestContext from '../../ContextAPI/TestContext';
-import MontantTransfertStc from './MontantTransfert.stc'
+import MontantTransfertStc from './MontantTransfert.stc';
+import {getResult, getRate} from '../shared/utils/utils.js';
+
 
 const Example = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -90,15 +92,52 @@ const Example = (props) => {
   }
 
 
-  const saisirMontantRecevoir=(event)=>{
+  const saisirMontantEnvoi=(event)=>{
     // let recevoir=event.currentTarget.value;
    let envoyer=document.getElementById("envoyer").value;
+   let currOriginDev=document.getElementById("selectOrigineCurrency").value;
+   let currDestinaDev=document.getElementById("selectDestinataireCurrency").value;
+  
+   
+
+  let resultat=getResult(currOriginDev,currDestinaDev,envoyer);
+  const primise1 = Promise.resolve(resultat);
+  primise1.then((valeur) => {
+    document.getElementById("recevoir").value=valeur;
+  });
+
+  // elprofa is trying to fetch rate data 
+  let rate=getRate(currOriginDev,currDestinaDev,envoyer);
+  const primise2 = Promise.resolve(rate);
+    primise2.then((valeur) => {
+      //Mise de l'etat "rate"
+      transaction.TrUpdateRate(valeur);
+  });
+}
+
+  const saisirMontantRecevoir=(event)=>{
+    // let recevoir=event.currentTarget.value;
    let recevoir=document.getElementById("recevoir").value;
    let currOriginDev=document.getElementById("selectOrigineCurrency").value;
    let currDestinaDev=document.getElementById("selectDestinataireCurrency").value;
 
-    alert("Cette partie est encours de developpement");
+   let resultat=getResult(currDestinaDev,currOriginDev,recevoir);
+
+   const primise1 = Promise.resolve(resultat);
+ 
+   primise1.then((valeur) => {
+     document.getElementById("envoyer").value=valeur;
+   });  
+
+    // elprofa is trying to fetch rate data 
+  let rate=getRate(currOriginDev,currDestinaDev,recevoir);
+  const primise2 = Promise.resolve(rate);
+    primise2.then((valeur) => {
+      //Mise à jours de l'etat "rate"
+      transaction.TrUpdateRate(valeur);
+  });
   }
+
 
   return (
     <MontantTransfertStc>
@@ -125,16 +164,16 @@ const Example = (props) => {
           </Col>
       </Row>
       <Row form className='mt-5 mb-5'>
-      <Col lg={4} className='d-flex flex-wrap justify-content-center w-50 right'>
+        <Col lg={4} className='d-flex flex-wrap justify-content-center w-50 right'>
             <div className="divInput">
               <label>envoyer</label>
-              <input type="number" id="envoyer" onChange={saisirMontantRecevoir} className="input form-control paysDestinataire" />
+              <input type="number" id="envoyer" onChange={saisirMontantEnvoi} className="input form-control paysDestinataire" />
             </div>
         </Col>
         <Col lg={2} className='d-flex flex-wrap justify-content-center w-50 left' >
             <div className="divInput">
               <label>&nbsp;</label>
-              <select className="form-control" id="selectOrigineCurrency"  name="select">
+              <select className="form-control" id="selectOrigineCurrency"  name="select" onChange={saisirMontantEnvoi}>
                 {
                   OriginCurrency.map((curr,index)=>(<option key={index}>{curr.device}</option>))
                 }
@@ -145,26 +184,35 @@ const Example = (props) => {
         <Col lg={4} className='d-flex flex-wrap justify-content-center w-50 right'>
             <div className="divInput">
               <label>Recevoir</label>
-              <input type="number" id="recevoir" onKeyUp={saisirMontantRecevoir}  className="input form-control paysDestinataire" />
+              <input type="number" id="recevoir" onChange={saisirMontantRecevoir}  className="input form-control paysDestinataire" />
             </div>
         </Col>
         <Col lg={2} className='d-flex flex-wrap justify-content-center w-50 left' >
             <div className="divInput">
               <label>&nbsp;</label>
-              <select className="form-control" id="selectDestinataireCurrency" name="select">
+              <select className="form-control" id="selectDestinataireCurrency" name="select" onChange={saisirMontantRecevoir}>
                 {
                   DestinationCurrency.map((curr,index)=>(<option key={index}>{curr.device}</option>))
                 }
               </select>
             </div>
         </Col>
+        <Col>
+              {
+                <p className="tauxEchange">
+                  Taux de change actuel : <b><em>{transaction.TrRate}</em></b>
+              </p>
+              }
+        </Col>
         <Col lg={12} className='d-flex flex-wrap justify-content-center w-50' >
             <div className="divInput">
               <label>Contact destinataire</label>
               <input type="texte"  className="input form-control paysDestinataire" />
             </div>
+            
         </Col>
       </Row>
+      
     </Form>
     </MontantTransfertStc>
   );

@@ -3,8 +3,6 @@ import TransferForm from "../components/transferFrom";
 // import TransactionProvider from '../ContextAPI/TransactionContext'
  import {TestProvider} from '../ContextAPI/TestContext';
 
- import axios from 'axios';
-
 const TransfertPage = (props) => {
 
   
@@ -15,23 +13,25 @@ const TransfertPage = (props) => {
 
   let reponse="";
 
-  useEffect(()=>{
-    const api=axios.create({
-      baseURL:`https://data.fixer.io/api/latest?access_key=75743a764a2f10cc4d8ab0f08be20066&format=1`
-    });
-    api.get('/').then(res=>{
-      setApiData(res.data.rates.EUR);
+  // useEffect(()=>{
+  //   const api=axios.create({
+  //     baseURL:`https://data.fixer.io/api/convert?access_key=75743a764a2f10cc4d8ab0f08be20066&from=EUR&to=USD&amount=5`
+  //   });
+  //   api.get('/').then(res=>{
+  //     // setApiData(res.data.rates.EUR);
+  //     // console.log(res);
       
-    });
+  //   });
 
-    console.log(ApiData);
-  });
-
-  
+  //   // console.log(ApiData);
+    
+  // });
+  //console.log(getApi("EUR","USD",10));
 
   const [paysOrigine,setPaysOrigine]=useState("");
   const [PaysDestinatinataire,setPaysDestinataire]=useState("");
   const [BillingInformation,setBillingInformation]=useState("");
+  const [rate,setRate]=useState("");
 
   const transaction = { 
     TrPaysOrigine: paysOrigine, 
@@ -39,7 +39,9 @@ const TransfertPage = (props) => {
     TrPaysDestinataire: PaysDestinatinataire,
     TrUpdatePaysDestinataire:setPaysDestinataire,
     TrBillingInformation:BillingInformation,
-    TrUpdateBillingInformation:setBillingInformation
+    TrUpdateBillingInformation:setBillingInformation,
+    TrRate:rate,
+    TrUpdateRate:setRate,
   }
 
 

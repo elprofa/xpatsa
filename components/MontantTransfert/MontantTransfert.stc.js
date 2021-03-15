@@ -49,5 +49,11 @@ const MontantStc=Styled.div`
         margin: 10px 0px;
         border: 1px solid #ccc;
     }
+
+    .tauxEchange
+    {
+        text-align:center;
+        color:#d0cdcd;
+    }
 `;
 export default MontantStc;

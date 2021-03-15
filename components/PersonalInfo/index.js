@@ -16,13 +16,9 @@ const Example = (props) => {
   const transaction = useContext(TestContext);
 
   const countryOrigineChoosed=(event)=>{
-
-    console.log(event.currentTarget.value);
     transaction.TrUpdatePaysOrigine(event.currentTarget.value);
   }
   const countryDestinataireChoosed=(event)=>{
-
-    console.log(event.currentTarget.value);
     transaction.TrUpdatePaysDestinataire(event.currentTarget.value);
   }
   
