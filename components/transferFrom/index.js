@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import Loki from "react-loki";
 import clsx from "clsx";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import Image from 'next/image';
@@ -19,6 +19,7 @@ import {
 import { toast, Zoom } from "react-toastify";
 
 
+import Step4 from "../RecapTransfert";
 import Step3 from "../MontantTransfert";
 import Step2 from "../ModeEnvoie";
 import Step1 from "../PersonalInfo";
@@ -39,6 +40,11 @@ const customSteps = [
     label: "Payment details",
     number: "3",
     component: <Step3 />,
+  },
+  {
+    label: "Payment detailss",
+    number: "4",
+    component: <Step4 />,
   },
 ];
 

@@ -25,15 +25,15 @@ const Example = (props) => {
   let data1="";
   let data2="";
   let data3="";
-  if(transaction.TrPaysOrigine=="GABON")
+  if(transaction.TrPaysOrigine=="Gabon")
   {
     data1="selected";
   }
-  if(transaction.TrPaysOrigine=="MAROC")
+  if(transaction.TrPaysOrigine=="Maroc")
   {
     data2="selected";
   }
-  if(transaction.TrPaysOrigine=="AFRIQUE DU SUD")
+  if(transaction.TrPaysOrigine=="Afrique du sud")
   {
     data3="selected";
   }
@@ -41,15 +41,15 @@ const Example = (props) => {
   let data4="";
   let data5="";
   let data6="";
-  if(transaction.TrPaysDestinataire=="GABON")
+  if(transaction.TrPaysDestinataire=="Gabon")
   {
     data4="selected";
   }
-  if(transaction.TrPaysDestinataire=="MAROC")
+  if(transaction.TrPaysDestinataire=="Maroc")
   {
     data5="selected";
   }
-  if(transaction.TrPaysDestinataire=="AFRIQUE DU SUD")
+  if(transaction.TrPaysDestinataire=="Afrique du sud")
   {
     data6="selected";
   }
@@ -63,9 +63,9 @@ const Example = (props) => {
               <label>Pays expéditeur</label>
               <select className="form-control" name="select" onChange={countryOrigineChoosed} >
                   <option value='' >Aucun</option>
-                  <option selected={data1} value='GABON'>GABON</option>
-                  <option selected={data2} value='MAROC'>MAROC</option>
-                  <option selected={data3} value='AFRIQUE DU SUD'>AFRIQUE DU SUD</option>
+                  <option selected={data1} value='Gabon'>Gabon</option>
+                  <option selected={data2} value='Maroc'>Maroc</option>
+                  <option selected={data3} value='Afrique du sud'>Afrique du sud</option>
               </select>
             </div>
         
@@ -73,9 +73,9 @@ const Example = (props) => {
             <label>Pays destinataire</label>
             <select className="form-control" id="exampleSelect1" onChange={countryDestinataireChoosed}>
                 <option value=''>Aucun</option>
-                <option value='GABON' selected={data4}>GABON</option>
-                <option value='MAROC' selected={data5}>MAROC</option>
-                <option value='AFRIQUE DU SUD' selected={data6}>AFRIQUE DU SUD</option>
+                <option value='Gabon' selected={data4}>Gabon</option>
+                <option value='Maroc' selected={data5}>Maroc</option>
+                <option value='Afrique du sud' selected={data6}>Afrique du sud</option>
             </select>
           </div>
           </Col>

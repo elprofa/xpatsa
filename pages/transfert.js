@@ -32,6 +32,13 @@ const TransfertPage = (props) => {
   const [PaysDestinatinataire,setPaysDestinataire]=useState("");
   const [BillingInformation,setBillingInformation]=useState("");
   const [rate,setRate]=useState("");
+  const [fees,setFees]=useState("");
+  const [total,setTotal]=useState("");
+  const [currFrom,setCurrFrom]=useState("");
+  const [currTo,setCurrTo]=useState("");
+  const [amountSent,setAmountSent]=useState("0");
+  const [amountReceived,setAmountReceived]=useState("1");
+  const [amFee,setAmFee]=useState("");
 
   const transaction = { 
     TrPaysOrigine: paysOrigine, 
@@ -42,6 +49,20 @@ const TransfertPage = (props) => {
     TrUpdateBillingInformation:setBillingInformation,
     TrRate:rate,
     TrUpdateRate:setRate,
+    TrFees:fees,
+    TrUpdateFees:setFees,
+    TrTotal:total,
+    TrUpdateTotal:setTotal,
+    TrCurrFrom:currFrom,
+    TrUpdateCurrFrom:setCurrFrom,
+    TrCurrTo:currTo,
+    TrUpdateCurrTo:setCurrTo,
+    TrAmountSent:amountSent,
+    TrUpdateAmountSent:setAmountSent,
+    TrAmountReceived:amountReceived,
+    TrUpdateAmountReceived:setAmountReceived,
+    TrAmFee:amFee,
+    TrUpdateAmFee:setAmFee
   }
 
 
