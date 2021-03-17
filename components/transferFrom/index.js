@@ -27,22 +27,22 @@ import TransferFromWrap from "./transferFrom.stc";
 
 const customSteps = [
   {
-    label: "Personal information",
+    label: "Destination",
     number: "1",
     component: <Step1 />,
   },
   {
-    label: "Billing information",
+    label: "Base de calcul",
     number: "2",
     component: <Step2 />,
   },
   {
-    label: "Payment details",
+    label: "Informations financières",
     number: "3",
     component: <Step3 />,
   },
   {
-    label: "Payment detailss",
+    label: "Recapitulatif",
     number: "4",
     component: <Step4 />,
   },

@@ -70,7 +70,6 @@ const Example = (props) => {
                 <option value='1' selected={data1}>A partir de la somme que je dispose en espèce(Frais exclus)</option>
                 <option value='2' selected={data2}>A partir de la somme que je dispose en espèce(Frais inclus)</option>
                 <option value='3' selected={data3}>A partir de la somme dans mon AIRTEL MONEY</option>
-                <option value='4' selected={data4}>A partir de la somme à recevoir par le bénéficiaire</option>
             </select>
           </div>
           </Col>
