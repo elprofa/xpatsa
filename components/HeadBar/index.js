@@ -37,7 +37,12 @@ const HeadBar =(props)=>{
                            <input type="texte" className="form-control" placeholder="recherche ici ...." />
                         </Col>
                         <Col md={4} lg={2} className="divBoutonNew">
-                           <MonBouton backgroundcolor="#2362bf" texte="Nouvelle transaction" />
+                        <Link href="/save-transaction">
+                            <a>
+                                <MonBouton backgroundcolor="#2362bf" texte="Nouvelle transaction" />
+                            </a>
+                        </Link>
+                           
                         </Col>
                         <Col lg={3} md={4} className="divIconNotification">
                            <a>

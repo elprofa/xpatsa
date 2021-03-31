@@ -10,7 +10,7 @@ const BoutonStc = styled(Button)`
   min-height: 40px;
   position: relative;
   overflow: hidden;
-  font-size: 12px;
+  font-size: ${(props) => props.taille || "12px"};
   @media (min-width: 900px) {
     min-width: 80px;
     min-height: 40px;
