@@ -9,6 +9,19 @@ import {gql, useQuery,useMutation} from '@apollo/client';
 import useForm from "../../../lib/useForm";
 
 
+const LISTE_CLIENT=gql`
+ query 
+{ 
+	clients
+  { 
+    id
+  	name
+    firstname
+    pays
+    telephone
+  }
+}
+`;
 const CREATE_TRANSACTION=gql`
 mutation CREATE_TRANSACTION(
         $fees:Int!
@@ -17,7 +30,8 @@ mutation CREATE_TRANSACTION(
         $sent:Int!
         $from:String!
         $to:String!
-        $client:ID!
+        $client:ID
+        $paid:Boolean!
     )
     { 
         createTransaction(input:
@@ -31,7 +45,7 @@ mutation CREATE_TRANSACTION(
                     from:$from,
                     to:$to,
                     client:$client,
-                    paid:false
+                    paid:$paid
                 }
             }
         )
@@ -57,7 +71,8 @@ mutation CREATE_TRANSACTION(
       });
       
     // const {data,error,loading}=useQuery(CLIENT_MUTATION);
-
+    const response=useQuery(LISTE_CLIENT);
+    
     const [create,{data,error,loading}]=useMutation(CREATE_TRANSACTION,{
         variables:inputs
     });
@@ -80,6 +95,10 @@ mutation CREATE_TRANSACTION(
     if(error){
         return <p>En Erreur</p>
     }
+
+    
+
+
     return(
         <FormSaveTransactionStc>
             <h2 className="cardTitre">Enregistrement d'une transactions</h2>
@@ -89,25 +108,34 @@ mutation CREATE_TRANSACTION(
                         <Col lg={3}>
                             <div className="form-group">
                                 <label> A envoyer</label>
-                                <input type="number" value={inputs.sent} onChange={handleChange} name="sent" placeholder="Montant à envoyer" className="form-control" />
+                                <input type="number" min="0" value={inputs.sent} onChange={handleChange} name="sent" placeholder="Montant à envoyer" className="form-control" />
                             </div>
                         </Col>
                         <Col lg={3}>
                             <div className="form-group">
                                 <label>Devise</label>
-                                <input type="texte" name="from" placeholder="Devise" value={inputs.from} onChange={handleChange} className="form-control" />
+                                <select className='form-control' name="from" onChange={handleChange}>
+                                    <option value="XAF">FR CFA</option>
+                                    <option value="MAD">DIRHAM</option>
+                                    <option value="USD">DOLLAR</option>
+                                </select>
                             </div>
                         </Col>
                         <Col lg={3}>
                             <div className="form-group">
                                 <label>A recevoir</label>
-                                <input type="number" name="received" placeholder="A recevoir" value={inputs.received} onChange={handleChange} className="form-control" />
+                                <input type="number" min="0" name="received" placeholder="A recevoir" value={inputs.received} onChange={handleChange} className="form-control" />
                             </div>
                         </Col>
                         <Col lg={3}>
                             <div className="form-group">
                                 <label>Devise</label>
-                                <input type="texte" name="to" placeholder="Devise" value={inputs.to} onChange={handleChange} className="form-control" />
+                                <select className='form-control' name="to" onChange={handleChange}>
+                                    <option value="MAD">DIRHAM</option>
+                                    <option value="XAF">FR CFA</option>
+
+                                    <option value="USD">DOLLAR</option>
+                                </select>
                             </div>
                         </Col>
                         <Col lg={3}>
@@ -125,15 +153,26 @@ mutation CREATE_TRANSACTION(
                         <Col lg={2}>
                             <div className="form-group">
                                 <label>Payé ?</label>
-                                <input type="texte" name="paid" placeholder="Payé ?" value={inputs.paid} onChange={handleChange} className="form-control" />
+                                <select className='form-control' name="paid" onChange={handleChange}>
+                                    <option value="">NON</option>
+                                    <option value="true">OUI</option>
+                                    
+                                </select>
                             </div>
                         </Col>
                         <Col lg={4}>
                             <div className="form-group">
                                 <label>Client</label>
-                                <select className="form-control">
+                                <select className="form-control" name="client" onChange={handleChange}>
+                                    <option value="0">------- Plutard ----------</option>
+                                    {
+                                        response.data?.clients.map((client,index)=>(
+                                            <option key={index} value={client.id } >{client.firstname} {client.name}</option>
+                                        ))
+                                    }
                                     <option value="23">Wedo profan</option>
                                 </select>
+                               
                             </div>
                         </Col>
                         

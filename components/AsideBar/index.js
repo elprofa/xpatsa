@@ -64,7 +64,9 @@ const Chart = dynamic(
         <NavStc id="sidebar" className="hidden">
             <div className="sidebar-header">
                 <Link href="/">
-                    <Image src="/img/Logo_Xpatsa.png" width={100} height={100} />
+                    <a>
+                        <Image src="/img/Logo_Xpatsa.png" width={100} height={100} />
+                    </a>
                 </Link>
                 
             </div>

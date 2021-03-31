@@ -134,7 +134,7 @@ const Example = (props) => {
         <Form>
             <Row form >
                 <Col lg={12} className='d-flex flex-wrap justify-content-center head'>
-                    <h1>Wedo profan</h1>
+                    <h1>Récapitulatif de votre transaction</h1>
                     <p>Veuillez trouver ci-dessous le recapitulatif de votre transaction</p>
                 </Col>
                 {
