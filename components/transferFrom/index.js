@@ -4,7 +4,7 @@ import clsx from "clsx";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-import Image from 'next/image';
+import Image from "next/image";
 import {
   Container,
   Row,
@@ -27,7 +27,7 @@ import TransferFromWrap from "./transferFrom.stc";
 
 const customSteps = [
   {
-    label: "Personal information",
+    label: "Où allez-vous envoyer l'argent?",
     number: "1",
     component: <Step1 />,
   },
@@ -52,22 +52,22 @@ const transfert = (props) => {
   const _customRenderer = ({ currentStep }) => {
     const steps = customSteps.map((step, index) => {
       const isActive = currentStep === index + 1;
-      let lienIcon="";
+      let lienIcon = "";
 
       switch (index) {
         case 0:
-          lienIcon="/img/stepIcon1.svg"
+          lienIcon = "/img/stepIcon1.svg";
           break;
 
         case 1:
-          lienIcon="/img/stepIcon2.svg"
+          lienIcon = "/img/stepIcon2.svg";
           break;
         case 2:
-          lienIcon="/img/stepIcon3.svg"
+          lienIcon = "/img/stepIcon3.svg";
           break;
-      
+
         default:
-          lienIcon="/img/stepIcon3.svg"
+          lienIcon = "/img/stepIcon3.svg";
           break;
       }
       return (
@@ -78,17 +78,16 @@ const transfert = (props) => {
           <a href="#/" onClick={(e) => e.preventDefault()}>
             <table className="table">
               <tr>
-                <td className="tdLeft"> 
-                    <div className="step-indicator">{step.number}</div>
+                <td className="tdLeft">
+                  <div className="step-indicator">{step.number}</div>
                 </td>
                 <td className="tdCenter">
-                  
-                <Image 
+                  <Image
                     src={lienIcon}
                     alt="Picture of computer"
-                    width="80" 
+                    width="80"
                     height="80"
-                />
+                  />
                 </td>
                 <td className="tdRight">
                   <div className="label ml-2">{step.label}</div>
@@ -114,7 +113,6 @@ const transfert = (props) => {
     backHandler,
     nextHandler,
   }) => {
-    
     return (
       <div className="actions">
         <Button
