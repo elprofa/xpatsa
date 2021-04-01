@@ -59,13 +59,6 @@ const FormLogin = (props) => {
         path: '/',
       });
 
-      const cookies = parseCookies();
-
-      MyCtx.navBarItem.NbSetItem6("Mon compte");
-      MyCtx.navBarItem.NbSetLienItem6("/dashboard");
-      MyCtx.navBarItem.NbSetItem7("X");
-      MyCtx.navBarItem.NbSetLienItem7("");
-
       resetForm();
   }
 
