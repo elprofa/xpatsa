@@ -5,14 +5,19 @@ import BoutonStc from "./Bouton.stc";
 import { BsChevronRight } from "react-icons/bs";
 
 const Bouton = (props) => {
-  const { texte, backgroundcolor, bordercolor, color, minwidth, icon } = props;
+  const { texte, backgroundcolor, bordercolor, color, minwidth, icon,type } = props;
+  // console.log(props);
+
   return (
-    <BoutonStc
+    <BoutonStc 
+      type={type}
       variant="primary"
       bordercolor={bordercolor}
       color={color}
       minwidth={minwidth}
       backgroundcolor={backgroundcolor}
+      taille={props.taille}
+      
     >
       {texte}{" "}
       {icon ? (

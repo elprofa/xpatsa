@@ -3,6 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import Titre from "../Titre/Titre";
 import Bouton from "../Bouton/Bouton";
 import Image from "next/image";
+import Link from 'next/link';
 import {
   Carousel,
   CarouselItem,
@@ -13,19 +14,32 @@ import {
 
 const items = [
   {
-    src: "/img/slide3.jpg",
-    altText: "Slide 1",
-    caption: "Slide 1",
+    src: "/img/slide11.jpg",
+    titre:"La solution pour envoyer l'argent à l'etranger",
+    altText: "Slide 10",
+    caption: "Et si l’argent n’avait plus de frontière? Avec XPATSA Transférez de l'argent à l'international avec "+
+    " une rapidité,sécurité et efficacité impressionnante.Jamais il n'a été aussi simple "+"d'envoyer de l'argent. "+
+    "Alors Pensez à votre famille, vos amis et vos proches en leur faisant un geste avec nos services de transfert.",
+    lien:"transfert",
+    bouton:"SIMULER VOTRE TRANSFERT ICI"
   },
   {
-    src: "/img/slide2.jpg",
+    src: "/img/slide6.jpg",
     altText: "Slide 2",
-    caption: "Slide 2",
+    titre:"Nous aidons et accompagnons les étudiants",
+    caption: "XPATSA, aide et accompagne les étudiants dans les démarches administratives pour les études a l’etranger "+
+    "(Maroc).Confiez-nous votre dossier et vous aurez les résultats ahurissants. Avec une équipe experte professionnelle "+
+    "dans ce qu’elle fait, étudier à l’etranger n’est plus un casse-tête.",
+    lien:"contact",
+    bouton:"Contactez-nous"
   },
   {
-    src: "/img/slide1.jpg",
+    src: "/img/slide10.jpg",
     altText: "Slide 3",
-    caption: "Slide 3",
+    titre:"Vous pouvez nous faire confiance",
+    caption: "Notre service est toujours disponible, n'hésitez pas à nous contacter, une équipe dynamique est en place pour répondre à toutes vos préoccupations.",
+    lien:"contact",
+    bouton:"Contactez-nous"
   },
 ];
 
@@ -62,19 +76,20 @@ const Example = (props) => {
         <Container className="containerHome d-none d-lg-block ">
           <Row>
             <Col sm={6} className="colAccueilLeft">
-              <Titre texte="Aide pour étudiant" underline="2" color="#fff" />
+              <Titre texte={item.titre} underline="2" color="#fff" />
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Facilis enim adipisci aliquam ut quam incidunt veniam rem,
-                recusandae repellat blanditiis corporis vitae, mollitia illum
-                eligendi officiis quisquam nesciunt, sequi esse!
+               {item.caption}
               </p>
-              <Bouton
-                texte="COMMENCEZ"
-                icon="true"
-                color="#fff"
-                backgroundcolor="#007bff"
-              />
+              <Link href={item.lien}>
+                <a>
+                    <Bouton
+                      texte={item.bouton}
+                      icon="true"
+                      color="#fff"
+                      backgroundcolor="#007bff"
+                    />
+                </a>
+              </Link>
             </Col>
           </Row>
         </Container>

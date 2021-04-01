@@ -16,10 +16,10 @@ const Menu = (props) => {
   const toggle = () => setIsOpen(!isOpen);  
 
   return (
-    <MenuStc className={router.pathname == lien ? "active" : ""}>
+    <MenuStc className={router.pathname == lien ? "active "+ props.myClass : props.myClass } >
         <Link href={lien}>
         <NavLink href={lien}>
-            {texte}
+            {texte} {props.icon}
         </NavLink>
         </Link>
     </MenuStc>

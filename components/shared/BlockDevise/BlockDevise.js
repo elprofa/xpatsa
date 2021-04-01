@@ -14,7 +14,9 @@ const BlockDevise = (props) => {
             <BsFillStopwatchFill/>RAPIDE
           </h1>
           <p>
-            Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.
+            Le transfert d'argent via XPATSA vous laisse sans voix, 95% de nos transactions sont livrées en quelques minutes.
+            Vous configurez votre premier transfert en 3 étapes seulement et en un seul clic pour
+            les transferts récurrents.
           </p>
         </BlockDeviseStc>
       </Col>
@@ -24,7 +26,8 @@ const BlockDevise = (props) => {
             <BsFillLockFill/>SECURISE
           </h1>
           <p>
-            Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.
+            Doté d’un système stable, sûr, d’un réseau de qualité fiable avec une technologie de pointe, XPATSA protège
+            votre argent et garantit qu'il arrive en toute sécurité à chaque fois.
           </p>
         </BlockDeviseStc>
       </Col>
@@ -33,8 +36,7 @@ const BlockDevise = (props) => {
           <h1>
             <BsPersonCheckFill/>EFFICACITE
           </h1>
-          <p>
-            Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.
+          <p>Nous offrons d'excellents taux de change et des frais peu élevés afin de satisfaire en mieux nos clients.Alors n'atendez plus, faites des économies avec Xpatsa.
           </p>
         </BlockDeviseStc>
       </Col>
