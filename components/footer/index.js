@@ -1,4 +1,6 @@
 import React from "react";
+import { useRouter } from "next/router";
+
 import { RangerFooter } from "./footer.stc";
 import { FaFacebookSquare, FaTwitterSquare, FaLinkedin } from "react-icons/fa";
 import {
@@ -14,7 +16,15 @@ import Link from "next/link";
 
 import { BiMobileAlt } from "react-icons/bi";
 
+
 const PiedDePage = (props) => {
+
+  const router = useRouter();
+
+  if(router.pathname !="/dashboard" && router.pathname !="/transaction" && router.pathname !="/client" 
+  && router.pathname !="/analyse" && router.pathname !="/setting")
+  {
+  
   return (
     <RangerFooter>
       <Container>
@@ -75,6 +85,11 @@ const PiedDePage = (props) => {
       </Container>
     </RangerFooter>
   );
+  }
+  else
+  {
+    return <></>
+  }
 };
 
 export default PiedDePage;

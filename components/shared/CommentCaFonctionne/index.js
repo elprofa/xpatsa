@@ -2,7 +2,7 @@ import { Container, Row, Col, Card } from "reactstrap";
 import { BsFillStopwatchFill } from "react-icons/bs";
 import BlockFonctionnement from "../BlockFonctionnement/BlockFonctionnement";
 import CommentCaFonctionneStc from "../CommentCaFonctionne/CommentCaFonctionne.stc";
-
+import Link from 'next/link';
 import Bouton from "../Bouton/Bouton";
 import Titre from "../Titre/Titre";
 
@@ -11,7 +11,8 @@ const Listeblock = [
     titre: "1. Simuler votre transaction",
     color: "#007bff",
     paragraphe:
-      "Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût",
+      "Il s'agit ici de faire une simulation sur votre transaction en utilisant un formulaire proposé par XPATSA pour "+
+      "avoir une idée sur les tarifs proposés par celui-ci",
     icon: "/img/fpic1.svg",
     key: "je",
   },
@@ -19,7 +20,7 @@ const Listeblock = [
     titre: "2. Entrer le destinataire ",
     color: "#007bff",
     paragraphe:
-      "Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût",
+      "Il vous suffit juste de saisir les contacts du destinataire après avoir tombé d'accord avec XPATSA sur les tarifs proposés",
     icon: "/img/fpic2.svg",
     key: "suis",
   },
@@ -27,7 +28,7 @@ const Listeblock = [
     titre: "3. Confirmer et envoyer",
     color: "#007bff",
     paragraphe:
-      "Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût",
+      "Un clic suffit pour réaliser cette opération. et voilà vous avez transféré l'argent à votre destinataire",
     icon: "/img/fpic3.svg",
     key: "elprofa",
   },
@@ -50,12 +51,16 @@ const CommentCaFonctionne = (props) => {
             </Col>
           ))}
         </Row>
-        <Bouton
-          texte="COMMENCEZ MAITENANT "
-          backgroundcolor="#007bff"
-          color="#fff"
-          icon="true"
-        />
+        <Link href="transfert">
+            <a>
+              <Bouton
+                texte="COMMENCEZ MAITENANT "
+                backgroundcolor="#007bff"
+                color="#fff"
+                icon="true"
+              />
+          </a>
+        </Link>
       </Container>
     </CommentCaFonctionneStc>
   );

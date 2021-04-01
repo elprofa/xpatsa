@@ -27,25 +27,21 @@ const ListeGrille = [
     texteTitre: "Aide aux etudiants",
     colorTitre: "#007bff",
     paragraphe:
-      "Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.",
-    picture: "/img/apropos-pic5.jpg",
+      "XPATSA, aide et accompagne les étudiants dans les démarches administratives pour les études a l’etranger (Maroc)."+
+      "Confiez-nous votre dossier et vous aurez les résultats ahurissants. Avec une équipe experte professionnelle dans "+
+      "ce qu’elle fait, étudier à l’etranger n’est plus un casse-tête.",
+    picture: "/img/apropos-pic4.jpg",
   },
   {
     position: "right",
     texteTitre: "Aides médicales",
     colorTitre: "#007bff",
     paragraphe:
-      "Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.",
-    picture: "/img/apropos-pic3.jpg",
-  },
-  {
-    position: "left",
-    texteTitre: "Aide pour VISA et Carte de séjours",
-    colorTitre: "#007bff",
-    paragraphe:
-      "Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients.",
-    picture: "/img/apropos-pic4.jpg",
-  },
+      "Sans prise en charge médicale à l’etranger la vie devient encore plus compliquée surtout pour un étudiant, "+
+      "Cependant l’obtention de l' assurance maladie n’a toujours pas été facile. Dans le souci de donner une meilleure "+
+      "vie aux étrangers, XPATSA vous accompagne dans la procédure d’obtention de l’assurance maladie à l’etranger.",
+    picture: "/img/slide7.jpg",
+  }
 ];
 
 export default function Apropos() {
@@ -53,7 +49,7 @@ export default function Apropos() {
     <Wrapper>
       <Row>
         <Col sm={12}>
-          <ImageAccueil picture="/img/student.jpg" />
+          <ImageAccueil picture="/img/children.jpg" />
         </Col>
       </Row>
       <Container>
@@ -61,8 +57,11 @@ export default function Apropos() {
           position="right"
           texteTitre="XPATSA"
           colorTitre="#007bff"
-          paragraphe="Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients."
-          picture="/img/apropos-pic1.svg"
+          paragraphe="XPATSA est une agence qui vous permet de faire parvenir de l’argent soit à vos proches,parents, amis clients
+          ou autres a l’etranger.Et si l’argent n’avait plus de frontière? Avec XPATSA Transférez de l'argent à 
+          l'international avec une rapidité,sécurité et efficacité impressionnante.
+          Présent actuellement dans trois (3) pays: GABON, AFRIQUE DU SUD & MAROC. Bientôt dans d'autres pays."
+          picture="/img/apropos-pic2.jpg"
         />
         <div className="divMiddle">
           {ListeGrille.map((grille) => (
@@ -75,19 +74,26 @@ export default function Apropos() {
               picture={grille.picture}
             />
           ))}
-          <Bouton
-            texte="COMMENCEZ MAITENANT "
-            backgroundcolor="#007bff"
-            bordercolor="007bff"
-            color="#fff"
-            icon="true"
-          />
+
+          <Link href="contact">
+            <a>
+              <Bouton
+                texte="COMMENCEZ MAITENANT "
+                backgroundcolor="#007bff"
+                bordercolor="007bff"
+                color="#fff"
+                icon="true"
+              />
+            </a>
+          </Link>
         </div>
         <GrilleComponent
           position="right"
           texteTitre="Dsponible dans 3 pays d'Afrique"
           colorTitre="#007bff"
-          paragraphe="Etre la passerelle entre les parents et étudiants vivant à la reference en matière  de transaction monétaire venant de vos proches à moindre coût, de facon pratique et efficace, avec pour optique de construire dune relation pour la vie avec ses clients."
+          paragraphe="Nous sommes actuellement présents dans 3 pays d'Afrique: Gabon,Afrique du Sud et le Maroc. 
+          Notre conquête ne s'arrête pas, nous visons de conquérir d'autre pays dans un intervalle de temps bien court.
+           Restez informer et abonnez-vous sur notre Newsletter pour ne manquer aucune information sur XPATSA."
           picture="/img/apropos-pic2.jpg"
         />
       </Container>
