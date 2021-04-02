@@ -52,7 +52,7 @@ const CardTransactionWidgetTable =()=>{
             <Table>
                 <thead>
                     <tr>
-                        <th>Client</th>
+                        <th>Clients</th>
                         <th>A envoyer</th>
                         <th>A recevoir</th>
                         <th>Frais</th>
