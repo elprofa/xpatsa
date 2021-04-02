@@ -74,4 +74,3 @@ const TransfertPage = (props) => {
 };
 
 export default TransfertPage; 
- 

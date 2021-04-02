@@ -8,6 +8,7 @@ export const NavbarWrap = styled(Navbar)`
   a,select,button,svg 
   {
     color: ${(props) => (props.pathname === "/" ? "#fff !important" : "inherit")} ;
+    cursor:pointer;
   }
 
 
