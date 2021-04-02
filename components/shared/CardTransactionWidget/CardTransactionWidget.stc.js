@@ -1,54 +1,48 @@
 import Styled from 'styled-components';
 import {Card} from 'reactstrap';
 
-const CardTransactionWidgetStc=Styled(Card)`
+const CardTransactionWidgetTableStc=Styled(Card)`
 padding:15px;
 box-shadow:1px 1px 6px #ccc;
 margin:15px 0px;
+@media (max-width: 768px)
+{
+    overflow-x:scroll;
+}
+
 h2.cardTitre {
     font-size: 25px;
     font-weight: 600;
 }
 
-.cardTransactionHead.row {
-    background: #2362bf;
+
+.pictureClient div 
+{
+    border-radius:100%;
+}
+
+.client span 
+{
+    padding:2px
+}
+
+.yes
+{
+    font-size: 13px;
+    background: green;
+    width: 100%;
+    min-width: 100px !important;
+    padding: 5px 30px;
     color: #fff;
-
-    .col-md-4
-    {
-        padding:0px;
-    }
 }
-
-.cardTransactionHead h4 {
-    font-size: 14px;
-    font-weight: 100;
-}
-
-.cardTransactionColumn
+.no
 {
-    padding:15px;
-    cursor:pointer;
-    &:hover 
-    {
-        background: #2d70d4;
-    }
-}
-.cardTransactionColumn h2 {
-    font-size: 18px;
-    font-weight: 600;
-}
-.cardTransactionColumn.active {
-    background: #2d70d4;
-}
-
-.courbe.row
-{
-    min-height:250px;
-    @media (max-width: 476px)
-    {
-      display:none;
-    }
+    font-size: 13px;
+    background: red;
+    width: 100%;
+    min-width: 100px !important;
+    padding: 5px 35px;
+    color: #fff;
 }
 `;
-export default CardTransactionWidgetStc;
+export default CardTransactionWidgetTableStc;

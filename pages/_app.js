@@ -19,7 +19,8 @@ import '../public/styles/nprogress.css';
 
  function App({ Component, pageProps,apollo}) {
   // const apolloClient = useApollo(pageProps.initialApolloState);
-  console.log(apollo);
+  //console.log(apollo);
+  
   return (
     <ApolloProvider client={apollo}>
       <Layout>
@@ -30,7 +31,6 @@ import '../public/styles/nprogress.css';
 }
 
 App.getInitialProps=async function ({Component,ctx}){
-
   let pageProps={};
   if(Component.getInitialProps){
     pageProps=await Component.getInitialProps(ctx);

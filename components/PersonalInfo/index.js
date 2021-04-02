@@ -6,6 +6,7 @@ import PersonalInfoStc from './FormPersonalInfo.stc';
 import TestContext from '../../ContextAPI/TestContext';
 
 
+
 const Example = (props) => {
   // const {transaction, changePaysO, changePaysD} = useContext(TransactionContext)
   // const [dropdownOpen, setDropdownOpen] = useState(false);
