@@ -59,8 +59,6 @@ const FormLogin = (props) => {
         path: '/',
       });
 
-      
-
       resetForm();
   }
 

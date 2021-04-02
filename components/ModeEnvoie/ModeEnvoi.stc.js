@@ -40,4 +40,4 @@ const ModeEnvoiStc=Styled.div`
         border: 1px solid #ccc;
     }
 `;
-export default ModeEnvoiStc;
+export default ModeEnvoiStc; 

@@ -1,12 +1,11 @@
 import React, {useContext} from "react";
 import { Col, Row, Form, Input } from "reactstrap";
 //import InputGroupButtonDropdownStc from './FormPersonalInfo.stc';
-
 import { useState } from 'react';
 import PersonalInfoStc from './FormPersonalInfo.stc';
 import TestContext from '../../ContextAPI/TestContext';
 
-// import {TransactionContext} from "../../ContextAPI/TransactionContext"
+
 
 
 const Example = (props) => {
@@ -85,5 +84,6 @@ const Example = (props) => {
     </PersonalInfoStc>
   )
 }
+};
 
 export default Example;
