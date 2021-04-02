@@ -13,6 +13,13 @@ const Example = (props) => {
 
   const transaction = useContext(TestContext);
 
+  // affect default value to choice
+  if(transaction.TrBillingInformation=="")
+  {
+    transaction.TrUpdateBillingInformation(1);
+  }
+  
+
   const billingInformationChoosed=(event)=>{
     console.log(event.currentTarget.value);
     transaction.TrUpdateBillingInformation(event.currentTarget.value);
@@ -20,13 +27,23 @@ const Example = (props) => {
 
   let data1="";
   let data2="";
-  if(transaction.TrBillingInformation=="ESPECE")
+  let data3="";
+  let data4="";
+  if(transaction.TrBillingInformation=="1")
   {
     data1="selected";
   }
-  if(transaction.TrBillingInformation=="AIRTEL MONEY")
+  if(transaction.TrBillingInformation=="2")
   {
     data2="selected";
+  }
+  if(transaction.TrBillingInformation=="3")
+  {
+    data3="selected";
+  }
+  if(transaction.TrBillingInformation=="4")
+  {
+    data4="selected";
   }
 
   return (
@@ -48,11 +65,12 @@ const Example = (props) => {
       <Row form className='my-5'>
           <Col lg={12} className='d-flex flex-wrap justify-content-center w-50' >
           <div className="divInput">
-            <label>Billing information</label>
+            <label>Comment voulez-vous qu'on procède au calcul de votre transaction ?</label>
             <select className="form-control" name="select" onChange={billingInformationChoosed} >
-                <option value='' >Aucun</option>
-                <option value='ESPECE' selected={data1}>En espèce</option>
-                <option value='AIRTEL MONEY' selected={data2}>Par airtel money</option>
+                <option value='1' selected={data1}>A partir de la somme que je dispose en espèce(Frais exclus)</option>
+                <option value='2' selected={data2}>A partir de la somme que je dispose en espèce(Frais inclus)</option>
+                <option value='3' selected={data3}>A partir de la somme dans mon AIRTEL MONEY</option>
+                <option value='4' selected={data4}>A partir de la somme à recevoir par le bénéficiaire</option>
             </select>
           </div>
           </Col>

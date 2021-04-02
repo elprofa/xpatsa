@@ -20,5 +20,29 @@ h2.cardTitre {
 {
     border-radius:100%;
 }
+
+.client span 
+{
+    padding:2px
+}
+
+.yes
+{
+    font-size: 13px;
+    background: green;
+    width: 100%;
+    min-width: 100px !important;
+    padding: 5px 30px;
+    color: #fff;
+}
+.no
+{
+    font-size: 13px;
+    background: red;
+    width: 100%;
+    min-width: 100px !important;
+    padding: 5px 35px;
+    color: #fff;
+}
 `;
 export default CardTransactionWidgetTableStc;

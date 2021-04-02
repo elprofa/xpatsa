@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Styled from 'styled-components';
 import { FaSearch } from "react-icons/fa";
+import { parseCookies, setCookie, destroyCookie } from 'nookies';
+import { AiOutlineLogout } from "react-icons/ai";
 import {
   Collapse,
   NavbarToggler,
@@ -23,10 +25,10 @@ import {
   Col
 } from "reactstrap";
 import { BiMenu } from "react-icons/bi";
-
 import Menu from "../Menu";
-
 import { NavbarWrap } from "./navBar.stc";
+
+const cookies = parseCookies();
 
 const ListeMenu = [
   {
@@ -35,17 +37,23 @@ const ListeMenu = [
   },
   {
     texte: "A propos",
-    lien: "/",
+    lien: "/apropos",
   },
   {
     texte: "Contact",
     lien: "/dashboard",
   },
-  {
-    texte: "S'inscrire",
-    lien: "/inscription",
-  },
+  
 ];
+
+const logoutUser=()=>{
+
+  destroyCookie(null, 'jwt');
+  destroyCookie(null, 'strapi-user');
+  destroyCookie(null, 'user');
+
+  console.log('coockie destroyed')
+}
 
 const MenuAdmin=Styled(Row)`
   margin:20px 0px;
@@ -98,6 +106,62 @@ const hideNavBar=()=>{
   var search=cls.search('hidden');
 
 }
+const menuDependAuth=()=>{
+  
+  if(cookies?.jwt==null || !cookies)
+  {
+    return(
+      <Menu
+        texte="S'inscrire"
+        lien="/inscription"
+      />
+    )
+  }
+  else
+  {
+    return(
+      <>
+        <Menu
+          texte="Mon Compte"
+          lien="/dashboard"
+          myClass="activeLogin"
+        />
+        <li className="nav-item">
+          <a className="nav-link" onClick={logoutUser}>
+          <AiOutlineLogout/>
+          </a>
+        </li>
+        
+      </>
+    )
+  }
+}
+
+
+const checkLoginBtn=()=>{
+
+  if(cookies?.jwt==null || !cookies){
+
+    return(
+      <Link href="/connexion" passHref>
+        <a>
+        <Bouton
+          color="#000"
+          bordercolor="#000"
+          minwidth="150px"
+          backgroundcolor="transparent"
+          texte="SE CONNECTER"
+        />
+        </a>
+      </Link>
+    )
+  }
+  else
+  {
+    
+  }
+
+}
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -136,19 +200,15 @@ const Header = (props) => {
                 mypath={liste.mypath}
               />
             ))}
+            {
+              menuDependAuth()
+            }
           </Nav>
+              
+              {
+                checkLoginBtn()
+              }
 
-          <Link href="/connexion" passHref>
-            <a>
-            <Bouton
-              color="#000"
-              bordercolor="#000"
-              minwidth="150px"
-              backgroundcolor="transparent"
-              texte="SE CONNECTER"
-            />
-            </a>
-          </Link>
         </Collapse>
       </Container>
     </NavbarWrap>
@@ -162,7 +222,7 @@ const Header = (props) => {
             <span className="MenuHamburgerAdmin" onClick={hideNavBar}><BiMenu /></span>
           </Col> 
           <Col sm={10} className="col-10">
-            <input type="texte" className="form-control" placeholder="recherche iciss ...." />
+            <input type="texte" className="form-control" placeholder="recherche ici ...." />
             <span className="iconSearch">
                 <FaSearch/>
             </span>

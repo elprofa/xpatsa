@@ -12,20 +12,20 @@ import { Container, Button, Row, Col } from "reactstrap";
 import FormContact from "../components/shared/formContact";
 import NewsLater from "../components/shared/Newlater";
 
-const ViewerQuery = gql`
-  query ViewerQuery {
-    viewer {
-      id
-      name
-      status
-    }
-  }
-`;
+// const ViewerQuery = gql`
+//   query ViewerQuery {
+//     viewer {
+//       id
+//       name
+//       status
+//     }
+//   }
+// `;
 
 const Index = (props) => {
-  const {
-    data: { viewer },
-  } = useQuery(ViewerQuery);
+  // const {
+  //   data: { viewer },
+  // } = useQuery(ViewerQuery);
 
   const Wrapper = styled.section`
     background: #ececec;
@@ -102,18 +102,18 @@ const Index = (props) => {
   );
 };
 
-export async function getStaticProps() {
-  const apolloClient = initializeApollo();
+// export async function getStaticProps() {
+//   const apolloClient = initializeApollo();
 
-  await apolloClient.query({
-    query: ViewerQuery,
-  });
+//   await apolloClient.query({
+//     query: ViewerQuery,
+//   });
 
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-  };
-}
+//   return {
+//     props: {
+//       initialApolloState: apolloClient.cache.extract(),
+//     },
+//   };
+// }
 
 export default Index;

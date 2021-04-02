@@ -6,7 +6,6 @@ const PersonalInfoStc=Styled.div`
         width: 100% !important;
         margin: 10px 0px;
         border: 1px solid #ccc;
-        padding: 0px 10px;
     }
     select
     {
@@ -27,6 +26,7 @@ const PersonalInfoStc=Styled.div`
     {
         margin-bottom:0px;
         color:#ccc;
+        margin:0px 10px;
     }
 `;
 export default PersonalInfoStc;
