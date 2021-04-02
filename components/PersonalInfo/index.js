@@ -83,7 +83,6 @@ const Example = (props) => {
       </Form>
     </PersonalInfoStc>
   )
-}
 };
 
 export default Example;
