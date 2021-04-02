@@ -20,6 +20,8 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "clsx": "^1.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "graphql": "^14.0.2",
     "gsap": "^3.5.1",
     "moment": "^2.29.1",
@@ -42,6 +44,7 @@
     "react-step-wizard": "^5.3.5",
     "react-toastify": "^6.2.0",
     "reactstrap": "^8.8.1",
+    "sharp": "^0.26.3",
     "styled-components": "^5.2.1"
   },
   "license": "MIT",

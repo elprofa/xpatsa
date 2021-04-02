@@ -31,6 +31,7 @@ import '../public/styles/nprogress.css';
 }
 
 App.getInitialProps=async function ({Component,ctx}){
+
   let pageProps={};
   if(Component.getInitialProps){
     pageProps=await Component.getInitialProps(ctx);
