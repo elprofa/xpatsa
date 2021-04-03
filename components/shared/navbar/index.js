@@ -172,7 +172,8 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
   
   if(router.pathname !="/dashboard" && router.pathname !="/transaction" && router.pathname !="/client" 
-  && router.pathname !="/analyse" && router.pathname !="/setting")
+  && router.pathname !="/analyse" && router.pathname !="/setting" && router.pathname !="/save-transaction" 
+  && router.pathname !="/save-client")
   {
   return (
     <NavbarWrap color="blue" pathname={pathname} light expand="md">

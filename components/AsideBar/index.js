@@ -64,7 +64,9 @@ const Chart = dynamic(
         <NavStc id="sidebar" className="hidden">
             <div className="sidebar-header">
                 <Link href="/">
-                    <Image src="/img/Logo_Xpatsa.png" width={100} height={100} />
+                    <a>
+                        <Image src="/img/Logo_Xpatsa.png" width={100} height={100} />
+                    </a>
                 </Link>
                 
             </div>
@@ -125,7 +127,11 @@ const Chart = dynamic(
             </ul>
 
             <ul className="list-unstyled CTAs">
-                <li><MonBouton backgroundcolor="#2362bf" texte="Nouveau client" /></li>
+                <Link href="/save-client">
+                    <a>
+                    <MonBouton backgroundcolor="#2362bf" texte="Nouveau client" />
+                    </a>
+                </Link>
             </ul>
         </NavStc>
     )
