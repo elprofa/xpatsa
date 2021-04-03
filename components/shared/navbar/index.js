@@ -41,7 +41,7 @@ const ListeMenu = [
   },
   {
     texte: "Contact",
-    lien: "/dashboard",
+    lien: "/contact",
   },
   
 ];
