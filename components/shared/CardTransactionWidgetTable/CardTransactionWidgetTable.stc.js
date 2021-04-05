@@ -44,5 +44,27 @@ h2.cardTitre {
     padding: 5px 35px;
     color: #fff;
 }
+
+.row {
+    width: 100%;
+}
+.dataTable
+{
+    padding-top:20px;
+}
+.controlRow__root
+{
+    margin:20px 0px;
+}
+td 
+{
+    border:1px solid #ccc;
+}
+
+.thead-th
+{
+    font-weight:600;
+    font-size:15px;
+}
 `;
 export default CardTransactionWidgetTableStc;

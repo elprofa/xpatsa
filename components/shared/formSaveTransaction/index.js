@@ -8,6 +8,9 @@ import Bouton from '../Bouton/Bouton';
 import {gql, useQuery,useMutation} from '@apollo/client';
 import useForm from "../../../lib/useForm";
 
+import Select from 'react-select';
+import { useState } from 'react';
+
 
 const LISTE_CLIENT=gql`
  query 
@@ -77,8 +80,15 @@ mutation CREATE_TRANSACTION(
         variables:inputs
     });
 
-    
 
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    let options=[];
+    var i;
+    for (i = 0; i < response.data?.clients.length; i++) {
+        options.push({value:response.data?.clients[i].id,label:response.data?.clients[i].firstname+" "+response.data?.clients[i].name});
+    }
+   
     const test=async (e)=>{
         e.preventDefault();
         const res=await create();
@@ -96,14 +106,27 @@ mutation CREATE_TRANSACTION(
         return <p>En Erreur</p>
     }
 
-    
+   
+ // select client transaction form
+//  const options = [
+//     { value: 'strawberry', label: 'Strawberry' },
+//     { value: 'vanilla', label: 'Vanilla' },
+//   ];
 
+ 
+const selectClient=(e)=>{
+    setSelectedOption(e.value);
+    inputs.client=parseInt(e.value);
+}
 
+//   console.log(response.data?.clients.length);
     return(
         <FormSaveTransactionStc>
             <h2 className="cardTitre">Enregistrement d'une transactions</h2>
             <Row className="cardActiviteHead">
-                <form onSubmit={test}>
+                <form
+                 onSubmit={test}
+                 >
                     <Row>
                         <Col lg={3}>
                             <div className="form-group">
@@ -163,16 +186,14 @@ mutation CREATE_TRANSACTION(
                         <Col lg={4}>
                             <div className="form-group">
                                 <label>Client</label>
-                                <select className="form-control" name="client" onChange={handleChange}>
-                                    <option value="0">------- Plutard ----------</option>
-                                    {
-                                        response.data?.clients.map((client,index)=>(
-                                            <option key={index} value={client.id } >{client.firstname} {client.name}</option>
-                                        ))
-                                    }
-                                    <option value="23">Wedo profan</option>
-                                </select>
-                               
+                                <Select 
+                                    className="select-react"
+                                    defaultValue={selectedOption}
+                                    onChange={selectClient}
+                                    isSearchable 
+                                    options={options}
+                                    />
+
                             </div>
                         </Col>
                         

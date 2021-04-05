@@ -24,10 +24,5 @@ const FormSaveTransactionStc=Styled(Card)`
         width:100%;
     }
 
-    input,select 
-    {
-        height: 50px;
-        border-radius:0px;
-    }
 `;
 export default FormSaveTransactionStc;
