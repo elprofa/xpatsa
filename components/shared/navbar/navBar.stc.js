@@ -27,7 +27,10 @@ export const NavbarWrap = styled(Navbar)`
   }
 }
   
-
+.iconLogOut
+{
+  cursor:pointer;
+}
   
   .active.nav-item {
         border-bottom:4px solid #007bff !important;

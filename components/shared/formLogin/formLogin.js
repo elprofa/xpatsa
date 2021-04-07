@@ -8,7 +8,7 @@ import Bouton from "../Bouton/Bouton";
 import gql from "graphql-tag";
 import { useMutation, useQuery } from "@apollo/client";
 import { parseCookies, setCookie, destroyCookie } from 'nookies';
-import {useRouter} from 'next/router';
+import Router from 'next/router';
 import useForm from "../../../lib/useForm";
 import TestContext from '../../../ContextAPI/TestContext';
 
@@ -52,16 +52,17 @@ const FormLogin = (props) => {
       // Set
       setCookie(null, 'jwt', res.data.login.jwt, {
         maxAge: 12 * 30 * 24 * 60 * 60,
-        path: '/',
+        path: '/dashboard',
       });
       setCookie(null, 'strapi-user', res.data.login.user.id, {
         maxAge: 12 * 30 * 24 * 60 * 60,
-        path: '/',
+        path: '/dashboard',
       });
 
-      
-
       resetForm();
+      Router.push({
+        pathname:`/dashboard`
+    })
   }
 
   if(loading){ return <p>Loading encours</p> }

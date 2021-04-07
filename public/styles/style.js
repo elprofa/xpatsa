@@ -118,4 +118,21 @@ export const GlobalCSS = createGlobalStyle`
         }
     }
 }
+
+.react-confirm-alert-body
+{
+    background-color:#2164c0 !important;
+    border-radius:0px;
+    color:#fff;
+    h1
+    {
+        font-size:24px;
+    }
+    button 
+    {
+        background: transparent;
+        border: 1px solid #fff;
+        border-radius: 0px;
+    }
+}
 `;

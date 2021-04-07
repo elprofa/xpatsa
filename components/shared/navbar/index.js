@@ -8,6 +8,10 @@ import Styled from 'styled-components';
 import { FaSearch } from "react-icons/fa";
 import { parseCookies, setCookie, destroyCookie } from 'nookies';
 import { AiOutlineLogout } from "react-icons/ai";
+import Router from "next/router";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 import {
   Collapse,
   NavbarToggler,
@@ -47,12 +51,31 @@ const ListeMenu = [
 ];
 
 const logoutUser=()=>{
+  
+  confirmAlert({
+    title: 'Deconexion encours ?',
+    message: 'Voulez-vous continuer ?.',
+    buttons: [
+      {
+        label: 'OUI, je veux',
+        onClick: () => {
+          destroyCookie(null, 'jwt');
+          destroyCookie(null, 'strapi-user');
+          destroyCookie(null, 'user');
 
-  destroyCookie(null, 'jwt');
-  destroyCookie(null, 'strapi-user');
-  destroyCookie(null, 'user');
-
-  console.log('coockie destroyed')
+          console.log('coockie destroyed')
+          Router.push({
+                pathname:`/`
+          })
+        }
+      },
+      {
+        label: 'Non, non',
+        // onClick: () => alert('Click No')
+      }
+    ]
+  });
+  
 }
 
 
@@ -129,7 +152,7 @@ const menuDependAuth=()=>{
           myClass="activeLogin"
         />
         <li className="nav-item">
-          <a className="nav-link" onClick={logoutUser}>
+          <a className="nav-link iconLogOut" onClick={logoutUser}>
           <AiOutlineLogout/>
           </a>
         </li>
