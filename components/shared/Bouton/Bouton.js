@@ -13,6 +13,7 @@ const Bouton = (props) => {
       color={color}
       minwidth={minwidth}
       backgroundcolor={backgroundcolor}
+      taille={props.taille}
     >
       {texte}{" "}
       {icon ? (

@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 import {Card} from 'reactstrap';
 
-const CardTransactionWidgetTableStc=Styled(Card)`
+const CardTransactionClientStc=Styled(Card)`
 padding:15px;
 box-shadow:1px 1px 6px #ccc;
 margin:15px 0px;
@@ -75,4 +75,4 @@ td
     width:100px;
 }
 `;
-export default CardTransactionWidgetTableStc;
+export default CardTransactionClientStc;

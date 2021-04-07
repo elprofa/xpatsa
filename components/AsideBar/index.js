@@ -89,15 +89,15 @@ const Chart = dynamic(
                     </Link>
                 </li>
                 <li>
-                    <Link href="/client">
+                    <Link href="/clients">
                         <a >
                             <i><FaUserFriends/></i>
-                            <span>Clients</span>
+                            <span>Client</span>
                         </a>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/transaction">
+                    <Link href="/transactions">
                         <a>
                             <i><FaRegCreditCard /></i>
                             <span>Transaction</span>

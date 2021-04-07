@@ -20,5 +20,16 @@ h2.cardTitre {
 {
     border-radius:100%;
 }
+
+
+.thead-th
+{
+    font-weight:600;
+    font-size:15px;
+}
+.iconAction span
+{
+    margin:auto 10px;
+}
 `;
 export default CardClientWidgetTableStc;

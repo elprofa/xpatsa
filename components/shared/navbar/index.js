@@ -55,6 +55,8 @@ const logoutUser=()=>{
   console.log('coockie destroyed')
 }
 
+
+
 const MenuAdmin=Styled(Row)`
   margin:20px 0px;
   @media (max-width: 476px)
@@ -171,9 +173,23 @@ const Header = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
   
-  if(router.pathname !="/dashboard" && router.pathname !="/transaction" && router.pathname !="/client" 
-  && router.pathname !="/analyse" && router.pathname !="/setting" && router.pathname !="/save-transaction" 
-  && router.pathname !="/save-client")
+  console.log(router.pathname)
+
+  if(router.pathname !="/dashboard" 
+  && router.pathname !="/transactions" 
+  && router.pathname !="/clients" 
+  && router.pathname !="/analyse" 
+  && router.pathname !="/setting" 
+  && router.pathname !="/save-transaction" 
+  && router.pathname !="/save-client"  
+  && router.pathname !="/client/[id]" 
+  && router.pathname !="/transaction/[id]" 
+  && router.pathname !="/transaction/update/[id]" 
+  && router.pathname !="/client/update/[id]" 
+
+
+  
+  )
   {
   return (
     <NavbarWrap color="blue" pathname={pathname} light expand="md">
