@@ -11,6 +11,8 @@ Router.events.on('routeChangeStart',()=>NProgress.start());
 Router.events.on('routeChangeComplete',()=>NProgress.done());
 Router.events.on('routeChangeError',()=>NProgress.done());
 
+import { SWRConfig } from 'swr'
+import fetch from '../lib/fetchJson'
 
 
 //TODO:Swap with our own
@@ -23,7 +25,16 @@ import '../public/styles/nprogress.css';
   return (
     <ApolloProvider client={apollo}>
       <Layout>
+      <SWRConfig
+      value={{
+        fetcher: fetch,
+        onError: (err) => {
+          console.error(err)
+        },
+      }}
+    >
         <Component {...pageProps} />
+        </SWRConfig>
       </Layout>
     </ApolloProvider>
   );

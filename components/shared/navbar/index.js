@@ -12,6 +12,11 @@ import Router from "next/router";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
+import fetchJson from '../../../lib/fetchJson'
+import useUser from '../../../lib/useUser'
+
+
+
 import {
   Collapse,
   NavbarToggler,
@@ -170,13 +175,13 @@ const checkLoginBtn=()=>{
     return(
       <Link href="/connexion" passHref>
         <a>
-        <Bouton
-          color="#000"
-          bordercolor="#000"
-          minwidth="150px"
-          backgroundcolor="transparent"
-          texte="SE CONNECTER"
-        />
+          <Bouton
+            color="#000"
+            bordercolor="#000"
+            minwidth="150px"
+            backgroundcolor="transparent"
+            texte="SE CONNECTER"
+          />
         </a>
       </Link>
     )
@@ -189,6 +194,9 @@ const checkLoginBtn=()=>{
 }
 
 const Header = (props) => {
+  const { user, mutateUser } = useUser()
+
+
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
@@ -214,6 +222,8 @@ const Header = (props) => {
   
   )
   {
+
+    console.log(user)
   return (
     <NavbarWrap color="blue" pathname={pathname} light expand="md">
       <Container className="px-0">
@@ -240,15 +250,49 @@ const Header = (props) => {
                 mypath={liste.mypath}
               />
             ))}
-            {
-              menuDependAuth()
-            }
+            {!user?.isLoggedIn && (
+            <li className="nav-item btnLoginIn">
+              <Link href="/connexion" passHref>
+              <a>
+                <Bouton
+                  color="#000"
+                  bordercolor="#000"
+                  minwidth="150px"
+                  backgroundcolor="transparent"
+                  texte="SE CONNECTER"
+                />
+              </a>
+            </Link>
+          </li>
+            
+          )}
+
+
+          {user?.isLoggedIn && (
+            <>
+            
+              <Menu
+                texte="Mon Compte"
+                lien="/dashboard"
+                myClass="activeLogin"
+              />
+            <li className="nav-item menuIconLogout">
+                <a
+                  href="/api/logout"
+                  onClick={async (e) => {
+                    e.preventDefault()
+                    await mutateUser(fetchJson('/api/logout'))
+                    router.push('/')
+                  }}
+                >
+                  <AiOutlineLogout/>              
+              </a>
+            </li>
+          </>
+            
+          )}
           </Nav>
               
-              {
-                checkLoginBtn()
-              }
-
         </Collapse>
       </Container>
     </NavbarWrap>

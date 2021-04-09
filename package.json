@@ -25,6 +25,7 @@
     "gsap": "^3.5.1",
     "moment": "^2.29.1",
     "next": "^10.1.2",
+    "next-iron-session": "4.1.7",
     "next-with-apollo": "^5.1.1",
     "nookies": "^2.5.2",
     "nprogress": "^0.2.0",
@@ -45,7 +46,8 @@
     "react-table": "^7.6.3",
     "react-toastify": "^6.2.0",
     "reactstrap": "^8.8.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "swr": "0.2.3"
   },
   "license": "MIT",
   "devDependencies": {

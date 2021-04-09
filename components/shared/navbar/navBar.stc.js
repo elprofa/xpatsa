@@ -31,8 +31,13 @@ export const NavbarWrap = styled(Navbar)`
 {
   cursor:pointer;
 }
-  
-  .active.nav-item {
-        border-bottom:4px solid #007bff !important;
-  }
+
+.menuIconLogout a
+{
+  font-size:26px
+}
+
+.active.nav-item {
+      border-bottom:4px solid #007bff !important;
+}
 `;

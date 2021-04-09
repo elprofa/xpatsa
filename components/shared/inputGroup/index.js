@@ -18,6 +18,7 @@ const InputGroup = (props) => {
         value={valueInput} 
         onChange={change}
         name={name}
+        className={props.myClass}
       />
     </FormWarp>
   );

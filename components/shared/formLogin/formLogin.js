@@ -11,7 +11,11 @@ import { parseCookies, setCookie, destroyCookie } from 'nookies';
 import Router from 'next/router';
 import useForm from "../../../lib/useForm";
 import TestContext from '../../../ContextAPI/TestContext';
-
+import PropTypes from 'prop-types'
+import useUser from "../../../lib/useUser";
+import { useState } from "react";
+import fetchJson from '../../../lib/fetchJson'
+import { withIronSession } from "next-iron-session";
 
 
 const SIGNIN_MUTATION=gql`
@@ -30,9 +34,7 @@ mutation SIGNIN_MUTATION($identifier:String!,$password:String!)
 
 
 const FormLogin = (props) => {
-  const { texte, backgroundcolor, color, icon } = props;
-
-  const MyCtx = useContext(TestContext);
+  const { texte, backgroundcolor, color, icon, errorMessage, onSubmit } = props;
 
   const {inputs,handleChange,clearForm,resetForm}=useForm({
     identifier:"",
@@ -42,39 +44,53 @@ const FormLogin = (props) => {
   const [login,{data,error,loading}] = useMutation(SIGNIN_MUTATION,{
     variables:inputs
   });
-  const handleSubmit= async (e)=>{
-      e.preventDefault();
-      console.log(e);
-      const res=await login();
-      console.log(res);
-      console.log('Elprofa vous félicite,connexion reussie avec succès!');
 
-      // Set
-      setCookie(null, 'jwt', res.data.login.jwt, {
-        maxAge: 12 * 30 * 24 * 60 * 60,
-        path: '/dashboard',
-      });
-      setCookie(null, 'strapi-user', res.data.login.user.id, {
-        maxAge: 12 * 30 * 24 * 60 * 60,
-        path: '/dashboard',
-      });
+  const { mutateUser } = useUser({
+    redirectTo: '/dashboard',
+    redirectIfFound: true,
+  })
 
-      resetForm();
-      Router.push({
-        pathname:`/dashboard`
-    })
+  const [errorMsg, setErrorMsg] = useState('')
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    const res=await login();
+
+    if(res.data){
+
+      const body = {
+        xPatsaId:res.data.login.user.id,
+        xPatsaLogin: inputs.identifier,
+        xPatsaPassword: inputs.password,
+        xPatsaToken:res.data.login.jwt
+      }
+      
+      try {
+        await mutateUser(
+          fetchJson('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          })
+        )
+      } catch (error) {
+        console.error('An unexpected error happened:', error)
+        setErrorMsg(error.data.message)
+      }
+    }
   }
 
-  if(loading){ return <p>Loading encours</p> }
-  if(error){ return <p>Error</p> }
+
   return (
     <FormLoginStc
     method="POST"
     onSubmit={handleSubmit}>
-      <Titre texte="Se c onnecter " color="#007bff" />
+      <Titre texte="Se connecter " color="#007bff" />
+      {errorMsg && <p className="error">{errorMsg}</p>}
       <Form>
-        <InputGroup name="identifier" valueInput={inputs.identifier} typeInput="texte" change={handleChange} textLabel="ADRESSE E-MAIL OU NUMERO DE TELEPHONE" />
-        <InputGroup name="password" valueInput={inputs.password} typeInput="password" change={handleChange} textLabel="MOT DE PASSE" />
+        <InputGroup name="identifier" myClass="identifier" required valueInput={inputs.identifier} typeInput="texte" change={handleChange} textLabel="ADRESSE E-MAIL OU NUMERO DE TELEPHONE" />
+        <InputGroup name="password" myClass="password" required valueInput={inputs.password} typeInput="password" change={handleChange} textLabel="MOT DE PASSE" />
         <Row>
           <Col id="left" lg={6}>
             <a href="#elprofa.com">Mot de passe oublié ?</a>
@@ -89,3 +105,10 @@ const FormLogin = (props) => {
 };
 
 export default FormLogin;
+
+
+FormLogin.propTypes = {
+  errorMessage: PropTypes.string,
+  onSubmit: PropTypes.func,
+}
+
