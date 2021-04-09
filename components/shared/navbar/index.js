@@ -55,33 +55,6 @@ const ListeMenu = [
   
 ];
 
-const logoutUser=()=>{
-  
-  confirmAlert({
-    title: 'Deconexion encours ?',
-    message: 'Voulez-vous continuer ?.',
-    buttons: [
-      {
-        label: 'OUI, je veux',
-        onClick: () => {
-          destroyCookie(null, 'jwt');
-          destroyCookie(null, 'strapi-user');
-          destroyCookie(null, 'user');
-
-          console.log('coockie destroyed')
-          Router.push({
-                pathname:`/`
-          })
-        }
-      },
-      {
-        label: 'Non, non',
-        // onClick: () => alert('Click No')
-      }
-    ]
-  });
-  
-}
 
 
 
@@ -136,37 +109,6 @@ const hideNavBar=()=>{
   var search=cls.search('hidden');
 
 }
-const menuDependAuth=()=>{
-  
-  if(cookies?.jwt==null || !cookies)
-  {
-    return(
-      <Menu
-        texte="S'inscrire"
-        lien="/inscription"
-      />
-    )
-  }
-  else
-  {
-    return(
-      <>
-        <Menu
-          texte="Mon Compte"
-          lien="/dashboard"
-          myClass="activeLogin"
-        />
-        <li className="nav-item">
-          <a className="nav-link iconLogOut" onClick={logoutUser}>
-          <AiOutlineLogout/>
-          </a>
-        </li>
-        
-      </>
-    )
-  }
-}
-
 
 const checkLoginBtn=()=>{
 
@@ -196,6 +138,28 @@ const checkLoginBtn=()=>{
 const Header = (props) => {
   const { user, mutateUser } = useUser()
 
+  
+const logoutUser= (e)=>{
+  e.preventDefault();
+  confirmAlert({
+    title: 'Deconexion encours ?',
+    message: 'Voulez-vous continuer ?.',
+    buttons: [
+      {
+        label: 'OUI, je veux',
+        onClick: async () => {
+          await mutateUser(fetchJson('/api/logout'))
+          router.push('/')
+        }
+      },
+      {
+        label: 'Non, non',
+        // onClick: () => alert('Click No')
+      }
+    ]
+  });
+  
+}
 
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -203,9 +167,6 @@ const Header = (props) => {
   const { pathname } = router;
 
   const toggle = () => setIsOpen(!isOpen);
-  
-  console.log(router.pathname)
-
   if(router.pathname !="/dashboard" 
   && router.pathname !="/transactions" 
   && router.pathname !="/clients" 
@@ -223,7 +184,8 @@ const Header = (props) => {
   )
   {
 
-    console.log(user)
+    
+
   return (
     <NavbarWrap color="blue" pathname={pathname} light expand="md">
       <Container className="px-0">
@@ -279,11 +241,7 @@ const Header = (props) => {
             <li className="nav-item menuIconLogout">
                 <a
                   href="/api/logout"
-                  onClick={async (e) => {
-                    e.preventDefault()
-                    await mutateUser(fetchJson('/api/logout'))
-                    router.push('/')
-                  }}
+                  onClick={logoutUser}
                 >
                   <AiOutlineLogout/>              
               </a>

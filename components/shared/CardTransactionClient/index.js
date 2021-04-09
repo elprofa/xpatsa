@@ -15,25 +15,23 @@ import Datatable from 'react-bs-datatable';
 
 import moment from 'moment';
 
-const LISTE_TRANSACTION_CLIENT=gql`
-    query 
+export const SINGLE_CLIENT1=gql`
+    query SINGLE_CLIENT1($id:ID!)
     { 
-        transactions 
-        { 
-            client 
+        client(id:$id)
+        {
+            firstname
+            
+            transactions
             {
                 id
-                firstname
-                name
+                created_at
+                fees
+                total
+                paid
             }
-            id
-            sent
-            received
-            fees
-            total
-            paid
-            
         }
+        
     }
 `;
 
@@ -41,12 +39,14 @@ const LISTE_TRANSACTION_CLIENT=gql`
 
 const CardTransactionClient =(props)=>{
 
-    const {data,error,loading}=useQuery(LISTE_TRANSACTION_CLIENT);
+    const {data,error,loading}=useQuery(SINGLE_CLIENT1,{
+        variables:{
+            id:props.id_client
+        }
+    });
 
     const header = [
-        { title: 'Client', prop: 'client', sortable: true,filterable: true },
-        { title: 'A envoyer', prop: 'sent', sortable: true,filterable: true },
-        { title: 'A recevoir', prop: 'received' },
+        { title: 'Operée le ', prop: 'created_at', sortable: true,filterable: true },
         { title: 'Frais', prop: 'fees' },
         { title: 'Coût total', prop: 'total' },
         { title: 'Payé ?', prop: 'paid' },
@@ -57,7 +57,25 @@ const CardTransactionClient =(props)=>{
     // Note that the fields are all using the `prop` field of the headers.
 
         let body = [];
-        
+        var i;
+        if(data!=='undefined')
+        {
+            
+            for (i = 0; i < data?.client?.transactions?.length; i++) {
+                body.push(
+                    {
+                        created_at:data?.client?.transactions[i].created_at,
+                        fees:data?.client?.transactions[i].fees,
+                        total:data?.client?.transactions[i].total,
+                        paid:data?.client?.transactions[i]?.paid?<span className="yes"><BsCheckCircle /></span>:<span className="no">-</span>,
+                        action:<div className="iconAction">
+                            <span><Link href={"/transaction/update/"+data?.client?.transactions[i]?.id}><a><BsPencilSquare /></a></Link></span>
+                            <span><Link href={"/transaction/"+data?.client?.transactions[i]?.id}><a><BsEye /></a></Link></span></div>
+                    }
+                );
+                
+            }
+        }
         console.log(body);
         
 
@@ -76,10 +94,10 @@ const CardTransactionClient =(props)=>{
         return <p>Erreur</p>
     }
 
-    console.log(data.transactions)
+    console.log(data)
     return(
         <CardTransactionClientStc>
-            <h2 className="cardTitre">Les transactions de #{props.id_client}</h2>
+            <h2 className="cardTitre">Les transactions de #{data?.client?.firstname}</h2>
             <Row className="cardActiviteHead">
                 <Col lg={12} className="dataTable">
                     <Datatable

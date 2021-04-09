@@ -27,6 +27,12 @@ mutation SIGNIN_MUTATION($identifier:String!,$password:String!)
     user
     { 
     	id
+      username
+      email
+      role
+      { 
+        name
+      }
     }
   }
 }
@@ -61,9 +67,12 @@ const FormLogin = (props) => {
 
       const body = {
         xPatsaId:res.data.login.user.id,
-        xPatsaLogin: inputs.identifier,
+        xPatsaEmail: res.data.login.user.email,
+        xPatsaUsername: res.data.login.user.username,
         xPatsaPassword: inputs.password,
-        xPatsaToken:res.data.login.jwt
+        xPatsaToken:res.data.login.jwt,
+        xPatsaRole:res.data.login.user.role.name
+        
       }
       
       try {
@@ -81,6 +90,8 @@ const FormLogin = (props) => {
     }
   }
 
+  if(loading){ return <p>Loading encours</p> }
+  if(error){ return <p>Error</p> }
 
   return (
     <FormLoginStc

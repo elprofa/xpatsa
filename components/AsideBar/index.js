@@ -12,6 +12,8 @@ import MonBouton from '../shared/Bouton/Bouton';
 import { FaSquareFull } from "react-icons/fa";
 import { BiTransfer } from "react-icons/bi";
 import dynamic from 'next/dynamic'
+import ReactTooltip from 'react-tooltip';
+import { useRouter } from "next/router";
 
 // import Chart from "react-apexcharts";
 
@@ -21,6 +23,9 @@ const Chart = dynamic(
   )
 
  const AsideBar=(props)=>{
+    const router = useRouter();
+
+    const { pathname } = router;
     
     var  options= {
         chart: {
@@ -80,45 +85,46 @@ const Chart = dynamic(
             </div>
             
             <ul className="list-unstyled components">
-                <li className="active">
+                <li className={pathname=="/dashboard"?"active":""}>
                     <Link href="/dashboard">
-                        <a >
+                        <a data-tip="Dashboard">
                             <i ><FaDelicious /></i>
                             <span>Dashboard</span>
+                            <ReactTooltip />
                         </a>
                     </Link>
                 </li>
-                <li>
+                <li className={pathname=="/clients"?"active":""}>
                     <Link href="/clients">
-                        <a >
+                        <a data-tip="Client">
                             <i><FaUserFriends/></i>
                             <span>Client</span>
                         </a>
                     </Link>
                 </li>
-                <li>
+                <li className={pathname=="/transactions"?"active":""}>
                     <Link href="/transactions">
-                        <a>
+                        <a data-tip="Transaction">
                             <i><FaRegCreditCard /></i>
                             <span>Transaction</span>
                         </a>
                     </Link>
                 </li>
-                <li>
-                    <a href="#">
+                <li className={pathname=="/analyse"?"active":""}>
+                    <a href="#" data-tip="Analyse">
                         <i ><FaBezierCurve /></i>
                         <span>Analyse</span>
                     </a>
                 </li>
                 
-                <li>
-                    <a href="#">
+                <li className={pathname=="/equipe"?"active":""}>
+                    <a href="#" data-tip="Equipe">
                         <i ><FaUserPlus/></i>
                         <span>Equipe</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li className={pathname=="/reglage"?"active":""}>
+                    <a href="#" data-tip="Réglages">
                     <i ><FaWrench/></i>
                        <span>Réglages</span>
                          
@@ -133,6 +139,7 @@ const Chart = dynamic(
                     </a>
                 </Link>
             </ul>
+            
         </NavStc>
     )
 

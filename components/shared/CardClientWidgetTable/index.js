@@ -35,7 +35,7 @@ const LISTE_CLIENT=gql`
 const CardClientWidgetTable =()=>{
 
     const {data,error,loading}=useQuery(LISTE_CLIENT);
-    console.log({data,error,loading})
+    // console.log({data,error,loading})
     const header = [
         { title: 'Nom', prop: 'name', sortable: true,filterable: true },
         { title: 'Prénom', prop: 'firstname', sortable: true,filterable: true },

@@ -12,8 +12,12 @@ import { BiMenu } from "react-icons/bi";
 import CardWidget from '../shared/CardWidget';
 import DateFilter from '../shared/DateFilter';
 
-
+import fetchJson from '../../lib/fetchJson'
+import useUser from '../../lib/useUser'
+ 
 const HeadBar =(props)=>{
+    const { user, mutateUser } = useUser()
+
     const hideNavBar=()=>{
         var element=document.getElementById("sidebar");
  
@@ -63,8 +67,20 @@ const HeadBar =(props)=>{
                         </Col>
                         <Col lg={2} md={4} className="divPeviewProfil">
                             <div className="profilNameRole">
-                                <h3>Hello Mary</h3>
-                                <span>Super Admin</span>
+                            {!user?.isLoggedIn && (
+                                <>
+                                    <h3>chargement ....</h3>
+                                    <span>chargement ....</span>
+                                </>
+                            )}
+                            {user?.isLoggedIn && (
+                                <>
+                                    <h3>{user?.xPatsaUsername}</h3>
+                                    <span>{user?.xPatsaRole}</span>
+                                </>
+                                
+                            )}
+                                
                             </div>
                             <div className="profilPicture">
                                 <Link href="/">
