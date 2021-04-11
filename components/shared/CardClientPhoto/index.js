@@ -16,7 +16,7 @@ export default function CardClientPhoto(props) {
                 <Col lg={3}>
                     <p className="label">Photo du client</p>
                     <div className="cadrePhoto">
-                        <Image src="/img/wedo.jpg" width="220" height="220" />
+                        <Image src="/img/avatar.png" width="220" height="220" />
                     </div>
                     <form>
                         <input className="form-control" type="file" />

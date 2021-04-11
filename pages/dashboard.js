@@ -8,8 +8,10 @@ import CardTransactionWidget from '../components/shared/CardTransactionWidget';
 import CardActiviteWidget from '../components/shared/CardActivityWidget';
 import CardCircleWidget from '../components/shared/CardCircleWidget';
 import CardClientWidget from '../components/shared/CardClientWidget';
-const Wrapper = styled.div`
+import useUser from '../lib/useUser';
+import Router from 'next/router'
 
+const Wrapper = styled.div`
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -36,6 +38,14 @@ const Wrapper = styled.div`
 `;
 
 export default function Dashboard() {
+    const { user } = useUser()
+    
+    if(user?.isLoggedIn===false){
+        Router.push('/connexion');
+
+        return <p>Loading...</p>
+    }
+    // console.log(user?.isLoggedIn)
 
   return (
       <Wrapper>

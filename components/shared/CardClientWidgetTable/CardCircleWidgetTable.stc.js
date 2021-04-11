@@ -31,5 +31,36 @@ h2.cardTitre {
 {
     margin:auto 10px;
 }
+
+
+.row {
+    width: 100%;
+}
+.dataTable
+{
+    padding-top:20px;
+}
+.controlRow__root
+{
+    margin:20px 0px;
+}
+td 
+{
+    border:1px solid #ccc;
+}
+
+.thead-th
+{
+    font-weight:600;
+    font-size:15px;
+}
+.iconAction span
+{
+    margin:auto 10px;
+}
+.tbody-tr td:last-child
+{
+    width:100px;
+}
 `;
 export default CardClientWidgetTableStc;

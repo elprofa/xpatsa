@@ -43,7 +43,7 @@ const HeadBar =(props)=>{
                         <Col md={4} lg={2} className="divBoutonNew">
                         <Link href="/save-transaction">
                             <a>
-                                <MonBouton backgroundcolor="#2362bf" texte="Nouvelle transaction" />
+                                <MonBouton taille="15px" backgroundcolor="#2362bf" texte="Nouvelle transaction" />
                             </a>
                         </Link>
                            
@@ -84,7 +84,7 @@ const HeadBar =(props)=>{
                             </div>
                             <div className="profilPicture">
                                 <Link href="/">
-                                    <Image src="/img/wedo.jpg" width={130} height={130} />
+                                    <Image src="/img/avatar.png" width={130} height={130} />
                                 </Link>
                             </div>
                         </Col>

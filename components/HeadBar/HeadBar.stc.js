@@ -173,7 +173,7 @@ i.badge {
 
     }
     .profilPicture {
-        width: 30%;
+        width: 22%;
         max-width:50px;
         display: inline-block;
 

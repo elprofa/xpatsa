@@ -6,6 +6,10 @@ import AsideBar from '../components/AsideBar';
 import HeadBar from '../components/HeadBar';
 import TrCardWidget from '../components/shared/TrCardWidgetLeft';
 import CardTransactionWidgetTable from '../components/shared/CardTransactionWidgetTable';
+import Router from 'next/router'
+import useUser from '../lib/useUser';
+
+
 const Wrapper = styled.div`
 
 /* ---------------------------------------------------
@@ -25,7 +29,13 @@ const Wrapper = styled.div`
 `;
 
 export default function Transaction() {
+    const { user } = useUser()
     
+    if(user?.isLoggedIn===false){
+        Router.push('/connexion');
+
+        return <p>Loading...</p>
+    }
   return (
       <Wrapper>
         <div className="wrapper">

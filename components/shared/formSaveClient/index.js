@@ -44,9 +44,18 @@ const CREATE_CLIENT=gql`
 
     const test=async (e)=>{
         e.preventDefault();
-        const res=await create();
-        console.log(res);
-        resetForm();
+
+        if(inputs.firstname.trim()!="" && inputs.name.trim()!="" && inputs.pays.trim()!="" && inputs.telephone.trim()!=""){
+            const res=await create();
+            console.log(res);
+            resetForm();
+        }
+        else
+        {
+            alert("Erreur! Veuillez saisir tous les champs svp.")
+        }
+        
+
     }
 
 
@@ -67,25 +76,25 @@ const CREATE_CLIENT=gql`
                         <Col lg={6}>
                             <div className="form-group">
                                 <label>Prénom (s)</label>
-                                <input type="texte" value={inputs.firstname} onChange={handleChange} name="firstname" placeholder="Prenom complet" className="form-control" />
+                                <input type="texte" required value={inputs.firstname} onChange={handleChange} name="firstname" placeholder="Prenom complet" className="form-control" />
                             </div>
                         </Col>
                         <Col lg={6}>
                             <div className="form-group">
                                 <label>Nom (s)</label>
-                                <input type="texte" name="name" placeholder="Nom complet" value={inputs.name} onChange={handleChange} className="form-control" />
+                                <input type="texte" required name="name" placeholder="Nom complet" value={inputs.name} onChange={handleChange} className="form-control" />
                             </div>
                         </Col>
                         <Col lg={6}>
                             <div className="form-group">
                                 <label>Pays de residence</label>
-                                <input type="texte" name="pays" placeholder="votre pays de residence" value={inputs.pays} onChange={handleChange} className="form-control" />
+                                <input type="texte" required name="pays" placeholder="votre pays de residence" value={inputs.pays} onChange={handleChange} className="form-control" />
                             </div>
                         </Col>
                         <Col lg={6}>
                             <div className="form-group">
                                 <label>Téléphone</label>
-                                <input type="texte" name="telephone" value={inputs.telephone} onChange={handleChange} placeholder="(+---) -- -- -- --" className="form-control" />
+                                <input type="texte" name="telephone" required value={inputs.telephone} onChange={handleChange} placeholder="(+---) -- -- -- --" className="form-control" />
                             </div>
                         </Col>
                         <Col lg={6}>

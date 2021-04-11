@@ -6,6 +6,8 @@ import AsideBar from '../components/AsideBar';
 import HeadBar from '../components/HeadBar';
 import TrCardWidget from '../components/shared/TrCardWidgetLeft';
 import CardTransactionWidgetTable from '../components/shared/CardTransactionWidgetTable';
+import useUser from '../lib/useUser';
+import Router from 'next/router'
 import FormSaveClient from '../components/shared/formSaveClient';
 const Wrapper = styled.div`
 
@@ -26,7 +28,15 @@ const Wrapper = styled.div`
 `;
 
 export default function SaveClient() {
+    const { user } = useUser()
     
+    if(user?.isLoggedIn===false){
+        Router.push('/connexion');
+
+        return <p>Loading...</p>
+    }
+    // console.log(user?.isLoggedIn)
+
   return (
       <Wrapper>
         <div className="wrapper">

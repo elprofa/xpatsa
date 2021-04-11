@@ -135,7 +135,7 @@ const Chart = dynamic(
             <ul className="list-unstyled CTAs">
                 <Link href="/save-client">
                     <a>
-                    <MonBouton backgroundcolor="#2362bf" texte="Nouveau client" />
+                    <MonBouton taille="15px" backgroundcolor="#2362bf" texte="Nouveau client" />
                     </a>
                 </Link>
             </ul>

@@ -5,7 +5,7 @@ export default withSession(async (req, res) => {
   const { xPatsaId, xPatsaEmail,xPatsaUsername,xPatsaPassword,xPatsaToken,xPatsaRole } = await req.body
   // const url = `https://api.github.com/users/${username}`
 
-  console.log({xPatsaId, xPatsaEmail,xPatsaUsername,xPatsaPassword,xPatsaToken,xPatsaRole })
+  // console.log({xPatsaId, xPatsaEmail,xPatsaUsername,xPatsaPassword,xPatsaToken,xPatsaRole })
 
   try {
     // // we check that the user exists on GitHub and store some data in session

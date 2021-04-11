@@ -7,6 +7,8 @@ import HeadBar from '../../components/HeadBar';
 import CardClientDetail from '../../components/shared/CardClientDetail';
 import CardClientPhoto from '../../components/shared/CardClientPhoto';
 import CardTransactionClient from '../../components/shared/CardTransactionClient';
+import useUser from '../../lib/useUser';
+import Router from 'next/router'
 const Wrapper = styled.div`
 
 /* ---------------------------------------------------
@@ -25,6 +27,13 @@ const Wrapper = styled.div`
  
 `;
 export default function Client({query}) {
+    const { user } = useUser()
+    
+    if(user?.isLoggedIn===false){
+        Router.push('/connexion');
+
+        return <p>Loading...</p>
+    }
   return (
       <Wrapper>
         <div className="wrapper">

@@ -110,30 +110,6 @@ const hideNavBar=()=>{
 
 }
 
-const checkLoginBtn=()=>{
-
-  if(cookies?.jwt==null || !cookies){
-
-    return(
-      <Link href="/connexion" passHref>
-        <a>
-          <Bouton
-            color="#000"
-            bordercolor="#000"
-            minwidth="150px"
-            backgroundcolor="transparent"
-            texte="SE CONNECTER"
-          />
-        </a>
-      </Link>
-    )
-  }
-  else
-  {
-    
-  }
-
-}
 
 const Header = (props) => {
   const { user, mutateUser } = useUser()

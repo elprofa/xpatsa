@@ -40,7 +40,7 @@ const CardClientWidget =()=>{
                     <Col sm={9}>
                         <div className="profilPicture">
                             <Link href="/">
-                                <Image src="/img/wedo.jpg" width={40} height={40} />
+                                <Image src="/img/avatar.png" width={40} height={40} />
                             </Link>
                         </div>
                         <div className="profilNameRole">

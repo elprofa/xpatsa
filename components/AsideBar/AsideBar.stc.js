@@ -10,6 +10,7 @@ const AsideBarStc=styled.nav`
     border-radius: 80px 130px 0px 0px;
     /* border: 2px solid #000; */
     z-index: 9999;
+    min-height:100vh;
 
     #chart {
         max-width: 650px;
@@ -64,7 +65,7 @@ const AsideBarStc=styled.nav`
         text-decoration:none;
         padding: 10px 50px;
         color:#2362bf;
-        font-size:14px;
+        font-size:15px;
 
         @media (max-width: 476px)
         {

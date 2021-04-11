@@ -5,6 +5,8 @@ import styled from "styled-components";
 import AsideBar from '../../components/AsideBar';
 import HeadBar from '../../components/HeadBar';
 import CardTransactionDetail from '../../components/shared/CardTransactionDetail';
+import useUser from '../../lib/useUser';
+import Router from 'next/router'
 const Wrapper = styled.div`
 
 /* ---------------------------------------------------
@@ -23,6 +25,14 @@ const Wrapper = styled.div`
  
 `;
 export default function Transaction({query}) {
+    
+    const { user } = useUser()
+    
+    if(user?.isLoggedIn===false){
+        Router.push('/connexion');
+
+        return <p>Loading...</p>
+    }
   return (
       <Wrapper>
         <div className="wrapper">
