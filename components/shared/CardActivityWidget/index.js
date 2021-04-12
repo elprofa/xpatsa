@@ -18,8 +18,11 @@ query
         created_at
         total
         fees
+        to
+        from
         client
         { 
+            id
             firstname
             name
         }
@@ -58,9 +61,9 @@ const CardActivityWidget =()=>{
                             <tr key={transaction.id}>
                                 
                                 <td>{transaction.created_at}</td>
-                                <td>{transaction.total}</td>
-                                <td>{transaction.fees}</td>
-                                <td>{transaction?.client?.firstname} {transaction?.client?.name}</td>
+                                <td>{transaction.total} {transaction.from}</td>
+                                <td>{transaction.fees} {transaction.from}</td>
+                                <td><Link href={"/client/"+transaction?.client?.id} ><a>{transaction?.client?.firstname} {transaction?.client?.name}</a></Link></td>
                                 <td><span><Link href={"/transaction/"+transaction?.id}><a><BsEye /></a></Link></span>
                                 </td>
                             </tr>

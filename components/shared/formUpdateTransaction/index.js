@@ -134,6 +134,18 @@ mutation UPDATE_TRANSACTION (
    
     const test=async (e)=>{
         e.preventDefault();
+
+        let f= document.getElementById("transactionFees1").value;
+        let t= document.getElementById("transactionTotal1").value;
+        let r= document.getElementById("transactionReceived1").value;
+        let m= document.getElementById("transactionModalite1").value;
+        let of= document.getElementById("transactionOtherFees1").value;
+        inputs.fees=parseInt(f);
+        inputs.total=parseInt(t);
+        inputs.received=parseInt(r);
+        inputs.modalite=m;
+        inputs.otherFees=parseInt(of);
+
         const res=await update();
         console.log(inputs);
         //resetForm();
@@ -170,60 +182,48 @@ const selectClient=(e)=>{
 //   console.log(response.data?.clients.length);
     return(
         <FormTransactionStc>
-            <h2 className="cardTitre">Mise à jours de la transaction #{props.id_transaction} </h2>
+            <h2 className="cardTitre">Mise à jours de la transaction #{props.id_transaction} (<span className="appercuTaux" id="appercuTaux1">.....</span>)</h2>
             <Row className="cardActiviteHead">
                 <form
                  onSubmit={test}
                  >
                     <Row>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label> A envoyer</label>
-                                <input type="number" min="0" value={inputs.sent} onChange={handleChange} name="sent" placeholder="Montant à envoyer" className="form-control" />
-                            </div>
-                        </Col>
-                        <Col lg={3}>
+                    <Col lg={4}>
                             <div className="form-group" >
-                                <label>Devise</label>
-                                <select className='form-control' name="from" onChange={handleChange}>
+                                <label>Devise d'envoi</label>
+                                <select className='form-control inputTransaction' id="transactionFrom1" name="from" onChange={handleChange}>
                                     <option value="XAF" selected={inputs.from=="XAF"?true:false}>FR CFA</option>
                                     <option value="MAD" selected={inputs.from=="MAD"?true:false}>DIRHAM</option>
-                                    <option value="USD" selected={inputs.from=="USD"?true:false}>DOLLAR</option>
+                                    <option value="ZAR" selected={inputs.from=="USD"?true:false}>RAND</option>
                                 </select>
                             </div>
                         </Col>
-                        <Col lg={3}>
+                        <Col lg={4}>
                             <div className="form-group">
-                                <label>A recevoir</label>
-                                <input type="number" min="0" name="received" placeholder="A recevoir" value={inputs.received} onChange={handleChange} className="form-control" />
-                            </div>
+                                <label> A envoyer (<span className="appercuTaux" id="transactionSentDevise1">.....</span>)</label>
+                                <input type="number" min="0" 
+                                value={inputs.sent} 
+                                onChange={handleChange} 
+                                name="sent" 
+                                id="transactionSent1" 
+                                placeholder="Montant à envoyer" 
+                                className="form-control inputTransaction" />
+                            </div> 
                         </Col>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label>Devise</label>
-                                <select className='form-control' name="to" onChange={handleChange}>
+                        <Col lg={4}>
+                            <div className="form-group ">
+                                <label>Devise de retrait</label>
+                                <select className='form-control inputTransaction' id="transactionTo1" name="to" onChange={handleChange}>
                                     <option value="MAD" selected={inputs.to=="MAD"?true:false}>DIRHAM</option>
                                     <option value="XAF" selected={inputs.to=="XAF"?true:false}>FR CFA</option>
-                                    <option value="USD" selected={inputs.to=="USD"?true:false}>DOLLAR</option>
+                                    <option value="USD" selected={inputs.to=="ZAR"?true:false}>RAND</option>
                                 </select>
                             </div>
                         </Col>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label>Frais</label>
-                                <input type="number" name="fees" placeholder="Frais" value={inputs.fees} onChange={handleChange} className="form-control" />
-                            </div>
-                        </Col>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label>Total</label>
-                                <input type="number" name="total" placeholder="Total" value={inputs.total} onChange={handleChange} className="form-control" />
-                            </div>
-                        </Col>
-                        <Col lg={2}>
+                        <Col lg={4}>
                             <div className="form-group">
                                 <label>Payé ?</label>
-                                <select className='form-control' name="paid" onChange={handleChange}>
+                                <select className='form-control inputTransaction' name="paid" onChange={handleChange}>
                                     <option value="" selected={inputs.paid==false?false:true}>NON</option>
                                     <option value="true" selected={inputs.paid==true?true:false}>OUI</option>
                                     
@@ -232,9 +232,62 @@ const selectClient=(e)=>{
                         </Col>
                         <Col lg={4}>
                             <div className="form-group">
-                                <label>Client ({ transact?.client?.firstname }  { transact?.client?.name})</label>
+                                <label>Modalité de paiement </label>
+                                <select className='form-control inputTransaction' id="transactionModalite1" name="modalite" onChange={handleChange}>
+                                    <option value="ESPECE"  selected={inputs.modalite=="ESPECE"?true:false}>ESPECES</option>
+                                    <option value="AM"  selected={inputs.modalite=="AM"?true:false}>AIRTEL MONEY</option>
+                                </select>
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>A recevoir (<span className="appercuTaux" id="transactionReceivedDevise1">.....</span>)</label>
+                                <input type="number"
+                                 min="0" 
+                                 name="received"
+                                 id="transactionReceived1" readOnly 
+                                  placeholder={inputs.received}
+                                    onChange={handleChange}
+                                    className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                       
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>Frais (<span className="appercuTaux" id="transactionFeesDevise1">.....</span>)</label>
+                                <input type="number"
+                                 name="fees" placeholder={inputs.fees}
+                                 id="transactionFees1" readOnly 
+                                   onChange={handleChange}
+                                   className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>Autre frais (<span className="appercuTaux" id="transactionOtherFeesDevise1">.....</span>)</label>
+                                <input type="number" 
+                                id="transactionOtherFees1" readOnly 
+                                required
+                                name="otherFees" placeholder="Frais" 
+                                onChange={handleChange} className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>Total (<span className="appercuTaux" id="transactionTotalDevise1">.....</span>)</label>
+                                <input type="number" name="total" 
+                                placeholder={inputs.total}
+                                id="transactionTotal1" readOnly 
+                                 onChange={handleChange} 
+                                 className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                       
+                        <Col lg={6}>
+                            <div className="form-group">
+                                <label>Client <span className="appercuClientTransactUpdate">({ transact?.client?.firstname }  { transact?.client?.name})</span></label>
                                 <Select 
-                                    className="select-react"
+                                    className="select-react inputTransaction"
                                     defaultInputValue={selectedOption}
                                     onChange={selectClient}
                                     isSearchable 

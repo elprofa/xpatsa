@@ -11,7 +11,6 @@ import useForm from "../../../lib/useForm";
 import Select from 'react-select';
 import { useState } from 'react';
 
-
 const LISTE_CLIENT=gql`
  query 
 { 
@@ -35,6 +34,8 @@ mutation CREATE_TRANSACTION(
         $to:String!
         $client:ID
         $paid:Boolean!
+        $modalite:String
+        $otherFees:Int
     )
     { 
         createTransaction(input:
@@ -48,7 +49,9 @@ mutation CREATE_TRANSACTION(
                     from:$from,
                     to:$to,
                     client:$client,
-                    paid:$paid
+                    paid:$paid,
+                    modalite:$modalite,
+                    otherFees:$otherFees
                 }
             }
         )
@@ -63,14 +66,16 @@ mutation CREATE_TRANSACTION(
 
  function FormSaveTransaction(){
     const {inputs,handleChange,clearForm,resetForm}=useForm({
-        sent:0,
-        from:"",
-        received:0,
-        to:"",
-        fees:0,
-        client:0,
+        sent:1,
+        from:"XAF",
+        received:1,
+        to:"MAD",
+        fees:1,
+        client:1,
         paid:false,
         total:0,
+        modalite:"ESPECES",
+        otherFees:0
       });
       
     // const {data,error,loading}=useQuery(CLIENT_MUTATION);
@@ -91,9 +96,25 @@ mutation CREATE_TRANSACTION(
    
     const test=async (e)=>{
         e.preventDefault();
+
+        let f= document.getElementById("transactionFees").value;
+        let t= document.getElementById("transactionTotal").value;
+        let r= document.getElementById("transactionReceived").value;
+        let m= document.getElementById("transactionModalite").value;
+        let of= document.getElementById("transactionOtherFees").value;
+        inputs.fees=parseInt(f);
+        inputs.total=parseInt(t);
+        inputs.received=parseInt(r);
+        inputs.modalite=m;
+        inputs.otherFees=parseInt(of);
+
         const res=await create();
         console.log(res);
         resetForm();
+
+        
+       console.log(inputs);
+        
     }
 
 
@@ -119,64 +140,56 @@ const selectClient=(e)=>{
     inputs.client=parseInt(e.value);
 }
 
+
+ 
+
+
 //   console.log(response.data?.clients.length);
     return(
         <FormSaveTransactionStc>
-            <h2 className="cardTitre">Enregistrement d'une transactions</h2>
+            <h2 className="cardTitre">Enregistrement d'une transaction (<span className="appercuTaux" id="appercuTaux">.....</span>)</h2>
             <Row className="cardActiviteHead">
                 <form
                  onSubmit={test}
                  >
                     <Row>
-                        <Col lg={3}>
+                        <Col lg={4}>
                             <div className="form-group">
-                                <label> A envoyer</label>
-                                <input type="number" min="0" value={inputs.sent} onChange={handleChange} name="sent" placeholder="Montant à envoyer" className="form-control" />
+                                <label>Devise d'envoi</label>
+                                <select className='form-control inputTransaction' id="transactionFrom" name="from" onChange={handleChange}>
+                                    <option value="XAF" slected>FR CFA</option>
+                                    <option value="MAD">DIRHAM</option>
+                                    <option value="ZAR">RAND</option>
+                                </select> 
                             </div>
                         </Col>
-                        <Col lg={3}>
+                        <Col lg={4}>
                             <div className="form-group">
-                                <label>Devise</label>
-                                <select className='form-control' name="from" onChange={handleChange}>
+                                <label> A envoyer  (<span className="appercuTaux" id="transactionSentDevise">.....</span>)</label>
+                                <input type="number" min="1" 
+                                value={inputs.sent} id="transactionSent" 
+                                onChange={handleChange} name="sent" 
+                                placeholder="Montant à envoyer" 
+                                className="form-control inputTransaction" />
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>Devise de retrait</label>
+                                <select className='form-control inputTransaction'
+                                 id="transactionTo" name="to" onChange={handleChange}>
+                                    <option value="MAD" selected>DIRHAM</option>
                                     <option value="XAF">FR CFA</option>
-                                    <option value="MAD">DIRHAM</option>
-                                    <option value="USD">DOLLAR</option>
+                                    <option value="ZAR">RAND</option>
                                 </select>
                             </div>
                         </Col>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label>A recevoir</label>
-                                <input type="number" min="0" name="received" placeholder="A recevoir" value={inputs.received} onChange={handleChange} className="form-control" />
-                            </div>
-                        </Col>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label>Devise</label>
-                                <select className='form-control' name="to" onChange={handleChange}>
-                                    <option value="MAD">DIRHAM</option>
-                                    <option value="XAF">FR CFA</option>
 
-                                    <option value="USD">DOLLAR</option>
-                                </select>
-                            </div>
-                        </Col>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label>Frais</label>
-                                <input type="number" name="fees" placeholder="Frais" value={inputs.fees} onChange={handleChange} className="form-control" />
-                            </div>
-                        </Col>
-                        <Col lg={3}>
-                            <div className="form-group">
-                                <label>Total</label>
-                                <input type="number" name="total" placeholder="Total" value={inputs.total} onChange={handleChange} className="form-control" />
-                            </div>
-                        </Col>
-                        <Col lg={2}>
+                        
+                        <Col lg={4}>
                             <div className="form-group">
                                 <label>Payé ?</label>
-                                <select className='form-control' name="paid" onChange={handleChange}>
+                                <select className='form-control inputTransaction' name="paid" onChange={handleChange}>
                                     <option value="">NON</option>
                                     <option value="true">OUI</option>
                                     
@@ -185,9 +198,61 @@ const selectClient=(e)=>{
                         </Col>
                         <Col lg={4}>
                             <div className="form-group">
+                                <label>Modalité de paiement </label>
+                                <select className='form-control inputTransaction' id="transactionModalite" name="modalite" onChange={handleChange}>
+                                    <option value="ESPECE">ESPECES</option>
+                                    <option value="AM">AIRTEL MONEY</option>
+                                </select>
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>A recevoir (<span className="appercuTaux" id="transactionReceivedDevise">.....</span>)</label>
+                                <input type="number" min="1"
+                                required
+                                 name="received" readOnly
+                                  id="transactionReceived" 
+                                  placeholder="A recevoir" value={inputs.received} 
+                                  onChange={handleChange} className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                        
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>Frais(<span className="appercuTaux" id="transactionFeesDevise">.....</span>)</label>
+                                <input type="number" 
+                                id="transactionFees" readOnly 
+                                name="fees" placeholder="Frais"  
+                                onChange={handleChange} className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>Autre frais (<span className="appercuTaux" id="transactionOtherFeesDevise">.....</span>)</label>
+                                <input type="number" 
+                                id="transactionOtherFees" readOnly 
+                                required
+                                name="otherFees" placeholder="Frais" 
+                                onChange={handleChange} className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="form-group">
+                                <label>Total (<span className="appercuTaux" id="transactionTotalDevise">.....</span>)</label>
+                                <input type="number" 
+                                name="total"  
+                                required
+                                placeholder="Total" 
+                                id="transactionTotal"  readOnly 
+                                className="form-control inputTransaction read" />
+                            </div>
+                        </Col>
+                        
+                        <Col lg={6}>
+                            <div className="form-group">
                                 <label>Client</label>
                                 <Select 
-                                    className="select-react"
+                                    className="select-react inputTransaction"
                                     defaultValue={selectedOption}
                                     onChange={selectClient}
                                     isSearchable 

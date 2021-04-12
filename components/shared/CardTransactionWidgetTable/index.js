@@ -7,7 +7,7 @@ import { FaChevronRight } from "react-icons/fa";
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { BsCheckCircle } from "react-icons/bs";
-import { BsPencilSquare,BsEye } from "react-icons/bs";
+import { BsPencilSquare,BsEye,BsFillTrashFill } from "react-icons/bs";
 
 import { useTable } from 'react-table'
 import React, { Component, Fragment } from 'react';
@@ -18,7 +18,7 @@ import moment from 'moment';
 const LISTE_TRANSACTION=gql`
     query 
     { 
-        transactions 
+        transactions (sort:"id:desc")
         { 
             client 
             {
@@ -29,9 +29,11 @@ const LISTE_TRANSACTION=gql`
             id
             sent
             received
-            fees
+            modalite
             total
             paid
+            from
+            to
             
         }
     }
@@ -47,7 +49,7 @@ const CardTransactionWidgetTable =()=>{
         { title: 'Client', prop: 'client', sortable: true,filterable: true },
         { title: 'A envoyer', prop: 'sent', sortable: true,filterable: true },
         { title: 'A recevoir', prop: 'received' },
-        { title: 'Frais', prop: 'fees' },
+        { title: 'Modalité', prop: 'modalite' },
         { title: 'Coût total', prop: 'total' },
         { title: 'Payé ?', prop: 'paid' },
         { title: 'Action ', prop: 'action' },
@@ -68,14 +70,16 @@ const CardTransactionWidgetTable =()=>{
                 body.push(
                     {
                         client:<Link href={"/client/"+data?.transactions[i]?.client?.id}><a >{data.transactions[i]?.client?.firstname}</a></Link>,
-                        sent:data.transactions[i].sent,
-                        received:data.transactions[i].received,
-                        fees:data.transactions[i].fees,
-                        total:data.transactions[i].total,
+                        sent:data.transactions[i].sent+" "+data.transactions[i].from,
+                        received:data.transactions[i].received+" "+data.transactions[i].to,
+                        modalite:data.transactions[i].modalite,
+                        total:data.transactions[i].total+" "+data.transactions[i].from,
                         paid:data?.transactions[i]?.paid?<span className="yes"><BsCheckCircle /></span>:<span className="no">-</span>,
                         action:<div className="iconAction">
                             <span><Link href={"/transaction/update/"+data?.transactions[i]?.id}><a><BsPencilSquare /></a></Link></span>
-                            <span><Link href={"/transaction/"+data?.transactions[i]?.id}><a><BsEye /></a></Link></span></div>
+                            <span><Link href={"/transaction/"+data?.transactions[i]?.id}><a><BsEye /></a></Link></span>
+                            <span className="deleteTransaction"><Link href="/"><a><BsFillTrashFill /></a></Link></span>
+                            </div>
                     }
                 );
                 

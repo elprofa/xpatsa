@@ -24,5 +24,30 @@ const FormSaveTransactionStc=Styled(Card)`
         width:100%;
     }
 
+    span.appercuTaux {
+    color: #ff0000;
+}
+
+.cardActiviteHead
+{
+    margin-top:30px;
+
+    .inputTransaction {
+        border-radius: 0px;
+        height: 50px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .read 
+    {
+        background: #f9f9f9;
+    }
+}
+
+.select-react > div
+{
+    min-height:50px !important;
+    border-radius:0px;
+}
 `;
 export default FormSaveTransactionStc;

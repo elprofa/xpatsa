@@ -29,6 +29,8 @@ export const SINGLE_CLIENT1=gql`
                 fees
                 total
                 paid
+                from
+                to
             }
         }
         
@@ -65,8 +67,8 @@ const CardTransactionClient =(props)=>{
                 body.push(
                     {
                         created_at:data?.client?.transactions[i].created_at,
-                        fees:data?.client?.transactions[i].fees,
-                        total:data?.client?.transactions[i].total,
+                        fees:data?.client?.transactions[i].fees+" "+data?.client?.transactions[i].from,
+                        total:data?.client?.transactions[i].total+" "+data?.client?.transactions[i].from,
                         paid:data?.client?.transactions[i]?.paid?<span className="yes"><BsCheckCircle /></span>:<span className="no">-</span>,
                         action:<div className="iconAction">
                             <span><Link href={"/transaction/update/"+data?.client?.transactions[i]?.id}><a><BsPencilSquare /></a></Link></span>

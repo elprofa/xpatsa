@@ -67,6 +67,11 @@ const CardTransactionDetailStc=Styled(Card)`
 {
     color:#2362bf;
 }
+
+.blockCol
+{
+    margin:20px 0px;
+}
 `;
 
 export default CardTransactionDetailStc;

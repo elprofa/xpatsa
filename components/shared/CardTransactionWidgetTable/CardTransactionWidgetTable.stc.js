@@ -72,7 +72,12 @@ td
 }
 .tbody-tr td:last-child
 {
-    width:100px;
+    width:150px;
+}
+
+.deleteTransaction a
+{
+    color:#ff0000;
 }
 `;
 export default CardTransactionWidgetTableStc;
