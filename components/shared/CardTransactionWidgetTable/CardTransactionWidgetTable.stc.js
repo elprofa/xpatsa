@@ -78,6 +78,7 @@ td
 .deleteTransaction a
 {
     color:#ff0000;
+    cursor:pointer;
 }
 `;
 export default CardTransactionWidgetTableStc;

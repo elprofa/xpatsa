@@ -1,0 +1,70 @@
+import { FaUserFriends } from "react-icons/fa";
+import {Row,Col} from 'reactstrap';
+import DeleteModalStc from './deleteModal.stc'
+import dynamic from 'next/dynamic'
+import { BsPencilSquare,BsEye,BsFillTrashFill } from "react-icons/bs";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import gql from "graphql-tag";
+import useForm from "../../../lib/useForm";
+import { useMutation } from "@apollo/client";
+import {LISTE_TRANSACTION} from "../CardTransactionWidgetTable";
+// import Chart from "react-apexcharts";
+
+
+const DELETE_TRANSACTION=gql`
+
+mutation DELETE_TRANSACTION (
+    $id:ID!
+)
+{ 
+	deleteTransaction(input:{where:{id:$id}})
+  {
+    transaction
+    {
+        id
+    }
+  }
+}
+`;
+
+const DeleteModal =(props)=>{
+    
+    const id_transaction=props.id_transaction;
+
+    const {inputs,handleChange}=useForm({
+        id:id_transaction,
+      });
+    const [suppr]=useMutation(DELETE_TRANSACTION,{
+        variables:inputs,
+        refetchQueries:[{query:LISTE_TRANSACTION}]
+    });
+
+    const deleteTransaction=()=>{
+        console.log(id_transaction);
+        confirmAlert({
+            title: 'Suppression encours',
+            message: 'Voulez-vous supprimer cet utilisateur ?',
+            buttons: [
+              {
+                label: 'OUI, je veux',
+                onClick: async () => {
+                // inputs.id=;
+                 await suppr();
+                }
+              },
+              {
+                label: 'Non, non',
+                // onClick: () => alert('Click No')
+              }
+            ]
+          })
+    }
+
+    return(
+        <DeleteModalStc onClick={deleteTransaction}>
+            <a><BsFillTrashFill /></a>
+        </DeleteModalStc>
+    )
+}
+export default DeleteModal;

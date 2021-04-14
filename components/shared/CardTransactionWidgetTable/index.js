@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaChevronRight } from "react-icons/fa";
 import gql from 'graphql-tag';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { BsCheckCircle } from "react-icons/bs";
 import { BsPencilSquare,BsEye,BsFillTrashFill } from "react-icons/bs";
 
@@ -14,8 +14,11 @@ import React, { Component, Fragment } from 'react';
 import Datatable from 'react-bs-datatable';
 
 import moment from 'moment';
+import useForm from '../../../lib/useForm';
+import DeleteModal from '../deleteModal';
 
-const LISTE_TRANSACTION=gql`
+
+export const LISTE_TRANSACTION=gql`
     query 
     { 
         transactions (sort:"id:desc")
@@ -43,6 +46,9 @@ const LISTE_TRANSACTION=gql`
 
 const CardTransactionWidgetTable =()=>{
 
+
+
+
     const {data,error,loading}=useQuery(LISTE_TRANSACTION);
 
     const header = [
@@ -67,6 +73,7 @@ const CardTransactionWidgetTable =()=>{
         {
             
             for (i = 0; i < data?.transactions?.length; i++) {
+                var id=data?.transactions[i]?.id;
                 body.push(
                     {
                         client:<Link href={"/client/"+data?.transactions[i]?.client?.id}><a >{data.transactions[i]?.client?.firstname}</a></Link>,
@@ -78,7 +85,7 @@ const CardTransactionWidgetTable =()=>{
                         action:<div className="iconAction">
                             <span><Link href={"/transaction/update/"+data?.transactions[i]?.id}><a><BsPencilSquare /></a></Link></span>
                             <span><Link href={"/transaction/"+data?.transactions[i]?.id}><a><BsEye /></a></Link></span>
-                            <span className="deleteTransaction"><Link href="/"><a><BsFillTrashFill /></a></Link></span>
+                            <DeleteModal id_transaction={id}/>
                             </div>
                     }
                 );
