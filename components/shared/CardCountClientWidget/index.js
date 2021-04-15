@@ -1,10 +1,10 @@
-import CardWidgetStc from './CardWidget.stc';
+import CardCountClientWidgetStc from './CardCountClientWidget.stc';
 import { FaUserFriends } from "react-icons/fa";
 import {Row,Col} from 'reactstrap';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
-const LISTE_CLIENT=gql`
+export const LISTE_CLIENT_BOX=gql`
 query
 {
   clients
@@ -14,25 +14,25 @@ query
 }
 `;
 
-const CardWidget =(props)=>{
+const CardCountClientWidget =(props)=>{
 
-    const {data,error,loading}=useQuery(LISTE_CLIENT);
+    const {data,error,loading}=useQuery(LISTE_CLIENT_BOX);
 
-    console.log(data?.clients?.length);
+   const countClient=data?.clients?.length;
 
     return(
-        <CardWidgetStc>
+        <CardCountClientWidgetStc>
             <Row>
                 <Col sm={4} className="col-4">
                     <span className="spanIcon"><FaUserFriends/></span>
                 </Col>
                 <Col sm={8} className="col-8">
                     <h4>Total client</h4>
-                    <h2>290.000</h2>
+                    <h2>{countClient}</h2>
                     <p className="action"><span action>13%</span> than last Month</p>
                 </Col>
             </Row>
-        </CardWidgetStc>
+        </CardCountClientWidgetStc>
     )
 }
-export default CardWidget;
+export default CardCountClientWidget;

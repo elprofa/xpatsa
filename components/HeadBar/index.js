@@ -9,11 +9,12 @@ import HeadBarStc from './HeadBar.stc';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BiMenu } from "react-icons/bi";
-import CardWidget from '../shared/CardWidget';
-import DateFilter from '../shared/DateFilter';
-
+import CardCountClientWidget from '../shared/CardCountClientWidget';
+import CardCountTransactionWidget from '../shared/CardCountTransactionWidget';
+import DateFilter from "../shared/DateFilter"
 import fetchJson from '../../lib/fetchJson'
 import useUser from '../../lib/useUser'
+import CardTotalAmoutTransaction from '../shared/CardTotalAmoutTransaction';
  
 const HeadBar =(props)=>{
     const { user, mutateUser } = useUser()
@@ -91,13 +92,13 @@ const HeadBar =(props)=>{
                     </Row>
                     <Row>
                         <Col lg={3}>
-                            <CardWidget />
+                            <CardCountClientWidget />
                         </Col>
                         <Col lg={3}>
-                            <CardWidget />
+                            <CardCountTransactionWidget />
                         </Col>
                         <Col lg={3}>
-                            <CardWidget />
+                           <CardTotalAmoutTransaction />
                         </Col>
                         <Col lg={3}>
                             <DateFilter />

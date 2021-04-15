@@ -60,7 +60,7 @@ td
 }
 .tbody-tr td:last-child
 {
-    width:100px;
+    width:150px;
 }
 `;
 export default CardClientWidgetTableStc;

@@ -14,12 +14,13 @@ import React, { Component, Fragment } from 'react';
 import Datatable from 'react-bs-datatable';
 
 import moment from 'moment';
+import DeleteModalClient from '../DeleteModalClient';
 
 
-const LISTE_CLIENT=gql`
+export const LISTE_CLIENT=gql`
  query 
 { 
-	clients
+	clients(sort:"id:desc")
   { 
     id
   	name
@@ -57,6 +58,7 @@ const CardClientWidgetTable =()=>{
         {
             
             for (i = 0; i < data?.clients?.length; i++) {
+              const id_client=data.clients[i]?.id
                 body.push(
                     {
                         name:data.clients[i]?.name,
@@ -66,7 +68,9 @@ const CardClientWidgetTable =()=>{
                         ville:data.clients[i].Ville,
                         action:<div className="iconAction">
                             <span><Link href={"/client/update/"+data?.clients[i]?.id}><a><BsPencilSquare /></a></Link></span>
-                            <span><Link href={"/client/"+data?.clients[i]?.id}><a><BsEye /></a></Link></span></div>
+                            <span><Link href={"/client/"+data?.clients[i]?.id}><a><BsEye /></a></Link></span>
+                            <DeleteModalClient id_client={id_client}/>
+                            </div>
                     }
                 );
                 

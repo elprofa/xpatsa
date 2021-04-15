@@ -44,14 +44,6 @@ export default function Client() {
                 <HeadBar />
                 <div className="adminBody">
                     <Row>
-                        <Col lg="6">
-                            <TrCardWidget />
-                        </Col>
-                        <Col lg="6">
-                            <TrCardWidget />
-                        </Col>
-                    </Row>
-                    <Row>
                         <Col lg={12}>
                             <CardClientWidgetTable />
                         </Col>

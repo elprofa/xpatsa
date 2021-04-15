@@ -45,14 +45,6 @@ export default function Transaction() {
                 <HeadBar />
                 <div className="adminBody">
                     <Row>
-                        <Col lg="6">
-                            <TrCardWidget />
-                        </Col>
-                        <Col lg="6">
-                            <TrCardWidget />
-                        </Col>
-                    </Row>
-                    <Row>
                         <Col lg={12}>
                             <CardTransactionWidgetTable />
                         </Col>

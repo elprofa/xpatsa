@@ -7,6 +7,7 @@ import { FaChevronRight } from "react-icons/fa";
 import Bouton from '../Bouton/Bouton';
 import {gql, useQuery,useMutation} from '@apollo/client';
 import useForm from "../../../lib/useForm";
+import { LISTE_CLIENT_BOX } from '../CardCountClientWidget';
 
 
 const CREATE_CLIENT=gql`
@@ -37,7 +38,8 @@ const CREATE_CLIENT=gql`
     // const {data,error,loading}=useQuery(CLIENT_MUTATION);
 
     const [create,{data,error,loading}]=useMutation(CREATE_CLIENT,{
-        variables:inputs
+        variables:inputs,
+        refetchQueries:[{query:LISTE_CLIENT_BOX}]
     });
 
     

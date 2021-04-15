@@ -12,7 +12,7 @@ import { useQuery } from '@apollo/client';
 const LISTE_TRANSACTION=gql`
 query 
 { 
-    transactions(limit:10)
+    transactions(limit:10,sort:"id:desc")
     {
         id
         created_at

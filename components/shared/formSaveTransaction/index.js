@@ -10,6 +10,7 @@ import useForm from "../../../lib/useForm";
 
 import Select from 'react-select';
 import { useState } from 'react';
+import { LISTE_TRANSACTION_BOX } from '../CardCountTransactionWidget';
 
 const LISTE_CLIENT=gql`
  query 
@@ -82,7 +83,8 @@ mutation CREATE_TRANSACTION(
     const response=useQuery(LISTE_CLIENT);
     
     const [create,{data,error,loading}]=useMutation(CREATE_TRANSACTION,{
-        variables:inputs
+        variables:inputs,
+        refetchQueries:[{query:LISTE_TRANSACTION_BOX}]
     });
 
 

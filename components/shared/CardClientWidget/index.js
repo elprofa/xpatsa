@@ -13,7 +13,7 @@ import { BsPencilSquare,BsEye } from "react-icons/bs";
 const LISTE_CLIENT=gql`
     query 
     { 
-        clients (limit:16)
+        clients (limit:14,sort:"id:desc")
         { 
             id
             firstname
