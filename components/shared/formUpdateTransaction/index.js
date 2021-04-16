@@ -27,6 +27,8 @@ const SINGLE_TRANSACTION=gql`
             fees
             total
             paid
+            modalite
+            otherFees
             client{ 
                 id
                 name
@@ -64,6 +66,8 @@ mutation UPDATE_TRANSACTION (
     $to:String!
     $client:ID
     $paid:Boolean!
+    $modalite:String!
+    $otherFees:Int
     ){ 
 	updateTransaction(
         input:{
@@ -78,6 +82,8 @@ mutation UPDATE_TRANSACTION (
                 to:$to,
                 client:$client,
                 paid:$paid
+                modalite:$modalite
+                otherFees:$otherFees
             }
         })
     { 
@@ -111,6 +117,8 @@ mutation UPDATE_TRANSACTION (
         client:transact?.client?.id,
         paid:transact?.paid,
         total:transact?.total,
+        modalite:transact?.modalite,
+        otherFees:transact?.otherFees,
       });
 
       let clt=transact?.client?.id?transact?.client?.name:'';
@@ -140,6 +148,22 @@ mutation UPDATE_TRANSACTION (
         let r= document.getElementById("transactionReceived1").value;
         let m= document.getElementById("transactionModalite1").value;
         let of= document.getElementById("transactionOtherFees1").value;
+        if(f==""){
+            f= inputs.fees;
+        }
+        if(t==""){
+            t= inputs.total;
+        }
+        if(r==""){
+            r= inputs.received;
+        }
+        if(m==""){
+            m= inputs.modalite;
+        }
+        if(of==""){
+            of= inputs.otherFees;
+        }
+
         inputs.fees=parseInt(f);
         inputs.total=parseInt(t);
         inputs.received=parseInt(r);
@@ -174,6 +198,7 @@ mutation UPDATE_TRANSACTION (
 //     { value: 'vanilla', label: 'Vanilla' },
 //   ];
 
+console.log(inputs.modalite);
  
 const selectClient=(e)=>{
     setSelectedOption(e.value);
@@ -234,8 +259,8 @@ const selectClient=(e)=>{
                             <div className="form-group">
                                 <label>Modalité de paiement </label>
                                 <select className='form-control inputTransaction' id="transactionModalite1" name="modalite" onChange={handleChange}>
-                                    <option value="ESPECE"  selected={inputs.modalite=="ESPECE"?true:false}>ESPECES</option>
-                                    <option value="AM"  selected={inputs.modalite=="AM"?true:false}>AIRTEL MONEY</option>
+                                    <option value="ESPECE"  selected={inputs.modalite==="ESPECE"?true:false}>ESPECES</option>
+                                    <option value="AM"  selected={inputs.modalite==="AM"?true:false}>AIRTEL MONEY</option>
                                 </select>
                             </div>
                         </Col>
@@ -268,7 +293,7 @@ const selectClient=(e)=>{
                                 <input type="number" 
                                 id="transactionOtherFees1" readOnly 
                                 required
-                                name="otherFees" placeholder="Frais" 
+                                name="otherFees" placeholder={inputs.otherFees} 
                                 onChange={handleChange} className="form-control inputTransaction read" />
                             </div>
                         </Col>

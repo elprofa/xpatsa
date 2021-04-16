@@ -6,6 +6,8 @@ import { useQuery } from '@apollo/client';
 import CardTransactionDetailStc from './CardTransactionDetail.stc';
 import {BsEye } from "react-icons/bs";
 
+import moment from 'moment';
+
 export const SINGLE_TRANSACTION=gql`
     query SINGLE_TRANSACTION($id:ID!)
     { 
@@ -63,13 +65,13 @@ export default function DetailTransaction(props) {
                 <Col lg={4} className="blockCol">
                     <p className="label">Créée le :</p>
                     <p className="value">
-                        {transaction.created_at}
+                        {moment(transaction.created_at).format('DD/MM/YYYY - hh:mm:ss')}
                     </p>
                 </Col>
                 <Col lg={4} className="blockCol">
                     <p className="label">Dernière mise à jours le : </p>
                     <p className="value">
-                        {transaction.updated_at}
+                        {moment(transaction.updated_at).format('DD/MM/YYYY - hh:mm:ss')}
                     </p>
                 </Col>
             </Row>

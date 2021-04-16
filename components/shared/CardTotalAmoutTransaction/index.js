@@ -22,8 +22,8 @@ const CardTotalAmoutTransaction =(props)=>{
    const countClient=data?.transactions?.length;
     let total=0;
    for (let index = 0; index < countClient; index++) {
-       
-    total=total+parseInt(data?.transactions?.total);
+       var n=data?.transactions[index]?.total;
+    total=total+parseInt(n);
    }
 
 

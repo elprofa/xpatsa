@@ -9,6 +9,9 @@ import gql from "graphql-tag";
 import useForm from "../../../lib/useForm";
 import { useMutation } from "@apollo/client";
 import {LISTE_TRANSACTION} from "../CardTransactionWidgetTable";
+import { LISTE_TRANSACTION_BOX } from "../CardTotalAmoutTransaction";
+import { LISTE_TRANSACTION_TOTAL } from "../CardCountTransactionWidget";
+import { LISTE_CLIENT_BOX } from "../CardCountClientWidget";
 // import Chart from "react-apexcharts";
 
 
@@ -37,7 +40,7 @@ const DeleteModal =(props)=>{
       });
     const [suppr]=useMutation(DELETE_TRANSACTION,{
         variables:inputs,
-        refetchQueries:[{query:LISTE_TRANSACTION}]
+        refetchQueries:[{query:LISTE_TRANSACTION},{query:LISTE_TRANSACTION_BOX},{query:LISTE_TRANSACTION_TOTAL},{query:LISTE_CLIENT_BOX}]
     });
 
     const deleteTransaction=()=>{

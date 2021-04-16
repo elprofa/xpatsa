@@ -15,9 +15,10 @@ const CREATE_CLIENT=gql`
          $firstname:String!
          $name:String!
          $pays:String!
+         $ville:String!
          $telephone:String!
      ){ 
- 	createClient(input:{data:{name:$name,firstname:$firstname,telephone:$telephone,pays:$pays}})
+ 	createClient(input:{data:{name:$name,firstname:$firstname,telephone:$telephone,pays:$pays,Ville:$ville}})
      {
          client
          { 
@@ -32,6 +33,7 @@ const CREATE_CLIENT=gql`
         firstname:"",
         name:"",
         pays:"",
+        ville:"",
         telephone:"",
       });
       
@@ -47,7 +49,11 @@ const CREATE_CLIENT=gql`
     const test=async (e)=>{
         e.preventDefault();
 
-        if(inputs.firstname.trim()!="" && inputs.name.trim()!="" && inputs.pays.trim()!="" && inputs.telephone.trim()!=""){
+        if(inputs.firstname.trim()!="" && 
+        inputs.name.trim()!="" && 
+        inputs.pays.trim()!="" && 
+        inputs.telephone.trim()!="" 
+        && inputs.ville.trim()!=""){
             const res=await create();
             console.log(res);
             resetForm();
@@ -95,11 +101,20 @@ const CREATE_CLIENT=gql`
                         </Col>
                         <Col lg={6}>
                             <div className="form-group">
+                                <label>Ville de residence</label>
+                                <input type="texte" required name="ville" placeholder="votre ville de residence" value={inputs.ville} onChange={handleChange} className="form-control" />
+                            </div>
+                        </Col>
+                        <Col lg={6}>
+                            <div className="form-group">
                                 <label>Téléphone</label>
                                 <input type="texte" name="telephone" required value={inputs.telephone} onChange={handleChange} placeholder="(+---) -- -- -- --" className="form-control" />
                             </div>
                         </Col>
-                        <Col lg={6}>
+                       
+                    </Row>
+                    <Row>
+                    <Col lg={6}>
                             <Bouton taille="15px" type="submit" minwidth="150px" backgroundcolor="#2362bf" texte="Enregistrer" />
                         </Col>
                     </Row>

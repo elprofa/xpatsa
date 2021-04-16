@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import CardClientDetailStc from './CardClientDetail.stc';
 import {BsEye } from "react-icons/bs";
+import moment from 'moment';
 
 export const SINGLE_CLIENT=gql`
     query SINGLE_CLIENT($id:ID!)
@@ -54,13 +55,13 @@ export default function DetailClient(props) {
                 <Col lg={4}>
                     <p className="label">Crée le :</p>
                     <p className="value">
-                        {client.created_at}
+                        {moment(client.created_at).format('DD/MM/YYYY - hh:mm:ss')}
                     </p>
                 </Col>
                 <Col lg={4}>
                     <p className="label">Dernière mise à jours le : </p>
                     <p className="value">
-                        {client.updated_at}
+                        {moment(client.updated_at).format('DD/MM/YYYY - hh:mm:ss')}
                     </p>
                 </Col>
             </Row>

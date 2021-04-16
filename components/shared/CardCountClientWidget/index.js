@@ -10,6 +10,10 @@ query
   clients
   { 
   	id
+    transactions
+    {
+      id
+    }
   }
 }
 `;
@@ -20,6 +24,16 @@ const CardCountClientWidget =(props)=>{
 
    const countClient=data?.clients?.length;
 
+   let total=0;
+   for (let index = 0; index < countClient; index++) {
+      console.log(typeof data?.clients?.transactions)
+    if(data?.clients[index]?.transactions!="")
+    {
+        total++;
+    }
+       
+   }
+
     return(
         <CardCountClientWidgetStc>
             <Row>
@@ -27,9 +41,9 @@ const CardCountClientWidget =(props)=>{
                     <span className="spanIcon"><FaUserFriends/></span>
                 </Col>
                 <Col sm={8} className="col-8">
-                    <h4>Total client</h4>
-                    <h2>{countClient}</h2>
-                    <p className="action"><span action>13%</span> than last Month</p>
+                    <h4>Clients actifs</h4>
+                    <h2>{total}</h2>
+                    <p className="action">Sur <span action>{countClient}</span> au total </p>
                 </Col>
             </Row>
         </CardCountClientWidgetStc>
