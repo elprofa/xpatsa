@@ -38,6 +38,7 @@ mutation CREATE_TRANSACTION(
         $paid:Boolean!
         $modalite:String
         $otherFees:Int
+        $date_save:String!
     )
     { 
         createTransaction(input:
@@ -53,7 +54,8 @@ mutation CREATE_TRANSACTION(
                     client:$client,
                     paid:$paid,
                     modalite:$modalite,
-                    otherFees:$otherFees
+                    otherFees:$otherFees,
+                    date_save:$date_save
                 }
             }
         )
@@ -67,6 +69,15 @@ mutation CREATE_TRANSACTION(
  `;
 
  function FormSaveTransaction(){
+     
+    var today  = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    console.log(today);
+
     const {inputs,handleChange,clearForm,resetForm}=useForm({
         sent:1,
         from:"XAF",
@@ -77,7 +88,8 @@ mutation CREATE_TRANSACTION(
         paid:false,
         total:0,
         modalite:"ESPECES",
-        otherFees:0
+        otherFees:0,
+        date_save:today
       });
       
     // const {data,error,loading}=useQuery(CLIENT_MUTATION);

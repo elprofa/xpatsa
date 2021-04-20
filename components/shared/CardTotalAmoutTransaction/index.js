@@ -3,6 +3,10 @@ import { FaUserFriends } from "react-icons/fa";
 import {Row,Col} from 'reactstrap';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
+import { getResult } from '../utils/utils';
+import { useState } from 'react';
+import TestContext from '../../../ContextAPI/TestContext';
+import { useContext } from 'react';
 
 export const LISTE_TRANSACTION_BOX=gql`
 query
@@ -10,24 +14,150 @@ query
   transactions
   { 
   	id
-      total
+    total
+    date_save
+    from
+    paid
   }
 }
 `;
 
 const CardTotalAmoutTransaction =(props)=>{
-
-    const {data,error,loading}=useQuery(LISTE_TRANSACTION_BOX);
-
-   const countClient=data?.transactions?.length;
+    const filtre = useContext(TestContext);
     let total=0;
-   for (let index = 0; index < countClient; index++) {
-       var n=data?.transactions[index]?.total;
-    total=total+parseInt(n);
-   }
+    let total1=0;
+    const [tot,setTotal]=useState(2);
+    const {data,error,loading}=useQuery(LISTE_TRANSACTION_BOX);
+    var date1=filtre.date;
 
+    if(data){
+        const countClient=data?.transactions?.length;
+        for (let index = 0; index < countClient; index++) {
+            var date_save=data?.transactions[index]?.date_save;
+            var paid=data?.transactions[index]?.paid;
+            if(date_save!==null && paid){
+                if(filtre.type===0)
+                {
+                    document.getElementById("displayTotalAmountTr").innerHTML=0;
+                  if(date_save===date1)
+                  {
+                    var n=data?.transactions[index]?.total;
+                    var res=getResult(data?.transactions[index]?.from,"XAF",n);
 
-   console.log(total);
+                    const promise = Promise.resolve(res);
+                    promise.then((valeur) => {
+
+                        if(valeur){
+                            var prix=Math.floor(valeur)
+                            // console.log(parseInt(prix))
+                            total=total+parseInt(prix);
+                            // setTotal(total);
+                            document.getElementById("displayTotalAmountTr").innerHTML=total;
+                        }
+                    });
+                  }
+                }
+
+                else if(filtre.type===1)
+                {
+                    document.getElementById("displayTotalAmountTr").innerHTML=0;
+                    var sub=date_save.split("-");
+                    var nd=sub[1]+"-"+sub[0] 
+                    if(nd===date1)
+                  {
+                    var n=data?.transactions[index]?.total;
+                    var res=getResult(data?.transactions[index]?.from,"XAF",n);
+
+                    const promise = Promise.resolve(res);
+                    promise.then((valeur) => {
+
+                        if(valeur){
+                            var prix=Math.floor(valeur)
+                            // console.log(parseInt(prix))
+                            total=total+parseInt(prix);
+                            // setTotal(total);
+                            document.getElementById("displayTotalAmountTr").innerHTML=total;
+                        }
+                    });
+                  }
+                }
+
+                else if(filtre.type===2)
+                {
+                    document.getElementById("displayTotalAmountTr").innerHTML=0;
+                    var sub=date_save.split("-");
+                    var nd=sub[0]
+                   
+                    if(nd==date1)
+                    {
+                        console.log(nd+" - "+date1)
+                       
+                        var n=data?.transactions[index]?.total;
+                        var res=getResult(data?.transactions[index]?.from,"XAF",n);
+
+                        const promise = Promise.resolve(res);
+                        promise.then((valeur) => {
+
+                            if(valeur){
+                                var prix=Math.floor(valeur)
+                                // console.log(parseInt(prix))
+                                total=total+parseInt(prix);
+                                // setTotal(total);
+                                document.getElementById("displayTotalAmountTr").innerHTML=total;
+                            }
+                        });
+                    }
+                }
+
+                else if(filtre.type===3)
+                {
+                    document.getElementById("displayTotalAmountTr").innerHTML=0;
+                    console.log(date_save+" - "+date1)
+                    if(date_save===date1)
+                    {
+                        var n=data?.transactions[index]?.total;
+                        var res=getResult(data?.transactions[index]?.from,"XAF",n);
+
+                        const promise = Promise.resolve(res);
+                        console.log("trouvé")
+                        promise.then((valeur) => {
+
+                            if(valeur){
+                                var prix=Math.floor(valeur)
+                                // console.log(parseInt(prix))
+                                total=total+parseInt(prix);
+                                // setTotal(total);
+                                document.getElementById("displayTotalAmountTr").innerHTML=total;
+                                
+                            }
+                        });
+                    }
+                }
+
+                // total=total+parseInt(n);
+            }
+
+            if(paid){
+                // afficher l'ensemble des totaux des transactions
+                var n=data?.transactions[index]?.total;
+                var res=getResult(data?.transactions[index]?.from,"XAF",n);
+
+                const promise = Promise.resolve(res);
+                promise.then((valeur) => {
+
+                if(valeur){
+                    var prix=Math.floor(valeur)
+                    // console.log(parseInt(prix))
+                    total1=total1+parseInt(prix);
+                    // setTotal(total);
+                    document.getElementById("displayTotalAmountTrTotal").innerHTML=total1;
+                }
+                });
+            }
+        }
+
+    }
+   
     return(
         <CardTotalAmoutTransactionStc>
             <Row>
@@ -35,9 +165,9 @@ const CardTotalAmoutTransaction =(props)=>{
                     <span className="spanIcon"><FaUserFriends/></span>
                 </Col>
                 <Col sm={8} className="col-8">
-                    <h4>Montant total</h4>
-                    <h2>{total}</h2>
-                    <p className="action"><span action>13%</span> than last Month</p>
+                    <h4>Total payé</h4>
+                    <h2 ><span id="displayTotalAmountTr">0</span> XAF</h2>
+                    <p className="action">Sur <span action id="displayTotalAmountTrTotal">0</span> XAF de total</p>
                 </Col>
             </Row>
         </CardTotalAmoutTransactionStc>

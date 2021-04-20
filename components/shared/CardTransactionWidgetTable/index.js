@@ -37,6 +37,7 @@ export const LISTE_TRANSACTION=gql`
             paid
             from
             to
+            date_save
             
         }
     }
@@ -55,9 +56,10 @@ const CardTransactionWidgetTable =()=>{
         { title: 'Client', prop: 'client', sortable: true,filterable: true },
         { title: 'A envoyer', prop: 'sent', sortable: true,filterable: true },
         { title: 'A recevoir', prop: 'received' },
-        { title: 'Modalité', prop: 'modalite' },
+        { title: 'Modalité', prop: 'modalite' ,sortable: true,filterable: true},
         { title: 'Coût total', prop: 'total' },
         { title: 'Payé ?', prop: 'paid' },
+        { title: 'Crééé le', prop: 'date_save', sortable: true,filterable: true },
         { title: 'Action ', prop: 'action' },
       ];
 
@@ -82,6 +84,7 @@ const CardTransactionWidgetTable =()=>{
                         modalite:data.transactions[i].modalite,
                         total:data.transactions[i].total+" "+data.transactions[i].from,
                         paid:data?.transactions[i]?.paid?<span className="yes"><BsCheckCircle /></span>:<span className="no">-</span>,
+                        date_save:data.transactions[i].date_save,
                         action:<div className="iconAction">
                             <span><Link href={"/transaction/update/"+data?.transactions[i]?.id}><a><BsPencilSquare /></a></Link></span>
                             <span><Link href={"/transaction/"+data?.transactions[i]?.id}><a><BsEye /></a></Link></span>
@@ -120,9 +123,9 @@ const CardTransactionWidgetTable =()=>{
                     <Datatable
                         tableHeaders={header}
                         tableBody={body}
-                        rowsPerPage={5}
-                        rowsPerPageOption={[5, 10, 15, 20]}
-                        initialSort={{ prop: 'client', isAscending: true }}
+                        rowsPerPage={10}
+                        rowsPerPageOption={[10, 20, 30, 40]}
+                        initialSort={{ prop: 'client', isAscending: true },{ prop: 'date_save' }}
                         onSort={onSortFunction}
                     />
                 </Col>

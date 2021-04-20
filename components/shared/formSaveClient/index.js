@@ -17,8 +17,15 @@ const CREATE_CLIENT=gql`
          $pays:String!
          $ville:String!
          $telephone:String!
+         $date_save:String!
      ){ 
- 	createClient(input:{data:{name:$name,firstname:$firstname,telephone:$telephone,pays:$pays,Ville:$ville}})
+ 	createClient(input:{data:
+     {name:$name,
+     firstname:$firstname,
+     telephone:$telephone,
+     pays:$pays,
+     Ville:$ville,
+     date_save:$date_save}})
      {
          client
          { 
@@ -29,12 +36,20 @@ const CREATE_CLIENT=gql`
  `;
 
  function FormSaveClient(){
+    var today  = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+
     const {inputs,handleChange,clearForm,resetForm}=useForm({
         firstname:"",
         name:"",
         pays:"",
         ville:"",
         telephone:"",
+        date_save:today
       });
       
     // const {data,error,loading}=useQuery(CLIENT_MUTATION);

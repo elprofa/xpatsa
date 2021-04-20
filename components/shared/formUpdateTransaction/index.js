@@ -10,6 +10,8 @@ import useForm from "../../../lib/useForm";
 import Router from 'next/router';
 import Select from 'react-select';
 import { useState } from 'react';
+import { LISTE_TRANSACTION_BOX, LISTE_TRANSACTION_TOTAL } from '../CardCountTransactionWidget';
+import { LISTE_CLIENT_BOX } from '../CardCountClientWidget';
 
 
 const SINGLE_TRANSACTION=gql`
@@ -130,7 +132,11 @@ mutation UPDATE_TRANSACTION (
     
     const [update,{data,error,loading}]=useMutation(UPDATE_TRANSACTION,{
         variables:inputs,
-        refetchQueries:[{query:SINGLE_TRANSACTION,variables:{id:inputs.id}}]
+        refetchQueries:[
+            {query:SINGLE_TRANSACTION,variables:{id:inputs.id}},
+            {query:LISTE_TRANSACTION_BOX},
+            {query:LISTE_TRANSACTION_TOTAL},
+            {query:LISTE_CLIENT_BOX}]
     });
                                                                  
 
@@ -293,7 +299,7 @@ const selectClient=(e)=>{
                                 <input type="number" 
                                 id="transactionOtherFees1" readOnly 
                                 required
-                                name="otherFees" placeholder={inputs.otherFees} 
+                                name="otherFees" placeholder={inputs.otherFees}  
                                 onChange={handleChange} className="form-control inputTransaction read" />
                             </div>
                         </Col>

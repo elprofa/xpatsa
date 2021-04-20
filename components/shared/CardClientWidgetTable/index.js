@@ -28,6 +28,7 @@ export const LISTE_CLIENT=gql`
     pays
     telephone
     Ville
+    date_save
 
   }
 }
@@ -43,6 +44,7 @@ const CardClientWidgetTable =()=>{
         { title: 'Téléphone', prop: 'telephone' },
         { title: 'Pays', prop: 'country' },
         { title: 'Ville', prop: 'ville' },
+        { title: 'Créé le', prop: 'date_save' },
         { title: 'Action', prop: 'action' },
       ];
 
@@ -66,6 +68,7 @@ const CardClientWidgetTable =()=>{
                         telephone:data.clients[i].telephone,
                         country:data.clients[i].pays,
                         ville:data.clients[i].Ville,
+                        date_save:data.clients[i].date_save,
                         action:<div className="iconAction">
                             <span><Link href={"/client/update/"+data?.clients[i]?.id}><a><BsPencilSquare /></a></Link></span>
                             <span><Link href={"/client/"+data?.clients[i]?.id}><a><BsEye /></a></Link></span>
