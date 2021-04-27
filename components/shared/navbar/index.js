@@ -147,6 +147,7 @@ const logoutUser= (e)=>{
   && router.pathname !="/transactions" 
   && router.pathname !="/clients" 
   && router.pathname !="/analyse" 
+  && router.pathname !="/soldes" 
   && router.pathname !="/setting" 
   && router.pathname !="/save-transaction" 
   && router.pathname !="/save-client"  

@@ -1,4 +1,4 @@
-import CardTransactionWidgetTableStc from './CardTransactionWidgetTable.stc';
+import CardSoldeWidgetTableStc from './CardSoldeWidgetTable.stc';
 import { FaUserFriends } from "react-icons/fa";
 import {Row,Col,Table} from 'reactstrap';
 import Link from 'next/link';
@@ -35,6 +35,7 @@ export const LISTE_TRANSACTION=gql`
             modalite
             total
             paid
+            fees
             from
             to
             date_save
@@ -45,7 +46,7 @@ export const LISTE_TRANSACTION=gql`
 
 
 
-const CardTransactionWidgetTable =()=>{
+const CardSoldeWidgetTable =()=>{
 
 
 
@@ -53,13 +54,15 @@ const CardTransactionWidgetTable =()=>{
     const {data,error,loading}=useQuery(LISTE_TRANSACTION);
 
     const header = [
-        { title: 'Client', prop: 'client', sortable: true,filterable: true },
-        { title: 'A envoyer', prop: 'sent', sortable: true,filterable: true },
-        { title: 'A recevoir', prop: 'received' },
-        { title: 'Modalité', prop: 'modalite' ,sortable: true,filterable: true},
-        { title: 'Coût total', prop: 'total' },
-        { title: 'Payé ?', prop: 'paid' },
-        { title: 'Crééé le', prop: 'date_save', sortable: true,filterable: true },
+        { title: 'Montant envoyé', prop: 'montant_envoye', sortable: true,filterable: true },
+        { title: 'Montant reçu', prop: 'montant_recu' },
+        { title: 'Frais envoi', prop: 'frais' ,sortable: true,filterable: true},
+        { title: '30% des frais', prop: 'frais3' },
+        { title: '70% des frais', prop: 'frais7' },
+        { title: '96% de frais', prop: 'frais9' },
+        { title: 'Frais en Dh', prop: 'frais_dh' },
+        { title: 'Moins f. wafacash', prop: 'wafacash' },
+        { title: 'Depôt', prop: 'depot', sortable: true,filterable: true },
         { title: 'Action ', prop: 'action' },
       ];
 
@@ -76,26 +79,23 @@ const CardTransactionWidgetTable =()=>{
                 var id=data?.transactions[i]?.id;
                 body.push(
                     {
-                        client:<Link href={"/client/"+data?.transactions[i]?.client?.id}><a >{data.transactions[i]?.client?.firstname}</a></Link>,
-                        sent:data.transactions[i].sent+" "+data.transactions[i].from,
-                        received:data.transactions[i].received+" "+data.transactions[i].to,
-                        modalite:data.transactions[i].modalite,
-                        total:data.transactions[i].total+" "+data.transactions[i].from,
-                        paid:data?.transactions[i]?.paid?<span className="yes"><BsCheckCircle /></span>:<span className="no">-</span>,
-                        date_save:data.transactions[i].date_save,
+                        montant_envoye:data.transactions[i].sent+" "+data.transactions[i].from,
+                        montant_recu:data.transactions[i].received+" "+data.transactions[i].to,
+                        frais:data.transactions[i].fees,
+                        frais3:"",
+                        frais7:"",
+                        frais9:"",
+                        frais_dh:"",
+                        wafacash:"",
+                        depot:"",
                         action:<div className="iconAction">
-                            <span><Link href={"/transaction/update/"+data?.transactions[i]?.id}><a><BsPencilSquare /></a></Link></span>
                             <span><Link href={"/transaction/"+data?.transactions[i]?.id}><a><BsEye /></a></Link></span>
-                            <DeleteModal id_transaction={id}/>
                             </div>
                     }
                 );
                 
             }
-        }
-
-        console.log(body);
-        
+        }        
 
       const onSortFunction = {
         date(columnValue) {
@@ -112,10 +112,9 @@ const CardTransactionWidgetTable =()=>{
         return <p>Erreur</p>
     }
 
-    console.log(data.transactions)
     return(
-        <CardTransactionWidgetTableStc>
-            <h2 className="cardTitre">Transactions <Link href="/soldes"><a><span className="spanTableSolde">(Afficher en mode solde)</span></a></Link></h2>
+        <CardSoldeWidgetTableStc>
+            <h2 className="cardTitre">Soldes </h2>
             <Row className="cardActiviteHead">
                 <Col lg={12} className="dataTable">
                     <Datatable
@@ -129,7 +128,7 @@ const CardTransactionWidgetTable =()=>{
                 </Col>
             </Row>
             
-        </CardTransactionWidgetTableStc>
+        </CardSoldeWidgetTableStc>
     )
 }
-export default CardTransactionWidgetTable;
+export default CardSoldeWidgetTable;

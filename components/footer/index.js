@@ -26,6 +26,7 @@ const PiedDePage = (props) => {
   && router.pathname !="/clients" 
   && router.pathname !="/analyse" 
   && router.pathname !="/setting" 
+  && router.pathname !="/soldes" 
   && router.pathname !="/save-transaction" 
   && router.pathname !="/save-client"  
   && router.pathname !="/client/[id]" 

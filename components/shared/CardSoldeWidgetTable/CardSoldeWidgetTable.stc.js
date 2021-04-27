@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 import {Card} from 'reactstrap';
 
-const CardTransactionWidgetTableStc=Styled(Card)`
+const CardSoldeWidgetTableStc=Styled(Card)`
 padding:15px;
 box-shadow:1px 1px 6px #ccc;
 margin:15px 0px;
@@ -85,5 +85,12 @@ span.spanTableSolde {
     color: #2064c0;
     font-size: 18px;
 }
+.dataTable.col-lg-12 {
+    max-width: 1200px;
+    overflow-x: scroll;
+}
+table.table-datatable__root.table {
+    width: 2000px;
+}
 `;
-export default CardTransactionWidgetTableStc;
+export default CardSoldeWidgetTableStc;
