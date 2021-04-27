@@ -4,23 +4,20 @@ import { Container, Row, Col } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import gql from 'graphql-tag';
 import { useMutation, useQuery } from '@apollo/client';
-import CardClientPhotoStc from './CardClientPhoto.stc';
+import CardTransactionPhotoStc from './CardTransactionPhoto.stc';
 import {BsEye } from "react-icons/bs";
 import { useState } from 'react';
 import axios from 'axios';
 import useForm from '../../../lib/useForm';
 
-const SINGLE_CLIENT=gql`
-   query SINGLE_CLIENT($id:ID!)
+const SINGLE_TRANSACTION=gql`
+   query SINGLE_TRANSACTION($id:ID!)
     { 
-        client(id:$id)
+        transaction(id:$id)
         { 
-            id
-            firstname
-            name
-            telephone
-            pays
-            Ville
+            id 
+            fees
+            total
             image
         }
     }
@@ -40,14 +37,14 @@ const SINGLE_MEDIA=gql`
 `;
 
 
-const UPDATE_CLIENT=gql`
+const UPDATE_TRANSACTION=gql`
 
-    mutation UPDATE_CLIENT(
+    mutation UPDATE_TRANSACTION(
         $id:ID!
         $image:Int!
     ){ 
 
-    updateClient(input:{
+    updateTransaction(input:{
     where:{id:$id},
     data:{
             image:$image,
@@ -55,7 +52,7 @@ const UPDATE_CLIENT=gql`
     }
     )
     { 
-        client
+        transaction
         { 
             id
             image
@@ -64,28 +61,28 @@ const UPDATE_CLIENT=gql`
 }
 `;
 
-export default function CardClientPhoto(props) {
+export default function CardTransactionPhoto(props) {
 
     // on cherche l'image du client 
-        const exe=useQuery(SINGLE_CLIENT,{
+        const exe=useQuery(SINGLE_TRANSACTION,{
             variables:{
-                id:props.id_client
+                id:props.id_transaction
             }
         });
 
-        const client=exe?.data?.client
+        const transaction=exe?.data?.transaction
     // --------------------------------------------------
 
     // initialisation de l'inputs
         const {inputs,handleChange,clearForm,resetForm}=useForm({
-            id:props.id_client,
-            image:client?.image,
+            id:props.id_transaction,
+            image:transaction?.image,
         });
     //   --------------------------------------
 
-    const [update,{data,error,loading}]=useMutation(UPDATE_CLIENT,{
+    const [update,{data,error,loading}]=useMutation(UPDATE_TRANSACTION,{
         variables:inputs,
-        refetchQueries:[{query:SINGLE_CLIENT,variables:{id:props.id_client}}]
+        refetchQueries:[{query:SINGLE_TRANSACTION,variables:{id:props.id_transaction}}]
     });
 
 
@@ -142,10 +139,10 @@ export default function CardClientPhoto(props) {
     console.log(exe1?.data)
     let lien=exe1?.data?.files[0]?.url?<img src={"https://www.xpatsa.online/"+exe1?.data?.files[0]?.url}  />: <Image src="/img/avatar.png" width="220" height="220" />
   return (
-      <CardClientPhotoStc>
+      <CardTransactionPhotoStc>
             <Row>
                 <Col lg={3}>
-                    <p className="label">Photo du client </p>
+                    <p className="label">Photo du client</p>
                     <div className="cadrePhoto">
                        {lien}
                     </div>
@@ -162,6 +159,6 @@ export default function CardClientPhoto(props) {
                 </Col>
             </Row>
             
-      </CardClientPhotoStc>
+      </CardTransactionPhotoStc>
   )
 }

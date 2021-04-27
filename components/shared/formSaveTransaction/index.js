@@ -12,6 +12,7 @@ import Select from 'react-select';
 import { useState } from 'react';
 import { LISTE_TRANSACTION_BOX, LISTE_TRANSACTION_TOTAL } from '../CardCountTransactionWidget';
 import { LISTE_CLIENT_BOX } from '../CardCountClientWidget';
+import { LISTE_TRANSACTION } from '../CardTransactionWidgetTable';
 
 const LISTE_CLIENT=gql`
  query 
@@ -97,7 +98,7 @@ mutation CREATE_TRANSACTION(
     
     const [create,{data,error,loading}]=useMutation(CREATE_TRANSACTION,{
         variables:inputs,
-        refetchQueries:[{query:LISTE_TRANSACTION_BOX},{query:LISTE_TRANSACTION_TOTAL},{query:LISTE_CLIENT_BOX}]
+        refetchQueries:[{query:LISTE_TRANSACTION_BOX},{query:LISTE_TRANSACTION_TOTAL},{query:LISTE_CLIENT_BOX},{query:LISTE_TRANSACTION}]
     });
 
 

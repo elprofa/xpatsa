@@ -7,6 +7,7 @@ import HeadBar from '../../components/HeadBar';
 import CardTransactionDetail from '../../components/shared/CardTransactionDetail';
 import useUser from '../../lib/useUser';
 import Router from 'next/router'
+import CardTransactionPhoto from '../../components/shared/CardTransactionPhoto';
 const Wrapper = styled.div`
 
 /* ---------------------------------------------------
@@ -41,6 +42,7 @@ export default function Transaction({query}) {
 
                 <HeadBar />
                 <div className="adminBody">
+                    <CardTransactionPhoto id_transaction={query.id}/>
                     <CardTransactionDetail id_transaction={query.id} />
                 </div>
             </div>

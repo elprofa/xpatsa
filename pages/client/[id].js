@@ -41,7 +41,7 @@ export default function Client({query}) {
             <div id="content" className="generalAdminBody">
                 <HeadBar />
                 <div className="adminBody">
-                    <CardClientPhoto />
+                    <CardClientPhoto id_client={query.id}/>
                     <CardClientDetail id_client={query.id} />
                     <CardTransactionClient id_client={query.id} />
                 </div>

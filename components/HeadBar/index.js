@@ -16,8 +16,13 @@ import fetchJson from '../../lib/fetchJson'
 import useUser from '../../lib/useUser'
 import CardTotalAmoutTransaction from '../shared/CardTotalAmoutTransaction';
 import {TestProvider} from '../../ContextAPI/TestContext';
+import { useRouter } from 'next/router';
 
 const HeadBar =(props)=>{
+
+    const router = useRouter();
+
+    const { pathname } = router;
     const { user, mutateUser } = useUser()
 
     const hideNavBar=()=>{
@@ -61,19 +66,17 @@ const HeadBar =(props)=>{
                             <input type="texte" className="form-control" placeholder="recherche ici ...." />
                             </Col>
                             <Col md={4} lg={2} className="divBoutonNew">
-                            <Link href="/save-transaction">
-                                <a>
-                                    <MonBouton taille="15px" backgroundcolor="#2362bf" texte="Nouvelle transaction" />
-                                </a>
-                            </Link>
-                            
+                                {
+                                    pathname=="/clients"?<Link href="/save-client"><a><MonBouton taille="15px" backgroundcolor="#2362bf" texte="Nouveau client" /></a></Link>:<Link href="/save-transaction"><a><MonBouton taille="15px" backgroundcolor="#2362bf" texte="Nouvelle transaction" /></a></Link>
+                                }
+                                
                             </Col>
                             <Col lg={3} md={4} className="divIconNotification">
                             <a>
-                                    <span>
-                                        <FaRocketchat />
-                                        <i className="badge">2</i>
-                                    </span>
+                                <span>
+                                    <FaRocketchat />
+                                    <i className="badge">2</i>
+                                </span>
                                     
                             </a>
                             <a>

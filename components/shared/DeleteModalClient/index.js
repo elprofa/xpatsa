@@ -9,6 +9,7 @@ import gql from "graphql-tag";
 import useForm from "../../../lib/useForm";
 import { useMutation } from "@apollo/client";
 import { LISTE_CLIENT } from "../CardClientWidgetTable";
+import { LISTE_CLIENT_BOX } from "../CardCountClientWidget";
 // import Chart from "react-apexcharts";
 
 
@@ -35,7 +36,7 @@ const DeleteModalClient =(props)=>{
       });
     const [suppr]=useMutation(DELETE_CLIENT,{
         variables:inputs,
-        refetchQueries:[{query:LISTE_CLIENT}]
+        refetchQueries:[{query:LISTE_CLIENT},{query:LISTE_CLIENT_BOX}]
     });
 
     const deleteClient=()=>{

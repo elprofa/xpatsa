@@ -8,6 +8,7 @@ import Bouton from '../Bouton/Bouton';
 import {gql, useQuery,useMutation} from '@apollo/client';
 import useForm from "../../../lib/useForm";
 import { LISTE_CLIENT_BOX } from '../CardCountClientWidget';
+import { LISTE_CLIENT } from '../CardClientWidgetTable';
 
 
 const CREATE_CLIENT=gql`
@@ -56,7 +57,7 @@ const CREATE_CLIENT=gql`
 
     const [create,{data,error,loading}]=useMutation(CREATE_CLIENT,{
         variables:inputs,
-        refetchQueries:[{query:LISTE_CLIENT_BOX}]
+        refetchQueries:[{query:LISTE_CLIENT_BOX},{query:LISTE_CLIENT}]
     });
 
     
