@@ -42,7 +42,6 @@ export default function Transaction({query}) {
 
                 <HeadBar />
                 <div className="adminBody">
-                    <CardTransactionPhoto id_transaction={query.id}/>
                     <CardTransactionDetail id_transaction={query.id} />
                 </div>
             </div>

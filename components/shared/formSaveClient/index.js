@@ -1,6 +1,6 @@
 import FormSaveClientStc from './formSaveClient.stc';
 import { FaUserFriends } from "react-icons/fa";
-import {Row,Col,Table} from 'reactstrap';
+import {Row,Col,Table, Alert} from 'reactstrap';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaChevronRight } from "react-icons/fa";
@@ -9,6 +9,7 @@ import {gql, useQuery,useMutation} from '@apollo/client';
 import useForm from "../../../lib/useForm";
 import { LISTE_CLIENT_BOX } from '../CardCountClientWidget';
 import { LISTE_CLIENT } from '../CardClientWidgetTable';
+import { useState } from 'react';
 
 
 const CREATE_CLIENT=gql`
@@ -37,6 +38,7 @@ const CREATE_CLIENT=gql`
  `;
 
  function FormSaveClient(){
+    
     var today  = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -84,17 +86,24 @@ const CREATE_CLIENT=gql`
 
 
    
+    var response="";
 
     if(loading){
-          return <p>En attente</p>
+        response=<Image src="/img/load.gif" width="150" height="150" />;
     }
     if(error){
-        return <p>En Erreur</p>
+        console.log(error)
+        response=<Alert color="danger">Une erreur critique! Veuillez consulter votre administrateur</Alert>
     }
     return(
         <FormSaveClientStc>
             <h2 className="cardTitre">Enregistrement d'un client</h2>
             <Row className="cardActiviteHead">
+
+                <div id="divResponseFormSaveClient" className="response">
+                   {response}
+                </div>
+
                 <form onSubmit={test}>
                     <Row>
                         <Col lg={6}>

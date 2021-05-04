@@ -1,6 +1,6 @@
 import FormSaveTransactionStc from './formSaveTransaction.stc';
 import { FaUserFriends } from "react-icons/fa";
-import {Row,Col,Table} from 'reactstrap';
+import {Row,Col,Table, Alert} from 'reactstrap';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaChevronRight } from "react-icons/fa";
@@ -40,6 +40,12 @@ mutation CREATE_TRANSACTION(
         $modalite:String
         $otherFees:Int
         $date_save:String!
+        $trenteFrais:Int
+        $soixanteDixFrais:Int
+        $quatreVingtFrais:Int
+        $quatreVingtFraisDh:Int
+        $fraisWafacash:Int
+        $depot:Int
     )
     { 
         createTransaction(input:
@@ -56,7 +62,14 @@ mutation CREATE_TRANSACTION(
                     paid:$paid,
                     modalite:$modalite,
                     otherFees:$otherFees,
-                    date_save:$date_save
+                    date_save:$date_save,
+                    trenteFrais:$trenteFrais,
+                    soixanteDixFrais:$soixanteDixFrais,
+                    quatreVingtFrais:$quatreVingtFrais,
+                    quatreVingtFraisDh:$quatreVingtFraisDh,
+                    fraisWafacash:$fraisWafacash,
+                    depot:$depot
+                    
                 }
             }
         )
@@ -90,7 +103,13 @@ mutation CREATE_TRANSACTION(
         total:0,
         modalite:"ESPECES",
         otherFees:0,
-        date_save:today
+        date_save:today,
+        trenteFrais:0,
+        soixanteDixFrais:0,
+        quatreVingtFrais:0,
+        quatreVingtFraisDh:0,
+        fraisWafacash:0,
+        depot:0
       });
       
     // const {data,error,loading}=useQuery(CLIENT_MUTATION);
@@ -118,6 +137,23 @@ mutation CREATE_TRANSACTION(
         let r= document.getElementById("transactionReceived").value;
         let m= document.getElementById("transactionModalite").value;
         let of= document.getElementById("transactionOtherFees").value;
+
+        // donnees pour la solde
+        
+        let trenteFrais= document.getElementById("trenteFrais").value;
+        let soixanteDixFrais= document.getElementById("soixanteDixFrais").value;
+        let quatreVingtFrais= document.getElementById("quatreVingtFrais").value;
+        let quatreVingtFraisDh= document.getElementById("quatreVingtFraisDh").value;
+        let fraisWafacash= document.getElementById("fraisWafacash").value;
+        let depot= document.getElementById("depotW").value;
+
+        inputs.trenteFrais=parseInt(trenteFrais);
+        inputs.soixanteDixFrais=parseInt(soixanteDixFrais);
+        inputs.quatreVingtFrais=parseInt(quatreVingtFrais);
+        inputs.quatreVingtFraisDh=parseInt(quatreVingtFraisDh);
+        inputs.fraisWafacash=parseInt(fraisWafacash);
+        inputs.depot=parseInt(depot);
+
         inputs.fees=parseInt(f);
         inputs.total=parseInt(t);
         inputs.received=parseInt(r);
@@ -135,12 +171,12 @@ mutation CREATE_TRANSACTION(
 
 
    
-
+    var response1="";
     if(loading){
-          return <p>En attente</p>
+        response1=<Image src="/img/load.gif" width="150" height="150" />;
     }
     if(error){
-        return <p>En Erreur</p>
+        response1=<Alert color="danger">Une erreur critique! Veuillez consulter votre administrateur</Alert>
     }
 
    
@@ -165,6 +201,9 @@ const selectClient=(e)=>{
         <FormSaveTransactionStc>
             <h2 className="cardTitre">Enregistrement d'une transaction (<span className="appercuTaux" id="appercuTaux">.....</span>)</h2>
             <Row className="cardActiviteHead">
+                <div className="response">
+                   {response1}
+                </div>
                 <form
                  onSubmit={test}
                  >
@@ -279,6 +318,32 @@ const selectClient=(e)=>{
                         </Col>
                         
                         <Col lg={12}>
+                            {/* les autres chmps necessaires pour le solde */}
+                            <input type="hidden" 
+                                id="trenteFrais" readOnly 
+                                name="trenteFrais" placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="soixanteDixFrais" readOnly 
+                                name="soixanteDixFrais" placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="quatreVingtFrais" readOnly 
+                                name="quatreVingtFrais" placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="quatreVingtFraisDh" readOnly 
+                                name="quatreVingtFraisDh" placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="fraisWafacash" readOnly 
+                                name="fraisWafacash" placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="depotW" readOnly 
+                                name="depotW" placeholder="Frais" 
+                                />
+                            {/* -------------fin--------------------------- */}
                             <Bouton taille="15px" type="submit" minwidth="150px" backgroundcolor="#2362bf" texte="Enregistrer" />
                         </Col>
                     </Row>

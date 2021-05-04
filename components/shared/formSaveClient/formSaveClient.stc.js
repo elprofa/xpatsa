@@ -29,5 +29,12 @@ const FormSaveClientStc=Styled(Card)`
         height: 50px;
         border-radius:0px;
     }
+
+    .response
+    {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0px;
+    }
 `;
 export default FormSaveClientStc;

@@ -91,7 +91,55 @@ export const deductionFrais = (value) => {
   
     return Math.floor(amount);
   }
+
+  export const fTrenteFrais=(frais)=>{
+    let amount;
+
+    amount=frais*0.3;
+
+    return Math.floor(amount);
+  }
   
+  export const fSoixanteDixFrais=(frais)=>{
+    let amount;
+
+    amount=frais*0.7;
+
+    return Math.floor(amount);
+  }
+  
+  export const fMoinsFraisWapacash=(recu,quatreVingtFraisDh)=>{
+    let wafacash;
+    let moins;
+    if(recu<1001){
+      wafacash=quatreVingtFraisDh-37;
+    }
+    else if(recu<3001){
+      wafacash=quatreVingtFraisDh-47;
+    }
+    else if(recu<5001){
+      wafacash=quatreVingtFraisDh-57;
+    }
+    else if(recu<10000){
+      wafacash=quatreVingtFraisDh-67;
+    }
+    else if(recu<5001){
+      wafacash=quatreVingtFraisDh-57;
+    }
+
+    moins=recu-(quatreVingtFraisDh*0.0067);
+
+    return moins;
+
+  }
+
+  export const fQuatreVingtFrais=(frais)=>{
+    let amount;
+
+    amount=frais*0.96;
+    return Math.floor(amount);
+  }
+
   export const calculateTotal = (fees, value) => Number(fees) + Number(value);
 
   export const determinePercentage = (
@@ -117,6 +165,8 @@ export const deductionFrais = (value) => {
   
     return percentage;
   }
+
+ 
 
   export const determineRate = (
     fromCurrency,

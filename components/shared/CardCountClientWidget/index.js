@@ -40,7 +40,7 @@ const CardCountClientWidget =(props)=>{
    {
     for (let index = 0; index < countClient; index++) {
        var date_save=data?.clients[index]?.date_save;
-          console.log(date_save)
+          // console.log(date_save)
        if(date_save!==null)
        {
           if(filtre.type===0)

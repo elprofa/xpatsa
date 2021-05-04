@@ -49,5 +49,12 @@ const FormSaveTransactionStc=Styled(Card)`
     min-height:50px !important;
     border-radius:0px;
 }
+
+.response
+{
+    width: 100%;
+    text-align: center;
+    margin: 20px 0px;
+}
 `;
 export default FormSaveTransactionStc;

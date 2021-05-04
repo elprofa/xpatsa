@@ -15,55 +15,57 @@ const SINGLE_TRANSACTION=gql`
     { 
         transaction(id:$id)
         { 
-            id 
-            fees
-            total
-            image
+            id
+            transaction_recus
+            { 
+                id
+                recu
+                { 
+                    id
+                    url
+                    name
+                }
+            }
         }
     }
 `;
 
-const SINGLE_MEDIA=gql`
-   query SINGLE_MEDIA($id:ID!)
-    { 
-        files(where:{id:$id})
-        { 
-            id
-            name
-            hash
-            url
-        }
+const UPLOAD = gql`
+  mutation UPLOAD($recu: Upload!) {
+    upload(file: $recu) {
+      id
     }
+  }
 `;
 
-
-const UPDATE_TRANSACTION=gql`
-
-    mutation UPDATE_TRANSACTION(
-        $id:ID!
-        $image:Int!
-    ){ 
-
-    updateTransaction(input:{
-    where:{id:$id},
-    data:{
-            image:$image,
-        }
-    }
-    )
+const CREATE_TRANSACTION_RECU=gql`
+    mutation CREATE_TRANSACTION_RECU($recu:ID!,$transaction:ID!)
     { 
-        transaction
+        createTransactionRecu(input:{data:{recu:$recu,transaction:$transaction}})
         { 
-            id
-            image
+            transactionRecu
+            { 
+                id
+                transaction
+                {
+                    id
+                }
+            }
         }
     }
-}
 `;
 
 export default function CardTransactionPhoto(props) {
+    // variable globale state
+        //   on initialise l'id de media on le stock dans un state
+            const [media,setMedia]=useState(0);    // ----------------------------------------------------
 
-    // on cherche l'image du client 
+        // le fichier uploader se stock ici
+            const [file,setFile]=useState("");
+        // -----------------------------------------------
+ 
+
+        // on cherche l'image du client 
         const exe=useQuery(SINGLE_TRANSACTION,{
             variables:{
                 id:props.id_transaction
@@ -71,85 +73,57 @@ export default function CardTransactionPhoto(props) {
         });
 
         const transaction=exe?.data?.transaction
-    // --------------------------------------------------
 
-    // initialisation de l'inputs
-        const {inputs,handleChange,clearForm,resetForm}=useForm({
-            id:props.id_transaction,
-            image:transaction?.image,
+    // -------------------------------------------------------------------------------------------------
+      // initialisation de l'inputs
+      const {inputs,handleChange,clearForm,resetForm}=useForm({
+            transaction:props.id_transaction,
+            recu:"",
+            recuTransaction:""
         });
-    //   --------------------------------------
+    //
 
-    const [update,{data,error,loading}]=useMutation(UPDATE_TRANSACTION,{
-        variables:inputs,
-        refetchQueries:[{query:SINGLE_TRANSACTION,variables:{id:props.id_transaction}}]
-    });
+    // initialisation des données du formulaire 
+        const [upload,{data,error,loading}]=useMutation(UPLOAD,{
+            variables:inputs,
+        });
+        const [createTransactionRecu,{data1,error1,loading1}]=useMutation(CREATE_TRANSACTION_RECU,{
+            variables:inputs,
+            refetchQueries:[{query:SINGLE_TRANSACTION,variables:{id:props.id_transaction}}]
+        });
+        
+    // -----------------------------------------
 
-
-    //   on initialise l'id de media on le stock dans un state
-        const [media,setMedia]=useState(0);    // ----------------------------------------------------
-
-    // le fichier uploader se stock ici
-        const [file,setFile]=useState("");
-    // -----------------------------------------------
-
-    // console.log(inputs.image);
-
-    const handleChange1=(e)=>{
-       
+    // se declenche lorsqu'on choisi un fichier
+    const changeInput=(e)=>{
         setFile(e.target.files[0]);
+        inputs.recu=e.target.files[0];
     }
+    // ----------------------------------------
 
-  
-   
-    const handleSubmit1=async (e)=>{
+    // se declenche lorsqu'on valide le formulaire
+    const onSubmitMedia=async (e)=>{
         e.preventDefault();
+        const res=await upload();
+        console.log(res);
 
-        const data = new FormData();
-
-        data.append('files',file);
-        const upload_res=await axios({
-            method:'POST',
-            url:'https://www.xpatsa.online/upload',
-            data,
-        })
-        
-        if(upload_res.data){
-            setMedia(upload_res.data[0]?.id);
-            // console.log(media)
-            inputs.image=upload_res.data[0]?.id;
-            
-
-        }
-        // console.log(inputs);
-        await update();
-        
-        // mettre à jours la photo de l'utilisateur
-
-
-    }
-
-
-    const exe1=useQuery(SINGLE_MEDIA,{
-        variables:{
-            id:inputs.image
-        }
-    });
-
-    console.log(exe1?.data)
-    let lien=exe1?.data?.files[0]?.url?<img src={"https://www.xpatsa.online/"+exe1?.data?.files[0]?.url}  />: <Image src="/img/avatar.png" width="220" height="220" />
+        inputs.recu=res?.data?.upload?.id;
+        const res1=await createTransactionRecu();
+    }  
+    // --------------------------------------------
+    console.log(exe?.data?.transaction?.transaction_recus?.recu?.url)
+    let lien=exe?.data?.transaction?.transaction_recus?.recu?<img src={"https://www.xpatsa.online/"+exe?.data?.transaction?.transaction_recus?.recu?.url}  />: ""
   return (
       <CardTransactionPhotoStc>
             <Row>
-                <Col lg={3}>
-                    <p className="label">Photo du client</p>
+                <Col lg={12}>
                     <div className="cadrePhoto">
                        {lien}
                     </div>
-                    <form onSubmit={handleSubmit1} className="formChangeFile">
+                    <form onSubmit={onSubmitMedia} className="formChangeFile">
                         <Row className="">
                             <Col sm={8}>
-                                <input type="file" onChange={handleChange1} className="form-control"/>
+                                <input type="file" onChange={changeInput} className="form-control"/>
                             </Col>
                             <Col sm={4}>
                                 <button type="submit" className="btn form-control">Ok</button>

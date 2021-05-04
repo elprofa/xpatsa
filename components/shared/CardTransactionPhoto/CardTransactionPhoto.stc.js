@@ -1,9 +1,9 @@
 import Styled from 'styled-components';
 import {Card} from 'reactstrap';
 
- const CardTransactionPhotoStc=Styled(Card)`
+ const CardTransactionPhotoStc=Styled.div`
     padding:15px;
-    box-shadow:1px 1px 6px #ccc;
+    /* box-shadow:1px 1px 6px #ccc; */
     margin:15px 0px;
 
     .cadrePhoto {
@@ -12,7 +12,7 @@ import {Card} from 'reactstrap';
     }
     form 
     {
-        width:220px;
+        width:100%;
     }
 
     .formChangeFile div
@@ -23,7 +23,7 @@ import {Card} from 'reactstrap';
 
     .cadrePhoto img
     {
-        width:220px;
+        width:100%;
     }
 
     .formChangeFile input

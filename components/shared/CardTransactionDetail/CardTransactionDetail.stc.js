@@ -66,6 +66,12 @@ const CardTransactionDetailStc=Styled(Card)`
 
 {
     color:#2362bf;
+    cursor:pointer;
+    a
+    {
+        color:#ccc;
+        font-size:14px;
+    }
 }
 
 .blockCol
@@ -74,4 +80,4 @@ const CardTransactionDetailStc=Styled(Card)`
 }
 `;
 
-export default CardTransactionDetailStc;
+export default CardTransactionDetailStc;  

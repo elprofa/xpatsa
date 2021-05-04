@@ -21,126 +21,108 @@ const SINGLE_CLIENT=gql`
             telephone
             pays
             Ville
-            image
+            client_image
+            {
+                image
+                { 
+                id
+                url
+                    name
+                }
+            }
+
         }
     }
 `;
 
-const SINGLE_MEDIA=gql`
-   query SINGLE_MEDIA($id:ID!)
+const UPLOAD = gql`
+  mutation UPLOAD($image: Upload!) {
+    upload(file: $image) {
+      id
+    }
+  }
+`;
+
+const CREATE_CLIENT_IMAGE=gql`
+    mutation CREATE_CLIENT_IMAGE($image:ID!,$client:ID!)
     { 
-        files(where:{id:$id})
+        createClientImage(input:{data:{image:$image,client:$client}})
         { 
-            id
-            name
-            hash
-            url
+            clientImage
+            {
+                id
+                image
+                {
+                    id
+                }
+            }
         }
     }
 `;
-
-
-const UPDATE_CLIENT=gql`
-
-    mutation UPDATE_CLIENT(
-        $id:ID!
-        $image:Int!
-    ){ 
-
-    updateClient(input:{
-    where:{id:$id},
-    data:{
-            image:$image,
-        }
-    }
-    )
-    { 
-        client
-        { 
-            id
-            image
-        }
-    }
-}
-`;
-
 export default function CardClientPhoto(props) {
 
+     // variable globale state
+        //   on initialise l'id de media on le stock dans un state
+        const [media,setMedia]=useState(0);    // ----------------------------------------------------
+
+        // le fichier uploader se stock ici
+            const [file,setFile]=useState("");
+        // -----------------------------------------------
+ 
     // on cherche l'image du client 
-        const exe=useQuery(SINGLE_CLIENT,{
-            variables:{
-                id:props.id_client
-            }
-        });
+    const exe=useQuery(SINGLE_CLIENT,{
+        variables:{
+            id:props.id_client
+        }
+    });
+
 
         const client=exe?.data?.client
     // --------------------------------------------------
 
-    // initialisation de l'inputs
-        const {inputs,handleChange,clearForm,resetForm}=useForm({
-            id:props.id_client,
-            image:client?.image,
-        });
-    //   --------------------------------------
+   
+    // -------------------------------------------------------------------------------------------------
+      // initialisation de l'inputs
+      const {inputs,handleChange,clearForm,resetForm}=useForm({
+        client:props.id_client,
+        image:"",
+        imageClient:""
+    });
+//
 
-    const [update,{data,error,loading}]=useMutation(UPDATE_CLIENT,{
+
+    // initialisation des données du formulaire 
+    const [upload,{data,error,loading}]=useMutation(UPLOAD,{
+        variables:inputs,
+    });
+    const [createClientImage,{data1,error1,loading1}]=useMutation(CREATE_CLIENT_IMAGE,{
         variables:inputs,
         refetchQueries:[{query:SINGLE_CLIENT,variables:{id:props.id_client}}]
     });
 
+    // -----------------------------------------
 
-    //   on initialise l'id de media on le stock dans un state
-        const [media,setMedia]=useState(0);    // ----------------------------------------------------
-
-    // le fichier uploader se stock ici
-        const [file,setFile]=useState("");
-    // -----------------------------------------------
-
-    // console.log(inputs.image);
-
-    const handleChange1=(e)=>{
-       
+     // se declenche lorsqu'on choisi un fichier
+     const changeInput=(e)=>{
         setFile(e.target.files[0]);
+        inputs.image=e.target.files[0];
     }
 
-  
-   
-    const handleSubmit1=async (e)=>{
+    
+    // se declenche lorsqu'on valide le formulaire
+    const onSubmitMedia=async (e)=>{
         e.preventDefault();
+        const res=await upload();
+        console.log(res);
 
-        const data = new FormData();
-
-        data.append('files',file);
-        const upload_res=await axios({
-            method:'POST',
-            url:'https://www.xpatsa.online/upload',
-            data,
-        })
-        
-        if(upload_res.data){
-            setMedia(upload_res.data[0]?.id);
-            // console.log(media)
-            inputs.image=upload_res.data[0]?.id;
-            
-
-        }
-        // console.log(inputs);
-        await update();
-        
-        // mettre à jours la photo de l'utilisateur
+        inputs.image=res?.data?.upload?.id;
+        const res1=await createClientImage();
+    }  
 
 
-    }
+    console.log(exe?.data)
+    let lien=exe?.data?.client?.client_image?.image?<img src={"https://www.xpatsa.online/"+exe?.data?.client?.client_image?.image?.url}  />: <Image src="/img/avatar.png" width="220" height="220" />
 
-
-    const exe1=useQuery(SINGLE_MEDIA,{
-        variables:{
-            id:inputs.image
-        }
-    });
-
-    console.log(exe1?.data)
-    let lien=exe1?.data?.files[0]?.url?<img src={"https://www.xpatsa.online/"+exe1?.data?.files[0]?.url}  />: <Image src="/img/avatar.png" width="220" height="220" />
   return (
       <CardClientPhotoStc>
             <Row>
@@ -149,10 +131,10 @@ export default function CardClientPhoto(props) {
                     <div className="cadrePhoto">
                        {lien}
                     </div>
-                    <form onSubmit={handleSubmit1} className="formChangeFile">
+                    <form onSubmit={onSubmitMedia} className="formChangeFile">
                         <Row className="">
                             <Col sm={8}>
-                                <input type="file" onChange={handleChange1} className="form-control"/>
+                                <input type="file" onChange={changeInput} className="form-control"/>
                             </Col>
                             <Col sm={4}>
                                 <button type="submit" className="btn form-control">Ok</button>

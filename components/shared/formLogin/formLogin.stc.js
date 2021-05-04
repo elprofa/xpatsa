@@ -31,6 +31,13 @@ const FormLoginStc = styled(Container)`
       text-align:center !important;
     }
   }
+
+  .response
+  {
+      width: 100%;
+      text-align: center;
+      margin: 20px 0px;
+  }
 `;
 
 export default FormLoginStc;

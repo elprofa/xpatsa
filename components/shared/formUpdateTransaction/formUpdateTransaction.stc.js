@@ -53,5 +53,12 @@ const FormTransactionStc=Styled(Card)`
     color:#ff0000;
     font-weight:bold;
 }
+
+.response
+    {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0px;
+    }
 `;
 export default FormTransactionStc;

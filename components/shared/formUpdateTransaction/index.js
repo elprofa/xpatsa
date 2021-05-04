@@ -31,6 +31,12 @@ const SINGLE_TRANSACTION=gql`
             paid
             modalite
             otherFees
+            trenteFrais
+            soixanteDixFrais
+            quatreVingtFrais
+            quatreVingtFraisDh
+            fraisWafacash
+            depot
             client{ 
                 id
                 name
@@ -70,6 +76,12 @@ mutation UPDATE_TRANSACTION (
     $paid:Boolean!
     $modalite:String!
     $otherFees:Int
+    $trenteFrais:Int
+    $soixanteDixFrais:Int
+    $quatreVingtFrais:Int
+    $quatreVingtFraisDh:Int
+    $fraisWafacash:Int
+    $depot:Int
     ){ 
 	updateTransaction(
         input:{
@@ -86,6 +98,12 @@ mutation UPDATE_TRANSACTION (
                 paid:$paid
                 modalite:$modalite
                 otherFees:$otherFees
+                trenteFrais:$trenteFrais,
+                soixanteDixFrais:$soixanteDixFrais,
+                quatreVingtFrais:$quatreVingtFrais,
+                quatreVingtFraisDh:$quatreVingtFraisDh,
+                fraisWafacash:$fraisWafacash,
+                depot:$depot
             }
         })
     { 
@@ -121,6 +139,12 @@ mutation UPDATE_TRANSACTION (
         total:transact?.total,
         modalite:transact?.modalite,
         otherFees:transact?.otherFees,
+        trenteFrais:transact?.trenteFrais,
+        soixanteDixFrais:transact?.soixanteDixFrais,
+        quatreVingtFrais:transact?.quatreVingtFrais,
+        quatreVingtFraisDh:transact?.quatreVingtFraisDh,
+        fraisWafacash:transact?.fraisWafacash,
+        depot:transact?.depot
       });
 
       let clt=transact?.client?.id?transact?.client?.name:'';
@@ -176,6 +200,39 @@ mutation UPDATE_TRANSACTION (
         inputs.modalite=m;
         inputs.otherFees=parseInt(of);
 
+        let trenteFrais= document.getElementById("trenteFrais1").value;
+        let soixanteDixFrais= document.getElementById("soixanteDixFrais1").value;
+        let quatreVingtFrais= document.getElementById("quatreVingtFrais1").value;
+        let quatreVingtFraisDh= document.getElementById("quatreVingtFraisDh1").value;
+        let fraisWafacash= document.getElementById("fraisWafacash1").value;
+        let depot= document.getElementById("depotW1").value;
+
+        if(trenteFrais==""){
+            trenteFrais= inputs.trenteFrais;
+        }
+        if(soixanteDixFrais==""){
+            soixanteDixFrais= inputs.soixanteDixFrais;
+        }
+        if(quatreVingtFrais==""){
+            quatreVingtFrais= inputs.quatreVingtFrais;
+        }
+        if(quatreVingtFraisDh==""){
+            quatreVingtFraisDh= inputs.quatreVingtFraisDh;
+        }
+        if(fraisWafacash==""){
+            fraisWafacash= inputs.fraisWafacash;
+        }
+        if(depot==""){
+            depot= inputs.depot;
+        }
+
+        inputs.trenteFrais=parseInt(trenteFrais);
+        inputs.soixanteDixFrais=parseInt(soixanteDixFrais);
+        inputs.quatreVingtFrais=parseInt(quatreVingtFrais);
+        inputs.quatreVingtFraisDh=parseInt(quatreVingtFraisDh);
+        inputs.fraisWafacash=parseInt(fraisWafacash);
+        inputs.depot=parseInt(depot);
+
         const res=await update();
         console.log(inputs);
         //resetForm();
@@ -187,12 +244,13 @@ mutation UPDATE_TRANSACTION (
 
 
    
-
+ 
+    var response1="";
     if(loading){
-          return <p>En attente</p>
+        response1=<Image src="/img/load.gif" width="150" height="150" />;
     }
     if(error){
-        return <p>En Erreur</p>
+        response1=<Alert color="danger">Une erreur critique! Veuillez consulter votre administrateur</Alert>
     }
 
     
@@ -204,7 +262,7 @@ mutation UPDATE_TRANSACTION (
 //     { value: 'vanilla', label: 'Vanilla' },
 //   ];
 
-console.log(inputs.modalite);
+// console.log(inputs.modalite);
  
 const selectClient=(e)=>{
     setSelectedOption(e.value);
@@ -215,6 +273,9 @@ const selectClient=(e)=>{
         <FormTransactionStc>
             <h2 className="cardTitre">Mise à jours de la transaction #{props.id_transaction} (<span className="appercuTaux" id="appercuTaux1">.....</span>)</h2>
             <Row className="cardActiviteHead">
+                <div className="response">
+                   {response1}
+                </div>
                 <form
                  onSubmit={test}
                  >
@@ -329,6 +390,30 @@ const selectClient=(e)=>{
                         </Col>
                         
                         <Col lg={12}>
+                            <input type="hidden" 
+                                id="trenteFrais1" readOnly 
+                                name="trenteFrais1" placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="soixanteDixFrais1" readOnly 
+                                name="soixanteDixFrais1"  placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="quatreVingtFrais1" readOnly 
+                                name="quatreVingtFrais1"   placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="quatreVingtFraisDh1" readOnly 
+                                name="quatreVingtFraisDh1"  placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="fraisWafacash1" readOnly 
+                                name="fraisWafacash1"  placeholder="Frais" 
+                                />
+                            <input type="hidden" 
+                                id="depotW1" readOnly 
+                                name="depotW1"   placeholder="Frais" 
+                                />
                             <Bouton taille="1rem" type="submit" minwidth="150px" backgroundcolor="#2362bf" texte="Mèttre à jours" />
                         </Col>
                     </Row>

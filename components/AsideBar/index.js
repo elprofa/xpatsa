@@ -14,6 +14,7 @@ import { BiTransfer } from "react-icons/bi";
 import dynamic from 'next/dynamic'
 import ReactTooltip from 'react-tooltip';
 import { useRouter } from "next/router";
+import { BsCardChecklist } from "react-icons/bs";
 
 // import Chart from "react-apexcharts";
 
@@ -107,6 +108,14 @@ const Chart = dynamic(
                         <a data-tip="Transaction">
                             <i><FaRegCreditCard /></i>
                             <span>Transaction</span>
+                        </a>
+                    </Link>
+                </li>
+                <li className={pathname=="/soldes"?"active":""}>
+                    <Link href="/soldes">
+                        <a data-tip="Soldes">
+                            <i><BsCardChecklist /></i>
+                            <span>Soldes</span>
                         </a>
                     </Link>
                 </li>

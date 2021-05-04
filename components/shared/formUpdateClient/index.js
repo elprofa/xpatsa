@@ -98,16 +98,22 @@ const UPDATE_CLIENT=gql`
         })
     }
 
+     
+    var response1="";
     if(loading){
-          return <p>En attente</p>
+        response1=<Image src="/img/load.gif" width="150" height="150" />;
     }
     if(error){
-        return <p>En Erreur</p>
+        response1=<Alert color="danger">Une erreur critique! Veuillez consulter votre administrateur</Alert>
     }
+
     return(
         <FormClientClientStc>
             <h2 className="cardTitre">Mise à jour d'un client</h2>
             <Row className="cardActiviteHead">
+                <div className="response">
+                   {response1}
+                </div>
                 <form onSubmit={test}>
                     <Row>
                         <Col lg={6}>

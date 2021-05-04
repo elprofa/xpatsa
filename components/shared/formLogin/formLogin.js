@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Form } from "reactstrap";
+import { Row, Col, Form, Alert } from "reactstrap";
 import FormLoginStc from "./formLogin.stc";
 import Titre from "../Titre/Titre";
 import InputGroup from "../inputGroup";
@@ -16,6 +16,7 @@ import useUser from "../../../lib/useUser";
 import { useState } from "react";
 import fetchJson from '../../../lib/fetchJson'
 import { withIronSession } from "next-iron-session";
+import Image from "next/image";
 
 
 const SIGNIN_MUTATION=gql`
@@ -90,8 +91,14 @@ const FormLogin = (props) => {
     }
   }
 
-  if(loading){ return <p>Loading encours</p> }
-  if(error){ return <p>Error</p> }
+  var response="";
+
+  if(loading){
+    response=<Image src="/img/load.gif" width="150" height="150" />;
+}
+if(error){
+    response=<Alert color="danger">Utilisateur introuvable</Alert>
+}
 
   return (
     <FormLoginStc
@@ -99,6 +106,9 @@ const FormLogin = (props) => {
     onSubmit={handleSubmit}>
       <Titre texte="Se connecter " color="#007bff" />
       {errorMsg && <p className="error">{errorMsg}</p>}
+      <div id="divResponseFormSaveClient" className="response">
+          {response}
+      </div>
       <Form>
         <InputGroup name="identifier" myClass="identifier" required valueInput={inputs.identifier} typeInput="texte" change={handleChange} textLabel="ADRESSE E-MAIL OU NUMERO DE TELEPHONE" />
         <InputGroup name="password" myClass="password" required valueInput={inputs.password} typeInput="password" change={handleChange} textLabel="MOT DE PASSE" />

@@ -39,6 +39,12 @@ export const LISTE_TRANSACTION=gql`
             from
             to
             date_save
+            trenteFrais
+            soixanteDixFrais
+            quatreVingtFrais
+            quatreVingtFraisDh
+            fraisWafacash
+            depot
             
         }
     }
@@ -81,13 +87,13 @@ const CardSoldeWidgetTable =()=>{
                     {
                         montant_envoye:data.transactions[i].sent+" "+data.transactions[i].from,
                         montant_recu:data.transactions[i].received+" "+data.transactions[i].to,
-                        frais:data.transactions[i].fees,
-                        frais3:"",
-                        frais7:"",
-                        frais9:"",
-                        frais_dh:"",
-                        wafacash:"",
-                        depot:"",
+                        frais:data.transactions[i].fees+" "+data.transactions[i].from,
+                        frais3:data.transactions[i].trenteFrais+" "+data.transactions[i].from,
+                        frais7:data.transactions[i].soixanteDixFrais+" "+data.transactions[i].from,
+                        frais9:data.transactions[i].quatreVingtFrais+" "+data.transactions[i].from,
+                        frais_dh:data.transactions[i].quatreVingtFraisDh+" "+data.transactions[i].to,
+                        wafacash:data.transactions[i].fraisWafacash+" "+data.transactions[i].to,
+                        depot:data.transactions[i].depot+" "+data.transactions[i].from,
                         action:<div className="iconAction">
                             <span><Link href={"/transaction/"+data?.transactions[i]?.id}><a><BsEye /></a></Link></span>
                             </div>
