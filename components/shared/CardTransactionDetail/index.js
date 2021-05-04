@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Container, Row, Col } from "reactstrap";
+import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
@@ -7,6 +8,9 @@ import CardTransactionDetailStc from './CardTransactionDetail.stc';
 import {BsEye } from "react-icons/bs";
 
 import moment from 'moment';
+import { useState } from 'react';
+import { Modal } from 'react-bootstrap';
+import CardTransactionPhoto from '../CardTransactionPhoto';
 
 export const SINGLE_TRANSACTION=gql`
     query SINGLE_TRANSACTION($id:ID!)
@@ -37,6 +41,13 @@ export const SINGLE_TRANSACTION=gql`
 
 export default function DetailTransaction(props) {
 
+// pour le modal
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+// ----------------------------------------------------
+
     const {data,error,loading}=useQuery(SINGLE_TRANSACTION,{
         variables:{
             id:props.id_transaction
@@ -53,8 +64,12 @@ export default function DetailTransaction(props) {
     }
 
     const transaction=data.transaction;
+
   return (
       <CardTransactionDetailStc>
+            <div className="response">
+                    {response}
+            </div>
             <Row>
                 <Col lg={4} className="blockCol">
                     <p className="label">Id transaction :</p>
@@ -115,7 +130,7 @@ export default function DetailTransaction(props) {
                 <Col lg={3} className="blockCol">
                     <p className="label">Statut : </p>
                     <p className="value">
-                        {transaction.paid?<span className="yes">Payé</span>:<span className="no">Non Payé</span>}
+                        {transaction.paid?<span className="yes" onClick={handleShow}>Payé <a >(Facture)</a></span>:<span className="no">Non Payé</span>}
                     </p>
                 </Col>
             </Row>
@@ -125,6 +140,19 @@ export default function DetailTransaction(props) {
                     <p className="value">
                     {transaction?.client?.firstname} {transaction?.client?.name} <span className="iconDetailUser" title="Détail du client"><Link href={"/client/"+transaction?.client?.id}><a ><BsEye /></a></Link></span>
                     </p>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Facture de la transaction</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <CardTransactionPhoto id_transaction={props.id_transaction}/>
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Fermer
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Col>
                 
                 <Col lg={4} className="blockCol">
