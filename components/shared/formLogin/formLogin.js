@@ -7,117 +7,128 @@ import InputGroup from "../inputGroup";
 import Bouton from "../Bouton/Bouton";
 import gql from "graphql-tag";
 import { useMutation, useQuery } from "@apollo/client";
-import { parseCookies, setCookie, destroyCookie } from 'nookies';
-import Router from 'next/router';
+import { parseCookies, setCookie, destroyCookie } from "nookies";
+import Router from "next/router";
 import useForm from "../../../lib/useForm";
-import TestContext from '../../../ContextAPI/TestContext';
-import PropTypes from 'prop-types'
+import TestContext from "../../../ContextAPI/TestContext";
+import PropTypes from "prop-types";
 import useUser from "../../../lib/useUser";
 import { useState } from "react";
-import fetchJson from '../../../lib/fetchJson'
+import fetchJson from "../../../lib/fetchJson";
 import { withIronSession } from "next-iron-session";
 import Image from "next/image";
 
-
-const SIGNIN_MUTATION=gql`
-mutation SIGNIN_MUTATION($identifier:String!,$password:String!)
-{ 
-	login(input:{identifier:$identifier,password:$password})
-  { 
-  	jwt
-    user
-    { 
-    	id
-      username
-      email
-      role
-      { 
-        name
+const SIGNIN_MUTATION = gql`
+  mutation SIGNIN_MUTATION($identifier: String!, $password: String!) {
+    login(input: { identifier: $identifier, password: $password }) {
+      jwt
+      user {
+        id
+        username
+        email
+        role {
+          name
+        }
       }
     }
   }
-}
 `;
-
 
 const FormLogin = (props) => {
   const { texte, backgroundcolor, color, icon, errorMessage, onSubmit } = props;
 
-  const {inputs,handleChange,clearForm,resetForm}=useForm({
-    identifier:"",
-    password:"",
+  const { inputs, handleChange, clearForm, resetForm } = useForm({
+    identifier: "",
+    password: "",
   });
 
-  const [login,{data,error,loading}] = useMutation(SIGNIN_MUTATION,{
-    variables:inputs
+  const [login, { data, error, loading }] = useMutation(SIGNIN_MUTATION, {
+    variables: inputs,
   });
 
   const { mutateUser } = useUser({
-    redirectTo: '/dashboard',
+    redirectTo: "/dashboard",
     redirectIfFound: true,
-  })
+  });
 
-  const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    const res=await login();
+    const res = await login();
 
-    if(res.data){
-
+    if (res.data) {
       const body = {
-        xPatsaId:res.data.login.user.id,
+        xPatsaId: res.data.login.user.id,
         xPatsaEmail: res.data.login.user.email,
         xPatsaUsername: res.data.login.user.username,
         xPatsaPassword: inputs.password,
-        xPatsaToken:res.data.login.jwt,
-        xPatsaRole:res.data.login.user.role.name
-        
-      }
-      
+        xPatsaToken: res.data.login.jwt,
+        xPatsaRole: res.data.login.user.role.name,
+      };
+
       try {
         await mutateUser(
-          fetchJson('/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+          fetchJson("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
           })
-        )
+        );
       } catch (error) {
-        console.error('An unexpected error happened:', error)
-        setErrorMsg(error.data.message)
+        console.error("An unexpected error happened:", error);
+        setErrorMsg(error.data.message);
       }
     }
   }
 
-  var response="";
+  var response = "";
 
-  if(loading){
-    response=<Image src="/img/load.gif" width="150" height="150" />;
-}
-if(error){
-    response=<Alert color="danger">Utilisateur introuvable</Alert>
-}
+  if (loading) {
+    response = <Image src="/img/load.gif" width="150" height="150" />;
+  }
+  if (error) {
+    response = <Alert color="danger">Utilisateur introuvable</Alert>;
+  }
 
   return (
-    <FormLoginStc
-    method="POST"
-    onSubmit={handleSubmit}>
+    <FormLoginStc method="POST" onSubmit={handleSubmit}>
       <Titre texte="Se connecter " color="#007bff" />
       {errorMsg && <p className="error">{errorMsg}</p>}
       <div id="divResponseFormSaveClient" className="response">
-          {response}
+        {response}
       </div>
       <Form>
-        <InputGroup name="identifier" myClass="identifier" required valueInput={inputs.identifier} typeInput="texte" change={handleChange} textLabel="ADRESSE E-MAIL OU NUMERO DE TELEPHONE" />
-        <InputGroup name="password" myClass="password" required valueInput={inputs.password} typeInput="password" change={handleChange} textLabel="MOT DE PASSE" />
+        <InputGroup
+          name="identifier"
+          myClass="identifier"
+          required
+          valueInput={inputs.identifier}
+          typeInput="texte"
+          change={handleChange}
+          textLabel="ADRESSE E-MAIL OU NUMERO DE TELEPHONE"
+        />
+        <InputGroup
+          name="password"
+          myClass="password"
+          required
+          valueInput={inputs.password}
+          typeInput="password"
+          change={handleChange}
+          textLabel="MOT DE PASSE"
+        />
         <Row>
           <Col id="left" lg={6}>
             <a href="#elprofa.com">Mot de passe oublié ?</a>
           </Col>
           <Col id="right" lg={6}>
-            <Bouton texte="SE CONNECTER" type="submit" on backgroundcolor="#007bff" />
+            <Bouton
+              texte="SE CONNECTER"
+              type="submit"
+              on
+              backgroundcolor="#007bff"
+            />
           </Col>
         </Row>
       </Form>
@@ -127,9 +138,7 @@ if(error){
 
 export default FormLogin;
 
-
 FormLogin.propTypes = {
   errorMessage: PropTypes.string,
   onSubmit: PropTypes.func,
-}
-
+};
