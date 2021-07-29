@@ -120,11 +120,6 @@ const HeadBar = (props) => {
                     </>
                   )}
                 </div>
-                <div className="profilPicture">
-                  <Link href="/">
-                    <Image src="/img/avatar.png" width={130} height={130} />
-                  </Link>
-                </div>
               </Col>
             </Row>
             <Row>

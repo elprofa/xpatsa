@@ -91,7 +91,7 @@ const CardCountTransactionWidget = (props) => {
           <h4>Transactions payées </h4>
           <h2>{body.length}</h2>
           <p className="action">
-            Sur <span action> {countTransactionTotal} </span> au total
+            Sur <span> {countTransactionTotal} </span> au total
           </p>
         </Col>
       </Row>

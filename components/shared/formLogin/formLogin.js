@@ -94,6 +94,7 @@ const FormLogin = (props) => {
 
   return (
     <FormLoginStc method="POST" onSubmit={handleSubmit}>
+      {console.log(data)}
       <Titre texte="Se connecter " color="#007bff" />
       {errorMsg && <p className="error">{errorMsg}</p>}
       <div id="divResponseFormSaveClient" className="response">

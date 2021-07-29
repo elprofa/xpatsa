@@ -90,7 +90,7 @@ const CardCountClientWidget = (props) => {
           <h4>Clients actifs</h4>
           <h2>{body.length}</h2>
           <p className="action">
-            Sur <span action>{countClient}</span> au total{" "}
+            Sur <span>{countClient}</span> au total{" "}
           </p>
         </Col>
       </Row>

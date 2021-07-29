@@ -152,11 +152,7 @@ const CardTotalAmoutTransaction = (props) => {
             <span id="displayTotalAmountTr">0</span> XAF
           </h2>
           <p className="action">
-            Sur{" "}
-            <span action id="displayTotalAmountTrTotal">
-              0
-            </span>{" "}
-            XAF de total
+            Sur <span id="displayTotalAmountTrTotal">0</span> XAF de total
           </p>
         </Col>
       </Row>

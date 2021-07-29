@@ -30,7 +30,7 @@ export const LISTE_CLIENT = gql`
   }
 `;
 
-const CardClientWidgetTable = () => {
+const CardClientWidgetTable = (props) => {
   const { data, error, loading } = useQuery(LISTE_CLIENT);
   const header = [
     { title: "Nom", prop: "name", sortable: true, filterable: true },
@@ -60,6 +60,8 @@ const CardClientWidgetTable = () => {
         created_at: data.clients[i].created_at,
         action: (
           <div className="iconAction">
+            {console.log(data)}
+            {console.log(props)}
             <span>
               <Link href={"/client/update/" + data?.clients[i]?.id}>
                 <a>

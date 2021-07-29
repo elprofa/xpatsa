@@ -4,7 +4,7 @@ import { Button } from "reactstrap";
 const BoutonStc = styled(Button)`
   background: ${(props) => props.backgroundcolor || "#ccc"};
   border: 1px solid ${(props) => props.bordercolor || "transparent"};
-  border-radius: 0px;
+  border-radius: 50%;
   color: ${(props) => props.color || "#fff"};
   min-width: ${(props) => props.minwidth || "40px"} !important;
   min-height: 40px;
