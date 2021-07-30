@@ -106,6 +106,7 @@ const CardSoldeWidgetTable = () => {
       <h2 className="cardTitre">Soldes </h2>
       <Row className="cardActiviteHead">
         <Col md={10} className="dataTable">
+          helo
           <Datatable
             tableHeaders={header}
             tableBody={body}
