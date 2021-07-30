@@ -20,11 +20,6 @@ import DeleteModal from "../deleteModal";
 export const LISTE_TRANSACTION = gql`
   query {
     transactions(sort: "id:desc") {
-      client {
-        id
-        firstname
-        name
-      }
       id
       sent
       received
@@ -34,13 +29,6 @@ export const LISTE_TRANSACTION = gql`
       fees
       from
       to
-      created_at
-      trenteFrais
-      soixanteDixFrais
-      quatreVingtFrais
-      quatreVingtFraisDh
-      fraisWafacash
-      depot
     }
   }
 `;
@@ -55,14 +43,10 @@ const CardSoldeWidgetTable = () => {
       sortable: true,
       filterable: true,
     },
+    { title: "Frais airtel money", prop: "frais_airtel_money" },
     { title: "Montant reçu", prop: "montant_recu" },
     { title: "Frais envoi", prop: "frais", sortable: true, filterable: true },
-    { title: "30% des frais", prop: "frais3" },
-    { title: "70% des frais", prop: "frais7" },
-    { title: "96% de frais", prop: "frais9" },
     { title: "Frais en Dh", prop: "frais_dh" },
-    { title: "Moins f. wafacash", prop: "wafacash" },
-    { title: "Depôt", prop: "depot", sortable: true, filterable: true },
     { title: "Action ", prop: "action" },
   ];
 
@@ -81,23 +65,12 @@ const CardSoldeWidgetTable = () => {
         montant_recu:
           data.transactions[i].received + " " + data.transactions[i].to,
         frais: data.transactions[i].fees + " " + data.transactions[i].from,
-        frais3:
-          data.transactions[i].trenteFrais + " " + data.transactions[i].from,
-        frais7:
-          data.transactions[i].soixanteDixFrais +
-          " " +
-          data.transactions[i].from,
-        frais9:
-          data.transactions[i].quatreVingtFrais +
-          " " +
-          data.transactions[i].from,
         frais_dh:
           data.transactions[i].quatreVingtFraisDh +
           " " +
           data.transactions[i].to,
-        wafacash:
-          data.transactions[i].fraisWafacash + " " + data.transactions[i].to,
-        depot: data.transactions[i].depot + " " + data.transactions[i].from,
+        frais_airtel_money:
+          data.transactions[i].otherFees + " " + data.transactions[i].to,
         action: (
           <div className="iconAction">
             <span>
@@ -132,7 +105,7 @@ const CardSoldeWidgetTable = () => {
     <CardSoldeWidgetTableStc>
       <h2 className="cardTitre">Soldes </h2>
       <Row className="cardActiviteHead">
-        <Col lg={12} className="dataTable">
+        <Col md={10} className="dataTable">
           <Datatable
             tableHeaders={header}
             tableBody={body}
