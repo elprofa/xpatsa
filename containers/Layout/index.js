@@ -15,6 +15,7 @@ const Layout = ({ children, ...props }) => {
         <title>My page title</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="stylesheet" href="https://use.typekit.net/pgv8psy.css" />
+        <link rel="shortcut icon" href="/img/Logo_Xpatsa.png" />
       </Head>
       <GlobalCSS />
       <Navbar /> 

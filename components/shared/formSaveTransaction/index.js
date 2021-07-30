@@ -212,7 +212,7 @@ const selectClient=(e)=>{
                             <div className="form-group">
                                 <label>Devise d'envoi</label>
                                 <select className='form-control inputTransaction' id="transactionFrom" name="from" onChange={handleChange}>
-                                    <option value="XAF" slected>FR CFA</option>
+                                    <option value="XAF" selected>FR CFA</option>
                                     <option value="MAD">DIRHAM</option>
                                     <option value="ZAR">RAND</option>
                                 </select> 

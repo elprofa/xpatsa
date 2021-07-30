@@ -145,11 +145,7 @@ const Example = (props) => {
     data3="selected";
     OriginCurrency=[
       {
-        device:"USD",
-        
-      },
-      {
-        device:"RAND",
+        device:"ZAR",
       }
     ]
   }
@@ -177,11 +173,7 @@ const Example = (props) => {
     data6="selected";
     DestinationCurrency=[
       {
-        device:"USD",
-        
-      },
-      {
-        device:"RAND",
+        device:"ZAR",
       }
     ]
   }
@@ -207,6 +199,8 @@ const Example = (props) => {
             
             document.getElementById("recevoir").value=Math.floor(valeur);
 
+            // montant recu fois pourcentage 
+            
             //  Update contexte API currency
             transaction.TrUpdateAmountReceived(Math.floor(valeur));
 
@@ -215,6 +209,8 @@ const Example = (props) => {
           
           // elprofa is trying to fetch rate data 
           let rate=getRate(currOriginDev,currDestinaDev,envoyer);
+
+          console.log(getRate("XAF", "ZAR", 100000))
 
           const primise2 = Promise.resolve(rate);
             primise2.then((valeur) => {

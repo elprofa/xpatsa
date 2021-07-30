@@ -123,13 +123,12 @@ export const deductionFrais = (value) => {
     else if(recu<10000){
       wafacash=quatreVingtFraisDh-67;
     }
-    else if(recu<5001){
-      wafacash=quatreVingtFraisDh-57;
+    else
+    {
+      wafacash=recu-(quatreVingtFraisDh*0.0067);
     }
 
-    moins=recu-(quatreVingtFraisDh*0.0067);
-
-    return moins;
+    return wafacash;
 
   }
 

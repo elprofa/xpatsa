@@ -84,7 +84,7 @@ const CardSoldeWidgetTable =()=>{
             for (i = 0; i < data?.transactions?.length; i++) {
                 var id=data?.transactions[i]?.id;
                 body.push(
-                    {
+                     {
                         montant_envoye:data.transactions[i].sent+" "+data.transactions[i].from,
                         montant_recu:data.transactions[i].received+" "+data.transactions[i].to,
                         frais:data.transactions[i].fees+" "+data.transactions[i].from,
@@ -101,6 +101,21 @@ const CardSoldeWidgetTable =()=>{
                 );
                 
             }
+
+            body.push(
+                {
+                   montant_envoye:0,
+                   montant_recu:0,
+                   frais:0,
+                   frais3:0,
+                   frais7:0,
+                   frais9:0,
+                   frais_dh:0,
+                   wafacash:0,
+                   depot:0,
+                   action:""
+               }
+           );
         }        
 
       const onSortFunction = {
@@ -126,8 +141,6 @@ const CardSoldeWidgetTable =()=>{
                     <Datatable
                         tableHeaders={header}
                         tableBody={body}
-                        rowsPerPage={10}
-                        rowsPerPageOption={[10, 20, 30, 40]}
                         initialSort={{ prop: 'client', isAscending: true },{ prop: 'date_save' }}
                         onSort={onSortFunction}
                     />

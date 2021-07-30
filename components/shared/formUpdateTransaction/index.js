@@ -286,7 +286,7 @@ const selectClient=(e)=>{
                                 <select className='form-control inputTransaction' id="transactionFrom1" name="from" onChange={handleChange}>
                                     <option value="XAF" selected={inputs.from=="XAF"?true:false}>FR CFA</option>
                                     <option value="MAD" selected={inputs.from=="MAD"?true:false}>DIRHAM</option>
-                                    <option value="ZAR" selected={inputs.from=="USD"?true:false}>RAND</option>
+                                    <option value="ZAR" selected={inputs.from=="ZAR"?true:false}>RAND</option>
                                 </select>
                             </div>
                         </Col>
@@ -308,7 +308,7 @@ const selectClient=(e)=>{
                                 <select className='form-control inputTransaction' id="transactionTo1" name="to" onChange={handleChange}>
                                     <option value="MAD" selected={inputs.to=="MAD"?true:false}>DIRHAM</option>
                                     <option value="XAF" selected={inputs.to=="XAF"?true:false}>FR CFA</option>
-                                    <option value="USD" selected={inputs.to=="ZAR"?true:false}>RAND</option>
+                                    <option value="ZAR" selected={inputs.to=="ZAR"?true:false}>RAND</option>
                                 </select>
                             </div>
                         </Col>
