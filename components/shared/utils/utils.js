@@ -24,7 +24,7 @@ export const calculateFees = (value, name, fromCurrency, toCurrency) => {
   
     if (fromCurrency === 'XAF' && toCurrency === 'MAD') {
       if (value <= 200000) {
-        fees = 2500 + value * 0.075;
+        fees = 2500 + value * 0.06;
       } else if (value <= 400000) {
         fees = 4000 + value * 0.075;
       } else if (value <= 600000) {

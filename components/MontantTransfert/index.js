@@ -366,6 +366,7 @@ const Example = (props) => {
     }
   }
   
+  console.log(transaction)
 
   return (
     <MontantTransfertStc>
@@ -429,9 +430,15 @@ const Example = (props) => {
 
         <Col lg={12}>
               {
-                <p className="tauxEchange">
-                  Taux de change actuel : <b><em>{transaction.TrRate}</em></b>
-              </p>
+                
+               <div>
+                  <p className="tauxEchange">
+                      Frais  : <b><em>{transaction.TrFees}</em></b>
+                  </p>
+                  <p className="tauxEchange">
+                    Taux de change actuel : <b><em>{transaction.TrRate}</em></b>
+                  </p>
+               </div>
               }
         </Col>
         
